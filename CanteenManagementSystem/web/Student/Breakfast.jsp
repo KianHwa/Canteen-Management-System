@@ -12,6 +12,7 @@
             <div class="top1">
                 <img src="../Images/logo.png"style="height:120px;padding:14px 40px">
             </div>
+
             <div class="top2">
                 <div class="profilePic">
                     
