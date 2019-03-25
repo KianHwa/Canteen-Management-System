@@ -1,17 +1,23 @@
-<%-- 
-    Document   : Login
-    Created on : Mar 19, 2019, 8:14:35 PM
-    Author     : USER
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="Login.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="loginform">
+        <form action=""method="">
+            <fieldset>
+                <legend>Login Into Your Account</legend>
+                <label for="id"name="id">Login ID</label>
+                <input type="text"id="id"name="userid">
+                <label for="id"name="pwd">Password</label>
+                <input type="password"id="pwd"name="password">
+                <a href=""class="forgotPwd">Forgot your password ?</a><br/>
+                <input type="submit"value="Login"id="loginbtn">
+            </fieldset>
+        </form>
+        </div>
     </body>
 </html>
