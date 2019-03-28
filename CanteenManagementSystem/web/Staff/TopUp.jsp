@@ -2,8 +2,9 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
-        
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
+        <link rel="stylesheet" href="BreakfastLunch.css">  
+        <script src="../HeaderFooter/HeaderAndFooter.js"></script>
     </head> 
 <body>
     <header>
@@ -33,9 +34,10 @@
     </header>
     
     
+    
     <footer>
         <div class="bottom">
-        
+            
         </div>
     </footer>
     
