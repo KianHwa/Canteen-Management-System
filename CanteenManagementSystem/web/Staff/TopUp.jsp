@@ -24,8 +24,8 @@
             <div class="navBar">
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><a href="">Add ggggggg Points</a></li>
-                    <li><a href="">Pendingaaaaaaaaaaaaaaaa Orders</a></li>
+                    <li><a href="">Add CREDIT Points</a></li>
+                    <li><a href="">Pending Orders</a></li>
                     <li><a href="">Home</a></li>
                 </ul>
             </div>
