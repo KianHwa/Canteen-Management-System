@@ -10,7 +10,7 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/logo.png"style="height:120px;padding:14px 40px">
+                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
 
             <div class="top2">
