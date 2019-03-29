@@ -7,13 +7,13 @@
     </head>
     <body>
         <div class="loginform">
-        <form action=""method="">
+        <form action="LoginVerification" method="POST">
             <fieldset>
                 <legend>Login Into Your Account</legend>
-                <label for="id"name="id">Login ID</label>
-                <input type="text"id="id"name="userid">
-                <label for="id"name="pwd">Password</label>
-                <input type="password"id="pwd"name="password">
+                <label for="id" name="id">Login ID</label>
+                <input type="text" id="id" name="userid">
+                <label for="pwd" name="pwd">Password</label>
+                <input type="password" id="pwd" name="password">
                 <a href=""class="forgotPwd">Forgot your password ?</a><br/>
                 <input type="submit"value="Login"id="loginbtn">
             </fieldset>
