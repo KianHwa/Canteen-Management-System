@@ -7,7 +7,7 @@
     </head> 
 <body>
     <header>
-        <div class="top"id="myHeader">
+        <div class="top"id="navbar">
             <div class="top1">
                 <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
@@ -23,8 +23,9 @@
             <div class="navBar">
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><a href="">Add Credit Points</a></li>
-                    <li><a href="">Pending Orders</a></li>
+                    <li><a href="">Top Up</a></li>
+                    <li><a href="">Ingredients</a></li>
+                    <li><a href="">Meal Set List</a></li>
                     <li><a href="">Home</a></li>
                 </ul>
             </div>

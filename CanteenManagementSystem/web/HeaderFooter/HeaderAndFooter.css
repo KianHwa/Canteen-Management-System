@@ -46,7 +46,7 @@ li{
     float:right;
 }
 
-li a, .creditPoints a {
+li a, .creditPoints a, .managefood a, .managemeal a {
   display: block;
   color: white;
   text-align: center;
@@ -54,7 +54,9 @@ li a, .creditPoints a {
   text-decoration: none;
 }
 
-li a:hover:not(.active), .creditPoints:hover:not(.active) {
+li a:hover:not(.active), .creditPoints:hover:not(.active),
+.managefood:hover:not(.active),
+.managemeal:hover:not(.active){
   background-color: #262626;
 }
 
@@ -91,8 +93,8 @@ li a:hover:not(.active), .creditPoints:hover:not(.active) {
   float: right;
 }
 
-.dropdown .creditPoints {
-  font-size: 16px;  
+.dropdown .creditPoints, .managefood, .managemeal {
+  font-size: 14px;  
   border: none;
   outline: none;
   color: white;
@@ -109,6 +111,7 @@ li a:hover:not(.active), .creditPoints:hover:not(.active) {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  font-size:14px;
 }
 
 .dropdownContent a {

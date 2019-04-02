@@ -25,16 +25,15 @@
             <div class="navBar">
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="">Coupons</a></li>
                     <div class="dropdown">
                         <button class="creditPoints"><a href="">Credit Points</a></button>
                         <div class="dropdownContent">
                             <a href="">Balance:</a>
-                            <a href="">Top Up</a>
-                            <a href="">Coupon</a>
                         </div>
                     </div>  
                     <li><a href="">Orders</a></li>
-                    <li><a href="../Student/Home.jsp">Home</a></li>
+                    <li><a href="StudentHome.jsp">Home</a></li>
                 </ul>
             </div>
         </div>
