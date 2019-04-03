@@ -38,6 +38,7 @@ public class RegistrationVerification extends HttpServlet {
             String phoneNumber = request.getParameter("phone");
             int creditPoints = 0;
             
+            
             String verifyID = "";
             String verifyName = "";
             
@@ -58,19 +59,17 @@ public class RegistrationVerification extends HttpServlet {
             
             Query query = em.createNamedQuery("Student.findAll");
             List<Student> studentList = query.getResultList();
-            boolean existingStudent = false;
             
             for(int i=0 ; i<studentList.size() ; i++){
                 //Check if student ID/Name is exist/already registered
                 Student stud = studentList.get(i);
                 if(stud.getStudid().equals(verifyID)){
                     response.sendRedirect("LoginRegister/Register.jsp?status=existed&studid=" + stud.getStudid() + "");
-                    request.setAttribute("aa","ggg");
                 }
             }
             
-            if(existingStudent == false){
-                    if(verifyID.equals("")){
+           
+            if(verifyID.equals("")){
                         response.sendRedirect("LoginRegister/Register.jsp?status=error");
                     }
                     else{
@@ -80,8 +79,8 @@ public class RegistrationVerification extends HttpServlet {
                         em.persist(student);
                         utx.commit();
                         response.sendRedirect("LoginRegister/Main.jsp");
-                    }
-            }
+                    }        
+            
         }
         catch(Exception ex){
             

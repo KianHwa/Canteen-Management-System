@@ -46,7 +46,7 @@ li{
     float:right;
 }
 
-li a, .creditPoints a, .managefood a, .managemeal a {
+li a, .creditPoints a, .managefood a, .managemeal a{
   display: block;
   color: white;
   text-align: center;
@@ -54,10 +54,21 @@ li a, .creditPoints a, .managefood a, .managemeal a {
   text-decoration: none;
 }
 
+#couponbtn{
+    text-align:center;
+    padding:10px 30px;
+    border:none;
+    background:rgb(5,5,5);
+    color:white;
+    font-size:15px;
+}
+
 li a:hover:not(.active), .creditPoints:hover:not(.active),
 .managefood:hover:not(.active),
-.managemeal:hover:not(.active){
+.managemeal:hover:not(.active),
+#couponbtn:hover:not(.active){
   background-color: #262626;
+  border-bottom:2px solid red;
 }
 
 #navbar{
@@ -146,7 +157,123 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
   }
 }
 
+/*Meal Coupon Pop Out*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
 
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
 
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
 
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: gray;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 20px 16px;
+  background:linear-gradient(to right,rgb(45, 45, 45),rgb(0,0,0));
+  height:70px;
+  color: white;
+  text-align:center;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background: linear-gradient(to right,rgb(45, 45, 45),rgb(0,0,0));
+  height:50px;
+  color: white;
+  
+}
+
+/*Meal Coupon List Table*/
+#meals {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0;
+  margin-top:50px;
+}
+
+#meals td, #meals th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#meals tr:nth-child(even){background-color: #f2f2f2;}
+
+#meals th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+#printbtn:hover{
+    background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#printbtn{
+    background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  transition: 0.3s;
+  padding:10px 20px;
+  width:150px;
+  margin-left:40%;
+  margin-top:40px;
+  margin-bottom:40px;
+}

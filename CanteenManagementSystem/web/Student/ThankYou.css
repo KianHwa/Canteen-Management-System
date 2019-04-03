@@ -1,0 +1,30 @@
+.thankyou{
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.4); 
+    border: 2px solid #f1f1f1;
+    padding:150px;
+    color:white;
+    width:70%;
+    margin:auto;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.homebtn{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 20px 20px;
+  text-align: center;
+  font-size: 15px;
+  transition: 0.3s;
+  width:200px;
+  margin-left:43%;
+  margin-bottom:100px;
+}
+
+.homebtn:hover{
+    transition: 0.3s;
+    background-color:white;
+    color:black;
+}

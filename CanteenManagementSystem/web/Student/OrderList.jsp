@@ -2,10 +2,12 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
-        <link rel="stylesheet" href="BreakfastLunch.css">  
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
+        <link rel="stylesheet" href="StudentHome.css">
+        <link rel="stylesheet" href="OrderList.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-    </head> 
+        
+    </head>     
 <body>
     <header>
         <div class="top"id="navbar">
@@ -38,8 +40,7 @@
             </div>
         </div>
     </header>
-    
-    <div id="myModal" class="modal">
+        <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
@@ -71,80 +72,35 @@
                 </div>
             </div>
           </div>
-    
-    <div class="content">
-        <div class="title">
-            <h1>Breakfast</h1>
+
+    <div class="content">   
+        <div class="orderlisttitle">
+            <h1>Current orders</h1>
         </div>
-        <div class="foodList">
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src="../Images/545451.jpg"id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    
+        <form action="" method="">
+                    <table id="orders">
+                        <tr>
+                          <th>No</th>
+                          <th>Meal Set</th>
+                          <th>Order Date</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Testing</td>
+                            <td>Testing</td>
+                            <td><input type="submit" value="Remove" id="removebtn"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <input type="submit" value="Remove all" id="removeallbtn">
+                                <input type="submit" value="Place Order" id="placeorderbtn">
+                            </td>
+                        </tr>
+                      </table>
+                    </form>
+    </div>  
+    <script src="../HeaderFooter/OrderModal.js"></script>
     <footer>
         <div class="bottom">
             

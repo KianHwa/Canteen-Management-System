@@ -40,5 +40,42 @@
     color:white;
 }
 
+#removebtn{
+    background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  transition: 0.3s;
+  padding:5px 5px;
+  margin-left:40%;
+  width:80px;
+}
 
+#removebtn:hover, #removeallbtn:hover, #placeorderbtn:hover{
+    background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#removeallbtn, #placeorderbtn{
+    background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  transition: 0.3s;
+  padding:10px 15px;
+  width:150px;
+}
+
+#removeallbtn{
+    margin-left:25%;
+}
+
+#placeorderbtn{
+    margin-left:25%;
+}
 

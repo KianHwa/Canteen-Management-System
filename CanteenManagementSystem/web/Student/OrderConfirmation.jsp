@@ -2,10 +2,11 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
-        <link rel="stylesheet" href="BreakfastLunch.css">  
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
+        <link rel="stylesheet" href="OrderConfirmation.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-    </head> 
+        
+    </head>     
 <body>
     <header>
         <div class="top"id="navbar">
@@ -38,8 +39,7 @@
             </div>
         </div>
     </header>
-    
-    <div id="myModal" class="modal">
+        <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
@@ -71,79 +71,38 @@
                 </div>
             </div>
           </div>
+
+    <div class="content">   
+        <form action="" method="">
+                    <table id="orders">
+                        <tr>
+                            <td colspan="5" id="orderconfirmationtitle"><h1>Order Confirmation</h1></td>
+                        </tr>
+                        <tr>
+                          <th>No</th>
+                          <th>Meal Set</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Credit Points</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Testing</td>
+                            <td>Testing</td>
+                            <td>Testing</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <input type="submit" value="Back" id="backbtn">
+                                <input type="submit" value="Purchase" id="purchasebtn">
+                            </td>
+                        </tr>
+                      </table>
+        </form>
+    </div>  
+    <script src="../HeaderFooter/OrderModal.js"></script>
     
-    <div class="content">
-        <div class="title">
-            <h1>Breakfast</h1>
-        </div>
-        <div class="foodList">
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src="../Images/545451.jpg"id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
     
     <footer>
         <div class="bottom">

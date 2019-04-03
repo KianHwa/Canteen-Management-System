@@ -3,7 +3,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
-        <link rel="stylesheet" href="BreakfastLunch.css">  
+        <link rel="stylesheet" href="ThankYou.css">  
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
     </head> 
 <body>
@@ -73,78 +73,17 @@
           </div>
     
     <div class="content">
-        <div class="title">
-            <h1>Breakfast</h1>
-        </div>
-        <div class="foodList">
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src="../Images/545451.jpg"id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
+        <div class="thankyou">
+            <h1 style="text-align: center">Thank You !</h1>
+            <p style="text-align: center; font-size: 20">You had successfully paid your meal order !</p>
+            <br/><br/><br/>
+            <p style="text-align: center; font-size: 20">Please print your digital meal coupon <br/> from the 'Coupon' section 
+            to redeem your meal redeeming day</p>
+            <br/><br/>
+            <h2 style="text-align: center">Have A Nice Day</h2>
         </div>
     </div>
-    
+    <a href="StudentHome.jsp"><button class="homebtn">Back To Home</button></a>
     <footer>
         <div class="bottom">
             
