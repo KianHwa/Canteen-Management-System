@@ -3,7 +3,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
-        <link rel="stylesheet" href="StaffHome.css">
+        <link rel="stylesheet" href="MealSet.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
     </head> 
 <body>
@@ -34,26 +34,22 @@
     </header>
     
     <div class="content">
-        <div class="couponclaimtitle">
-            <h1>Coupon Status</h1>
+        <div class="mealsetlisttitle">
+            <h1>Meal Sets List</h1>
         </div>
             <form action="" method="">
-                <input type="text" placeholder="Enter coupon code ..." id="claimcouponbox">
-                <input type="submit" value="Claim" id="claimcouponbtn">
-                    <table id="claimcoupon">
+                <input type="date" id="mealsetlistdate">
+                <input type="submit" value="Check" id="mealsetlistbtn">
+                    <table id="mealsetlist">
                         <tr>
-                          <th>No</th>
-                          <th>Order Date</th>
-                          <th>Meal Set</th>
-                          <th>Price</th>
-                          <th>Status</th>
+                          <th>Meal Sets</th>
+                          <th>Meal</th>
+                          <th>Quantity</th>
                         </tr>
                         <tr>
-                            <td>1</td>
                             <td>Testing</td>
                             <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
+                            <td>0</td>
                         </tr>
                       </table>
             </form>
