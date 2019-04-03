@@ -38,7 +38,6 @@
                             <a href="AddMeal.jsp">Add Meal Set</a>
                         </div>
                     </div>
-                    <li><a href="">Home</a></li>
                 </ul>
             </div>
         </div>

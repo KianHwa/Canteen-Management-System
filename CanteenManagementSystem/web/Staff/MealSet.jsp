@@ -24,7 +24,7 @@
             <div class="navBar">
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><a href="">Top Up</a></li>
+                    <li><a href="TopUp.jsp">Top Up</a></li>
                     <li><a href="">Ingredients</a></li>
                     <li><a href="MealSet.jsp">Meal Set List</a></li>
                     <li><a href="StaffHome.jsp">Home</a></li>

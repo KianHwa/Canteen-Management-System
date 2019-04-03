@@ -39,7 +39,6 @@
                             <a href="AddMeal.jsp">Add Meal Set</a>
                         </div>
                     </div>
-                    <li><a href="">Home</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +54,7 @@
             <label for="foodname">Food Name</label>
           </div>
           <div class="col-75">
-            <input type="text" id="lname" name="foodname" placeholder="Food Name..">
+            <input type="text" id="lname" name="foodname" placeholder="Food Name.." required>
           </div>
         </div>
           

@@ -39,7 +39,6 @@
                             <a href="AddMeal.jsp">Add Meal Set</a>
                         </div>
                     </div>
-                    <li><a href="">Home</a></li>
                 </ul>
             </div>
         </div>
@@ -59,7 +58,7 @@
                     <label for="mealname">Meal Set Name</label>
                 </div>
             <div class="col-75">
-                <input type="text" id="mealname" name="mealname" placeholder="Meal Set Name..">
+                <input type="text" id="mealname" name="mealname" placeholder="Meal Set Name.." required>
             </div>
             </div>
             
@@ -69,7 +68,7 @@
                     <label for="mealprice">Meal Set Price</label>
                 </div>
             <div class="col-75">
-                <input type="text" id="mealprice" name="mealprice" placeholder="Meal Set Price..">
+                <input type="text" id="mealprice" name="mealprice" placeholder="Meal Set Price.." required>
             </div>
             </div>
             
@@ -102,7 +101,7 @@
                     <label for="meal">Select Food</label>
                 </div>
                 <div class="col-75">
-                    <select id="food" name="food" multiple>
+                    <select id="food" name="food" multiple required>
                         <option value="egg">Egg</option>
                         <option value="chicken">Chicken</option>
                         <option value="rice">Rice</option>
