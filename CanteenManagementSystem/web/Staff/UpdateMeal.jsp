@@ -2,7 +2,8 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
+        <link rel="stylesheet" href="UpdateMeal.css">
         
     </head> 
 <body>
@@ -44,7 +45,18 @@
         
     </header>
     
-    
+    <div class="content">
+        <table id="updatemeal">
+                        <tr>
+                            <td rowspan="4"></td>
+                            <td>Meal Name</td>
+                        </tr>
+                        <tr>
+                            <td>
+                        </tr>
+                        
+                      </table>
+    </div>
     <footer>
         <div class="bottom">
         
