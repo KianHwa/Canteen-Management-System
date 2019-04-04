@@ -21,20 +21,20 @@
             </div>
             
             <div class="navBar">
-                <ul>
+               <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>
                         <div class="dropdownContent">
-                            <a href="UpdateFood.jsp">Update Food Items</a>
+                            <a href="FoodList.jsp">Update Food Items</a>
                             <a href="AddFood.jsp">Add Food Items</a>
                         </div>
                     </div>
                     <div class="dropdown">
                         <button class="managemeal"><a href="">Manage Meal</a></button>
                         <div class="dropdownContent">
-                            <a href="UpdateMeal.jsp">Update Meals Set</a>
+                            <a href="MealSetList.jsp">Update Meals Set</a>
                             <a href="AddMeal.jsp">Add Meal Set</a>
                         </div>
                     </div>

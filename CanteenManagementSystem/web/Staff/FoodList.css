@@ -1,19 +1,19 @@
 /*Order List Table*/
-#mealsetlist {
+#foodlist {
   border-collapse: collapse;
   width: 100%;
   margin:0;
   margin-top:50px;
 }
 
-#mealsetlist td, #mealsetlist th {
+#foodlist td, #foodlist th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#mealsetlist tr:nth-child(even){background-color: #f2f2f2;}
+#foodlist tr:nth-child(even){background-color: #f2f2f2;}
 
-#mealsetlist th {
+#foodlist th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -21,7 +21,7 @@
   color: white;
 }
 
-#updatemealbtn:hover, #deletemealbtn:hover{
+#updatefoodbtn:hover, #deletefoodbtn:hover{
     background-color: white;
   border: none;
   color: black;
@@ -29,7 +29,7 @@
   transition: 0.3s;
 }
 
-#updatemealbtn, #deletemealbtn{
+#updatefoodbtn, #deletefoodbtn{
     background-color: black;
   border: none;
   color: white;
@@ -37,6 +37,6 @@
   font-size: 15px;
   transition: 0.3s;
   padding:10px 15px;
-  width:150px;
-  margin-left:30%;
+  width:100px;
+  margin-left:20%;
 }

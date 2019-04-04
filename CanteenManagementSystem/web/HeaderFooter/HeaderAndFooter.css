@@ -68,7 +68,7 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
 .managemeal:hover:not(.active),
 #couponbtn:hover:not(.active){
   background-color: #262626;
-  border-bottom:2px solid yellow;
+  border-bottom:5px solid gold;
 }
 
 #navbar{
