@@ -1,0 +1,24 @@
+/*Order List Table*/
+#mealsetlist {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0;
+  margin-bottom:300px;
+  margin-top:50px;
+}
+
+#mealsetlist td, #mealsetlist th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#mealsetlist tr:nth-child(even){background-color: #f2f2f2;}
+
+#mealsetlist th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
