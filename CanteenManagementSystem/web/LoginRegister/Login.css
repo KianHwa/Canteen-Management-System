@@ -59,7 +59,7 @@ input[type=text]:hover, input[type=password]:hover{
     opacity:0.9;
 }
 
-#loginbtn{
+#backbtn{
   background-color: #ffffff;
   border: none;
   color: black;
@@ -73,7 +73,21 @@ input[type=text]:hover, input[type=password]:hover{
   margin-left:10%
 }
 
-#loginbtn:hover{
+#loginbtn{
+    background-color: #ffffff;
+  border: none;
+  color: black;
+  padding: 10px 40px;
+  text-align: center;
+  font-size: 15px;
+  margin: 30px 10px;
+  transition: 0.3s;
+  width:150px;
+  margin-bottom:20px;
+  margin-left:35%
+}
+
+#loginbtn:hover, #backbtn:hover{
     transition: 0.3s;
     background-color:black;
     color:white;

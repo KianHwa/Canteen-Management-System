@@ -5,9 +5,15 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
         <link rel="stylesheet" href="StudentHome.css"> 
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+        <script>
+            $(window).load(function() {
+		$('body').fadeIn(1500);
+	});
+        </script>
     </head>     
-<body>
+<body style="display:none">
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -39,7 +45,6 @@
             </div>
         </div>
     </header>
-        
     <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -72,6 +77,7 @@
                 </div>
             </div>
           </div>
+    
 
     <div class="content">   
         <div class="breakfast">
@@ -81,8 +87,10 @@
             <a href="Lunch.jsp"><button class="lunchBtn">Lunch</button></a>
         </div>
     </div>  
+    
+    
     <script src="../HeaderFooter/OrderModal.js"></script>
-    <footer>
+        <footer>
         <div class="bottom">
             
         </div>

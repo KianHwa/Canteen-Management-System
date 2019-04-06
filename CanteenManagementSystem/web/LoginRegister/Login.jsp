@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="loginform">
-        <form action="LoginVerification" method="POST">
+        <form action="../LoginVerification" method="POST">
             <fieldset>
                 <legend>Login Into Your Account</legend>
                 <label for="id" name="id">Login ID</label>
@@ -15,7 +15,9 @@
                 <label for="pwd" name="pwd">Password</label>
                 <input type="password" id="pwd" name="password">
                 <a href=""class="forgotPwd">Forgot your password ?</a><br/>
-                <input type="submit"value="Login"id="loginbtn">
+                <a href="Main.jsp"><button id="backbtn">Back</button></a>
+                <input type="submit" value="Login" id="loginbtn">
+                
             </fieldset>
         </form>
         </div>
