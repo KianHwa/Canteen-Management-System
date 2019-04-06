@@ -9,7 +9,7 @@
         <h1>O v e r c o o k</h1>
         <div class="loginSignUpFrame">
             <a href="Login.jsp"><button class="loginbtn">Login</button></a>
-            <button class="signupbtn">Sign Up</button>
+            <a href="SignUp.jsp"><button class="signupbtn">Sign Up</button></a>
         </div>
         
     </body>

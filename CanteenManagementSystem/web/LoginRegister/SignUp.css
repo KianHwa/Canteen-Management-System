@@ -19,7 +19,7 @@ body{
     background-color: rgba(0,0,0, 0.4); 
     border: 2px solid #f1f1f1;
     position: relative;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
@@ -108,7 +108,7 @@ input[type=text]:hover, input[type=password]:hover, input[type=password]:hover, 
     }
 }
 
-#submitbtn{
+#signupbtn{
   background-color: #d9d9d9;
   border: none;
   color:black;
@@ -119,11 +119,25 @@ input[type=text]:hover, input[type=password]:hover, input[type=password]:hover, 
   transition: 0.3s;
   width:170px;
   margin-bottom:20px;
-  margin-left:10%
+  margin-left:35%
 }
 
-#submitbtn:hover{
+#signupbtn:hover, #backbtn:hover{
     transition: 0.3s;
     background-color:black;
     color:white;
+}
+
+#backbtn{
+  background-color: #ffffff;
+  border: none;
+  color: black;
+  padding: 10px 40px;
+  text-align: center;
+  font-size: 15px;
+  margin: 30px 10px;
+  transition: 0.3s;
+  width:150px;
+  margin-bottom:20px;
+  margin-left:10%
 }

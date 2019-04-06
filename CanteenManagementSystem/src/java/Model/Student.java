@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Student.findByStudemail", query = "SELECT s FROM Student s WHERE s.studemail = :studemail")
     , @NamedQuery(name = "Student.findByStudphone", query = "SELECT s FROM Student s WHERE s.studphone = :studphone")
     , @NamedQuery(name = "Student.findByStudpassword", query = "SELECT s FROM Student s WHERE s.studpassword = :studpassword")
+    , @NamedQuery(name = "Student.findByStudic", query = "SELECT s FROM Student s WHERE s.studic = :studic")
     , @NamedQuery(name = "Student.findByCredpoints", query = "SELECT s FROM Student s WHERE s.credpoints = :credpoints")})
 public class Student implements Serializable {
 
@@ -69,6 +70,11 @@ public class Student implements Serializable {
     @NotNull
     @Column(name = "CREDPOINTS")
     private int credpoints;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "STUDIC")
+    private String studic;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentStudid")
     private List<Order1> order1List;
 
@@ -79,6 +85,16 @@ public class Student implements Serializable {
         this.studid = studid;
     }
 
+    public Student(String studid, String studname, String studemail, String studphone, String studpassword, int credpoints, String studic) {
+        this.studid = studid;
+        this.studname = studname;
+        this.studemail = studemail;
+        this.studphone = studphone;
+        this.studpassword = studpassword;
+        this.credpoints = credpoints;
+        this.studic = studic;
+    }
+    
     public Student(String studid, String studname, String studemail, String studphone, String studpassword, int credpoints) {
         this.studid = studid;
         this.studname = studname;
@@ -134,6 +150,14 @@ public class Student implements Serializable {
 
     public void setCredpoints(int credpoints) {
         this.credpoints = credpoints;
+    }
+    
+    public String getStudic() {
+        return studic;
+    }
+    
+    public void setStudic(String studic) {
+        this.studic = studic;
     }
 
     @XmlTransient

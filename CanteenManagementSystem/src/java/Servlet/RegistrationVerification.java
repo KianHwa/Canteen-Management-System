@@ -39,47 +39,82 @@ public class RegistrationVerification extends HttpServlet {
             int creditPoints = 0;
             
             
-            String verifyID = "";
-            String verifyName = "";
+            String studVerifyID = "";
+            String studVerifyName = "";
+            String studVerifyIC ="";
+            
+            String staffVerifyID = "";
+            String staffVerifyName = "";
+            String staffVerifyIC ="";
             
             //Verify student ID from school database          
             conn = DriverManager.getConnection(host,user,pass);
             
+            if(ID.indexOf("STD") >=0){
             stmt = conn.prepareStatement("SELECT * FROM SchoolStudent WHERE studentid = ?");
             stmt.setString(1,ID);
             ResultSet rs = stmt.executeQuery();
             
             if(rs.next()){
-                verifyID = rs.getString("studentID");
-                verifyName = rs.getString("studentName");
+                studVerifyID = rs.getString("studentID");
+                studVerifyName = rs.getString("studentName");
+                studVerifyIC = rs.getString("studentIC");
             }
-            
-            //Register Verification
-            
-            
-            Query query = em.createNamedQuery("Student.findAll");
-            List<Student> studentList = query.getResultList();
-            
-            for(int i=0 ; i<studentList.size() ; i++){
-                //Check if student ID/Name is exist/already registered
-                Student stud = studentList.get(i);
-                if(stud.getStudid().equals(verifyID)){
-                    response.sendRedirect("LoginRegister/Register.jsp?status=existed&studid=" + stud.getStudid() + "");
-                }
-            }
-            
-           
-            if(verifyID.equals("")){
-                        response.sendRedirect("LoginRegister/Register.jsp?status=error");
+                //Register Verification
+                Query query = em.createNamedQuery("Student.findAll");
+                List<Student> studentList = query.getResultList();
+
+                for(int i=0 ; i<studentList.size() ; i++){
+                    //Check if student ID/Name is exist/already registered
+                    Student stud = studentList.get(i);
+                    if(stud.getStudid().equals(studVerifyID)){
+                        response.sendRedirect("LoginRegister/SignUp.jsp?status=studexisted&studid=" + stud.getStudid() + "");
                     }
-                    else{
-                        //If verified, store register information into Canteen's Student database
-                        utx.begin();
-                        Student student = new Student(verifyID, verifyName, email, phoneNumber, password, creditPoints);
-                        em.persist(student);
-                        utx.commit();
-                        response.sendRedirect("HeaderAndFooter/loading.jsp");
-                    }        
+                }
+
+                            //If verified, store register information into Canteen's Student database
+                            utx.begin();
+                            Student student = new Student(studVerifyID, studVerifyName, email, phoneNumber, password, creditPoints, studVerifyIC);
+                            em.persist(student);
+                            utx.commit();
+                            response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
+            }
+            else if(ID.indexOf("STF") >=0){
+                //Verify Staff ID from database
+                stmt = conn.prepareStatement("SELECT * FROM CorpStaff WHERE staffsid = ?");
+                stmt.setString(1,ID);
+                ResultSet rs = stmt.executeQuery();
+            
+                if(rs.next()){
+                    staffVerifyID = rs.getString("staffsID");
+                    staffVerifyName = rs.getString("staffsName");
+                    staffVerifyIC = rs.getString("staffsIC");
+                }
+                //Register Verification
+                Query query = em.createNamedQuery("Staff.findAll");
+                List<Staff> staffList = query.getResultList();
+
+                for(int i=0 ; i<staffList.size() ; i++){
+                    //Check if staff ID/Name is exist/already registered
+                    Staff staff = staffList.get(i);
+                    if(staff.getStaffid().equals(staffVerifyID)){
+                        response.sendRedirect("LoginRegister/SignUp.jsp?status=staffexisted&staffid=" + staff.getStaffid() + "");
+                    }
+                }
+                
+                utx.begin();
+                Staff staff = new Staff(staffVerifyID, staffVerifyName, email, phoneNumber, password, staffVerifyIC);
+                Staff manager = new Staff("MNR1","Cardinal","cardinal@gmail.com","012 345 6789","Cardinal1","801010105060");
+                staff.setManagerid(manager);
+                em.persist(staff);
+                utx.commit();
+                response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
+                
+                response.sendRedirect("LoginRegister/Main.jsp?status=error");
+            }
+            else{
+                response.sendRedirect("LoginRegister/SignUp.jsp?status=error"); //student not in school database
+            }
             
         }
         catch(Exception ex){

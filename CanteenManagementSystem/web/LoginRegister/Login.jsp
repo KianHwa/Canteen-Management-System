@@ -7,19 +7,21 @@
     </head>
     <body>
         <div class="loginform">
-        <form action="../LoginVerification" method="POST">
+        <form action="../LoginVerification" method="POST" id="loginform">
             <fieldset>
                 <legend>Login Into Your Account</legend>
                 <label for="id" name="id">Login ID</label>
-                <input type="text" id="id" name="userid">
+                <input type="text" id="id" name="userid" required>
                 <label for="pwd" name="pwd">Password</label>
-                <input type="password" id="pwd" name="password">
+                <input type="password" id="pwd" name="password" required> 
                 <a href=""class="forgotPwd">Forgot your password ?</a><br/>
-                <a href="Main.jsp"><button id="backbtn">Back</button></a>
-                <input type="submit" value="Login" id="loginbtn">
                 
             </fieldset>
         </form>
+                <a href="Main.jsp"><button id="backbtn">Back</button></a>
+                <input type="submit" value="Login" id="loginbtn" form="loginform">
+                <div class="notregdiv"><br/>Not registered?<a href="SignUp.jsp" class="notreg"> Click here</a></div>
+                
         </div>
     </body>
 </html>

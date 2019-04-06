@@ -100,9 +100,24 @@ input[type=text]:hover, input[type=password]:hover{
     font-style:italic;
     
 }
-
 .forgotPwd:hover{
     text-decoration:underline;
+}
+
+
+.notreg{
+    text-decoration:none;
+    color:white;
+    font-style:italic;
+}
+
+.notreg:hover{
+    text-decoration:underline;
+    color:gray;
+}
+
+.notregdiv{
+    margin-left:38%;
 }
 
 @media screen and (max-width: 1400px) {

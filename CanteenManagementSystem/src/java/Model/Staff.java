@@ -8,7 +8,6 @@ package Model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Staff.findByStaffname", query = "SELECT s FROM Staff s WHERE s.staffname = :staffname")
     , @NamedQuery(name = "Staff.findByStaffemail", query = "SELECT s FROM Staff s WHERE s.staffemail = :staffemail")
     , @NamedQuery(name = "Staff.findByStaffphone", query = "SELECT s FROM Staff s WHERE s.staffphone = :staffphone")
-    , @NamedQuery(name = "Staff.findByStaffpassword", query = "SELECT s FROM Staff s WHERE s.staffpassword = :staffpassword")})
+    , @NamedQuery(name = "Staff.findByStaffpassword", query = "SELECT s FROM Staff s WHERE s.staffpassword = :staffpassword")
+    , @NamedQuery(name = "Staff.findByStaffic", query = "SELECT s FROM Staff s WHERE s.staffic = :staffic")})
 public class Staff implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,11 +66,16 @@ public class Staff implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "STAFFPASSWORD")
     private String staffpassword;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "staffStaffid")
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "STAFFIC")
+    private String staffic;
+    @OneToMany(mappedBy = "managerid")
     private List<Staff> staffList;
-    @JoinColumn(name = "STAFF_STAFFID", referencedColumnName = "STAFFID")
-    @ManyToOne(optional = false)
-    private Staff staffStaffid;
+    @JoinColumn(name = "MANAGERID", referencedColumnName = "STAFFID")
+    @ManyToOne
+    private Staff managerid;
 
     public Staff() {
     }
@@ -79,12 +84,13 @@ public class Staff implements Serializable {
         this.staffid = staffid;
     }
 
-    public Staff(String staffid, String staffname, String staffemail, String staffphone, String staffpassword) {
+    public Staff(String staffid, String staffname, String staffemail, String staffphone, String staffpassword, String staffic) {
         this.staffid = staffid;
         this.staffname = staffname;
         this.staffemail = staffemail;
         this.staffphone = staffphone;
         this.staffpassword = staffpassword;
+        this.staffic = staffic;
     }
 
     public String getStaffid() {
@@ -127,6 +133,14 @@ public class Staff implements Serializable {
         this.staffpassword = staffpassword;
     }
 
+    public String getStaffic() {
+        return staffic;
+    }
+
+    public void setStaffic(String staffic) {
+        this.staffic = staffic;
+    }
+
     @XmlTransient
     public List<Staff> getStaffList() {
         return staffList;
@@ -136,12 +150,12 @@ public class Staff implements Serializable {
         this.staffList = staffList;
     }
 
-    public Staff getStaffStaffid() {
-        return staffStaffid;
+    public Staff getManagerid() {
+        return managerid;
     }
 
-    public void setStaffStaffid(Staff staffStaffid) {
-        this.staffStaffid = staffStaffid;
+    public void setManagerid(Staff managerid) {
+        this.managerid = managerid;
     }
 
     @Override

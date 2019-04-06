@@ -29,22 +29,37 @@ public class LoginVerification extends HttpServlet {
             String loginID = request.getParameter("userid");
             String password = request.getParameter("password");
             
-            Query query = em.createNamedQuery("Student.findAll");
-            List<Student> studentList = query.getResultList();
-            
-            for(int i=0 ; i<studentList.size() ; i++){
-                Student stud = studentList.get(i);
-                if(stud.getStudid().equals(loginID) && stud.getStudpassword().equals(password)){
-                    response.sendRedirect("HeaderFooter/loading.jsp");
-                }
-                else{
-                    System.out.println(stud.getStudid());
-                    response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
+            if(loginID.indexOf("STD") >=0){
+                Query query = em.createNamedQuery("Student.findAll");
+                List<Student> studentList = query.getResultList();
+
+                for(int i=0 ; i<studentList.size() ; i++){
+                    Student stud = studentList.get(i);
+                    if(stud.getStudid().equals(loginID) && stud.getStudpassword().equals(password)){
+                        response.sendRedirect("HeaderFooter/loading.jsp?status=studentloggingin");
+                    }  
+                    else{
+                        response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
+                    }
                 }
             }
-            
-            
-            
+            else if(loginID.indexOf("STF") >=0){
+                Query query = em.createNamedQuery("Staff.findAll");
+                List<Staff> staffList = query.getResultList();
+
+                for(int i=0 ; i<staffList.size() ; i++){
+                    Staff staff = staffList.get(i);
+                    if(staff.getStaffid().equals(loginID) && staff.getStaffpassword().equals(password)){
+                        response.sendRedirect("HeaderFooter/loading.jsp?status=staffloggingin");
+                    }      
+                    else{
+                        response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
+                    }
+                }
+            }
+            else{
+                response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
+            }
         }
         catch(Exception ex){
             
