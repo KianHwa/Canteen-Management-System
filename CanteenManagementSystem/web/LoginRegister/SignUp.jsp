@@ -20,7 +20,6 @@
         <script>
             var staffid = "'<%=existedStaffID %>'";
             alert("Staff ID " + staffid + " already registered, Please retry again.");
-            
         </script>
         <%} else if(status.equals("studexisted")){%>
         <script>

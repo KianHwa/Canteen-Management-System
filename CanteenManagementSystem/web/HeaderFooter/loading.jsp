@@ -62,6 +62,15 @@
                 setTimeout(function(){window.location.href="../Staff/StaffHome.jsp";},2500);
 	});
         </script>
+        <% }else if(status.equals("managerloggingin")){%>
+        <div class="se-pre-con"><h1>Logging in ..</h1></div>
+        
+        <script>
+            $(window).load(function() {
+		$(".se-pre-con").delay(2000).fadeOut("slow");
+                setTimeout(function(){window.location.href="../Staff/MealSetList.jsp";},2500);
+	});
+        </script>
         <% }else if(status.equals("registering")){%>
             <div class="se-pre-con"><h1>Registering in ..</h1></div>
 

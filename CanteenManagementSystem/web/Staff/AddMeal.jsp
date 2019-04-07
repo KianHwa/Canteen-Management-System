@@ -1,3 +1,5 @@
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -10,14 +12,14 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
                 <div class="profilePic">
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             

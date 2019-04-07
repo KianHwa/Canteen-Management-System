@@ -12,6 +12,7 @@ import java.sql.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import Model.*;
+import java.text.DecimalFormat;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.Query;
@@ -28,21 +29,68 @@ public class AddFood extends HttpServlet {
         try{
             String foodName = request.getParameter("foodname");
             int calories = Integer.parseInt(request.getParameter("calories"));
+            boolean existed = false;
+            String foodID = "";
 
             Query query = em.createNamedQuery("Food.findAll");
             List<Food> foodlist = query.getResultList();
-
-            int foodlistSize = foodlist.size() + 1;
-
-            String foodID = "STD" + String.format("%04d",foodlistSize);
-
-            utx.begin();
-            Food food = new Food(foodID, foodName, calories);        
-            em.persist(food);
-            utx.commit();
-        
-        
-        
+            
+                /*try (PrintWriter out = response.getWriter()) {
+                                    out.println("<h1>Old: " + formatFoodnum + "New: "  +newFormatFoodnum +  "</h1>"); 
+                                }*/
+            
+                if(foodlist.size() == 0){
+                    foodID = "FD" + String.format("%02d",foodlist.size() + 1);
+                }
+                else{
+                    foodID = "FD" + String.format("%02d",foodlist.size() + 1);
+                    boolean duplicateID;
+                    int newID = 1;
+                    
+                    String newFormatFoodnum = foodID.substring(2,4); 
+                    
+                    
+                    do{
+                        duplicateID = false;
+                        for(int i=0 ; i<foodlist.size() ; i++){
+                            Food fooood = foodlist.get(i);
+                            String formatFoodnum = fooood.getFoodid().substring(2,4);  
+                            
+                            if(newFormatFoodnum.equals(formatFoodnum)){
+                                duplicateID = true;
+                                newFormatFoodnum = String.format("%02d",newID);
+                            }
+                        }
+                        ++newID;
+                        
+                        if(duplicateID == false){
+                            foodID = "FD" + newFormatFoodnum;
+                        }
+                    }while(duplicateID == true);
+                }
+                
+                
+                    
+                
+                
+            
+            //check existing food name
+            for(int i=0 ; i<foodlist.size() ; i++){
+                    //Check if student ID/Name is exist/already registered
+                    Food foood = foodlist.get(i);
+                    if(foood.getFoodname().toLowerCase().equals(foodName.toLowerCase())){
+                        existed = true;
+                        response.sendRedirect("Staff/AddFood.jsp?existed=true&food=" + foodName + "");
+                    }
+                }
+            if(existed==false){
+                    utx.begin();
+                    Food food = new Food(foodID, foodName, calories);        
+                    em.persist(food);
+                    utx.commit();
+                    response.sendRedirect("Staff/AddFood.jsp?success=true&food=" + foodName + "");
+            }
+            
         }
         catch(Exception ex){
             

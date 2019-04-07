@@ -19,7 +19,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p><%= staff.getStaffid()%></p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             

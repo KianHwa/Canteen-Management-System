@@ -1,3 +1,5 @@
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -7,6 +9,11 @@
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
     </head> 
 <body>
+    <%
+        String success = request.getParameter("success");
+        String foodName = request.getParameter("food");
+        String existedFood = request.getParameter("existed");
+    %>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -17,7 +24,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             
@@ -45,6 +52,23 @@
         
     </header>
     <div class="content">
+       <%if(success!=null){
+           if(success.equals("true")){%>
+            <script>
+                var foodname = "'<%= foodName%>'";
+                alert("Food " + foodname + " successfully added");
+            </script>
+       <%}}%>
+       
+       <%if(existedFood!=null){
+           if(existedFood.equals("true")){
+       %>
+            <script>    
+                var foodname = "'<%= foodName%>'";
+                alert("\'" + foodname  + "\'already existed");
+            </script>
+       <%}}%>
+        
         <div class="addfoodtitle">
             <h1>Add Food Items</h1>
         </div>

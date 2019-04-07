@@ -1,3 +1,9 @@
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<%@page import="Model.Meal, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -17,7 +23,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             
