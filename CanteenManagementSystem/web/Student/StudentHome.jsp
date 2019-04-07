@@ -1,3 +1,5 @@
+<jsp:useBean id="student" scope="session" class="Model.Student" />
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -24,7 +26,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= student.getStudname() %></p>
                 </div>
             </div>
             

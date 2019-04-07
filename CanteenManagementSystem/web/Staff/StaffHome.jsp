@@ -1,3 +1,5 @@
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -17,7 +19,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= staff.getStaffid()%></p>
                 </div>
             </div>
             

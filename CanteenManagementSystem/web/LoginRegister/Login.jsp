@@ -6,6 +6,13 @@
         <link rel="stylesheet" href="Login.css">
     </head>
     <body>
+        <%
+            String status = request.getParameter("status");
+            if(status!=null){
+                if(status.equals("loginfailed")){
+        %>
+        <script>alert("User ID or password may be incorrect, please login again. \nSTD for student, STF for staff.");</script>
+        <%}}%>
         <div class="loginform">
         <form action="../LoginVerification" method="POST" id="loginform">
             <fieldset>

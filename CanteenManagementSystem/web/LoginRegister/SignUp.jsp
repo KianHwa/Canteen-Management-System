@@ -9,22 +9,25 @@
             String status = request.getParameter("status");
             String existedStudID = request.getParameter("studid");
             String existedStaffID = request.getParameter("staffid");
+            
             if(status!=null){
                 if(status.equals("error")){                 
         %>
         <script>
             alert("Invalid Student ID, Please retry again.");
         </script>
-        <%}else if(status.equals("studexisted")){%>
+        <%} else if(status.equals("staffexisted")){%>
+        <script>
+            var staffid = "'<%=existedStaffID %>'";
+            alert("Staff ID " + staffid + " already registered, Please retry again.");
+            
+        </script>
+        <%} else if(status.equals("studexisted")){%>
         <script>
             var studid = "'<%=existedStudID %>'";
             alert("Student ID " + studid + " already registered, Please retry again.");
         </script>
-        <%}else if(status.equals("staffexisted")){%>
-        <script>
-            var staffID = "'<%=existedStaffID %>'";
-            alert("Staff ID " + staffid + " already registered, Please retry again.");
-        </script>
+        
         <%}}%>
         
         <div class="signupform">

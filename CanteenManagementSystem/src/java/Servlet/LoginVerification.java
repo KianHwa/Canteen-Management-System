@@ -36,12 +36,15 @@ public class LoginVerification extends HttpServlet {
                 for(int i=0 ; i<studentList.size() ; i++){
                     Student stud = studentList.get(i);
                     if(stud.getStudid().equals(loginID) && stud.getStudpassword().equals(password)){
+                        Student student = em.find(Student.class, loginID);
+                        HttpSession session = request.getSession();
+                        session.setAttribute("student", student);
+                        
                         response.sendRedirect("HeaderFooter/loading.jsp?status=studentloggingin");
                     }  
-                    else{
-                        response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
-                    }
+                    
                 }
+                response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
             }
             else if(loginID.indexOf("STF") >=0){
                 Query query = em.createNamedQuery("Staff.findAll");
@@ -50,12 +53,14 @@ public class LoginVerification extends HttpServlet {
                 for(int i=0 ; i<staffList.size() ; i++){
                     Staff staff = staffList.get(i);
                     if(staff.getStaffid().equals(loginID) && staff.getStaffpassword().equals(password)){
+                        Staff stf = em.find(Staff.class ,loginID);
+                        HttpSession session = request.getSession();
+                        session.setAttribute("staff",stf);
+                        
                         response.sendRedirect("HeaderFooter/loading.jsp?status=staffloggingin");
                     }      
-                    else{
-                        response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
-                    }
                 }
+                response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
             }
             else{
                 response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
