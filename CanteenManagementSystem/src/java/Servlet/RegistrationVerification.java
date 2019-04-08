@@ -54,7 +54,6 @@ public class RegistrationVerification extends HttpServlet {
             stmt = conn.prepareStatement("SELECT * FROM SchoolStudent WHERE studentid = ?");
             stmt.setString(1,ID);
             ResultSet rs = stmt.executeQuery();
-            
             if(rs.next()){
                 studVerifyID = rs.getString("studentID");
                 studVerifyName = rs.getString("studentName");

@@ -52,13 +52,14 @@ public class Meal implements Serializable {
     private String mealname;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "MEALPRICE")
-    private int mealprice;
+    @Size(min = 1, max = 20)
+    @Column(name = "Category")
+    private String category;
     @Basic(optional = false)
     @NotNull
-    @Lob
-    @Column(name = "MEALIMAGE")
-    private Serializable mealimage;
+    @Column(name = "MEALPRICE")
+    private int mealprice;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -78,13 +79,28 @@ public class Meal implements Serializable {
     public Meal(String mealid) {
         this.mealid = mealid;
     }
+    
+    public Meal(List<Food> foodList){
+        this.foodList = foodList;
+    }
 
-    public Meal(String mealid, String mealname, int mealprice, Serializable mealimage, String mealdesc) {
+    
+    
+    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String category) {
         this.mealid = mealid;
         this.mealname = mealname;
         this.mealprice = mealprice;
-        this.mealimage = mealimage;
         this.mealdesc = mealdesc;
+        this.category = category;
+    }
+    
+    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String category, List<Food> foodList) {
+        this.mealid = mealid;
+        this.mealname = mealname;
+        this.mealprice = mealprice;
+        this.mealdesc = mealdesc;
+        this.category = category;
+        this.foodList = foodList;
     }
 
     public String getMealid() {
@@ -111,20 +127,20 @@ public class Meal implements Serializable {
         this.mealprice = mealprice;
     }
 
-    public Serializable getMealimage() {
-        return mealimage;
-    }
-
-    public void setMealimage(Serializable mealimage) {
-        this.mealimage = mealimage;
-    }
-
     public String getMealdesc() {
         return mealdesc;
     }
 
     public void setMealdesc(String mealdesc) {
         this.mealdesc = mealdesc;
+    }
+    
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @XmlTransient

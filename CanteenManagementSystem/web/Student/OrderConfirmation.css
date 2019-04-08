@@ -32,3 +32,32 @@
 #purchasebtn{
     margin-left:27%;
 }
+
+
+#orders {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0;
+  margin-bottom:300px;
+  margin-top:50px;
+}
+
+#orders td, #orders th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#orders tr:nth-child(even){background-color: #f2f2f2;}
+
+#orders th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+.orderlisttitle{
+    text-align:center;
+    padding:50px;
+}

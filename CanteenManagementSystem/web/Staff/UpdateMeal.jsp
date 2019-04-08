@@ -1,4 +1,6 @@
 <jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 
 <html>
     <head>  

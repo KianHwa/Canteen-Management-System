@@ -1,4 +1,6 @@
 <jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 
 <html>
     <head>  
@@ -46,14 +48,13 @@
         </div>
         
     </header>
-    
     <div class="content">
         <div class="addmealtitle">
-            <h1>Add Meal Set</h1>
+            <h1></h1>
         </div>
         
         
-        <form action="" action="" class="addmeal">
+        <form action="../AddMealSet" method="POST" class="addmeal">
             <!-- Meal Set Name-->
             <div class="row">
                 <div class="col-25">
@@ -70,7 +71,7 @@
                     <label for="mealprice">Meal Set Price</label>
                 </div>
             <div class="col-75">
-                <input type="text" id="mealprice" name="mealprice" placeholder="Meal Set Price.." required>
+                <input type="number" id="mealprice" name="mealprice" placeholder="Meal Set Price.." required>
             </div>
             </div>
             
@@ -88,14 +89,14 @@
             </div>
             
             <!--Meal Image-->
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-25">
                     <label for="mealimg">Meal Image</label>
                 </div>
                 <div class="col-75">
                     <input type="file" name="pic" accept="image/*" id='mealimg'>
                 </div>
-            </div>
+            </div>-->
             
             <!--Meal's Food -->
             <div class="row">
@@ -103,11 +104,14 @@
                     <label for="meal">Select Food</label>
                 </div>
                 <div class="col-75">
-                    <select id="food" name="food" multiple required>
-                        <option value="egg">Egg</option>
-                        <option value="chicken">Chicken</option>
-                        <option value="rice">Rice</option>
-                    </select>
+                        <%
+                            int[] foodArr = new int[foodList.size()];
+                            for(int i=0 ; i<foodList.size() ; i++){
+                                Food food = foodList.get(i);
+                        %>
+                                <input type="checkbox" name="<%= "foodArr[" + i + "]"%>" >
+                                <p><%= food.getFoodname()%></p>
+                        <%}%>
                 </div>
             </div>
             

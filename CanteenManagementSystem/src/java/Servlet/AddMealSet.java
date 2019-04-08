@@ -13,9 +13,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import Model.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 
@@ -27,6 +29,28 @@ public class AddMealSet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
+            String mealSetName = request.getParameter("mealname");
+            int mealSetPrice = Integer.parseInt(request.getParameter("mealprice"));
+            String category = request.getParameter("meal");
+            String mealSetDesc = request.getParameter("mealdesc");
+            String mealID = "MD001";
+            
+            HttpSession session = request.getSession();
+            List<Food> foodList = (List<Food>) session.getAttribute("foodList");
+            
+            List<Food> selectedFood = new ArrayList<Food>();
+            for (int i = 0; i < foodList.size(); ++i) {
+                if (request.getParameter("foodArr[" + i + "]")!=null) {  
+                    selectedFood.add(foodList.get(i));
+                }
+            }
+            
+            
+            utx.begin();
+            Meal meal = new Meal(mealID, mealSetName, mealSetPrice, mealSetDesc, category, selectedFood);
+            em.persist(meal);
+            utx.commit();
+            response.sendRedirect("Staff/AddMeal.jsp?success=true&meal=" + mealSetName + "");
             
         }
         catch(Exception ex){
