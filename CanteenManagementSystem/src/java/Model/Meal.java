@@ -8,15 +8,13 @@ package Model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Meal.findByMealid", query = "SELECT m FROM Meal m WHERE m.mealid = :mealid")
     , @NamedQuery(name = "Meal.findByMealname", query = "SELECT m FROM Meal m WHERE m.mealname = :mealname")
     , @NamedQuery(name = "Meal.findByMealprice", query = "SELECT m FROM Meal m WHERE m.mealprice = :mealprice")
+    , @NamedQuery(name = "Meal.findByMealimage", query = "SELECT m FROM Meal m WHERE m.mealimage = :mealimage")
     , @NamedQuery(name = "Meal.findByMealdesc", query = "SELECT m FROM Meal m WHERE m.mealdesc = :mealdesc")})
 public class Meal implements Serializable {
 
@@ -52,26 +51,23 @@ public class Meal implements Serializable {
     private String mealname;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Category")
-    private String category;
+    @Size(min = 1, max = 50)
+    @Column(name = "MEALCATEGORY")
+    private String mealcategory;
     @Basic(optional = false)
     @NotNull
     @Column(name = "MEALPRICE")
     private int mealprice;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @Size(max = 50)
+    @Column(name = "MEALIMAGE")
+    private String mealimage;
+    @Size(max = 200)
     @Column(name = "MEALDESC")
     private String mealdesc;
-    @JoinTable(name = "ORDER_MEAL", joinColumns = {
-        @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")}, inverseJoinColumns = {
-        @JoinColumn(name = "ORDER_ORDERID", referencedColumnName = "ORDERID")})
-    @ManyToMany
-    private List<Order1> order1List;
-    @ManyToMany(mappedBy = "mealList")
-    private List<Food> foodList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
+    private List<OrderMeal> orderMealList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
+    private List<MealFood> mealFoodList;
 
     public Meal() {
     }
@@ -79,28 +75,20 @@ public class Meal implements Serializable {
     public Meal(String mealid) {
         this.mealid = mealid;
     }
-    
-    public Meal(List<Food> foodList){
-        this.foodList = foodList;
-    }
 
-    
-    
-    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String category) {
+    public Meal(String mealid, String mealname, int mealprice) {
         this.mealid = mealid;
         this.mealname = mealname;
         this.mealprice = mealprice;
-        this.mealdesc = mealdesc;
-        this.category = category;
     }
     
-    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String category, List<Food> foodList) {
+    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String mealcategory, String mealimage) {
         this.mealid = mealid;
         this.mealname = mealname;
         this.mealprice = mealprice;
         this.mealdesc = mealdesc;
-        this.category = category;
-        this.foodList = foodList;
+        this.mealcategory = mealcategory;
+        this.mealimage = mealimage;
     }
 
     public String getMealid() {
@@ -118,6 +106,14 @@ public class Meal implements Serializable {
     public void setMealname(String mealname) {
         this.mealname = mealname;
     }
+    
+    public String getMealcategory() {
+        return mealcategory;
+    }
+
+    public void setMealcategory(String mealcategory) {
+        this.mealcategory = mealcategory;
+    }
 
     public int getMealprice() {
         return mealprice;
@@ -127,6 +123,14 @@ public class Meal implements Serializable {
         this.mealprice = mealprice;
     }
 
+    public String getMealimage() {
+        return mealimage;
+    }
+
+    public void setMealimage(String mealimage) {
+        this.mealimage = mealimage;
+    }
+
     public String getMealdesc() {
         return mealdesc;
     }
@@ -134,31 +138,23 @@ public class Meal implements Serializable {
     public void setMealdesc(String mealdesc) {
         this.mealdesc = mealdesc;
     }
-    
-    public String getCategory() {
-        return category;
+
+    @XmlTransient
+    public List<OrderMeal> getOrderMealList() {
+        return orderMealList;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setOrderMealList(List<OrderMeal> orderMealList) {
+        this.orderMealList = orderMealList;
     }
 
     @XmlTransient
-    public List<Order1> getOrder1List() {
-        return order1List;
+    public List<MealFood> getMealFoodList() {
+        return mealFoodList;
     }
 
-    public void setOrder1List(List<Order1> order1List) {
-        this.order1List = order1List;
-    }
-
-    @XmlTransient
-    public List<Food> getFoodList() {
-        return foodList;
-    }
-
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setMealFoodList(List<MealFood> mealFoodList) {
+        this.mealFoodList = mealFoodList;
     }
 
     @Override

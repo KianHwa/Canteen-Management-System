@@ -9,6 +9,66 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="AddMeal.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        <style>
+            /* The container */
+            .container {
+              display: block;
+              position: relative;
+              padding: 5px 35px 10px 35px;
+              cursor: pointer;
+              font-size: 15px;
+              user-select: none;
+              width:50%;
+              float:left;
+            }
+
+            .container input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 0;
+              width: 0;
+            }
+
+            .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 25px;
+              width: 25px;
+              background-color: #eee;
+              border:1px solid gray;
+              
+            }
+            
+            .container:hover input ~ .checkmark {
+              background-color: #ccc;
+            }
+            
+            .container input:checked ~ .checkmark {
+              background-color: black;
+            }
+            
+            .checkmark:after {
+              content: "";
+              position: absolute;
+              display: none;
+            }
+
+            .container input:checked ~ .checkmark:after {
+              display: block;
+            }
+
+            .container .checkmark:after {
+              left: 7px;
+              top: 4px;
+              width: 5px;
+              height: 10px;
+              border: solid white;
+              border-width: 0 3px 3px 0;
+              transform: rotate(45deg);
+            }
+        </style>
     </head> 
 <body>
     <header>
@@ -84,19 +144,19 @@
                     <select id="meal" name="meal">
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
-                    </select>
+                    </select> 
                 </div>
             </div>
             
             <!--Meal Image-->
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-25">
                     <label for="mealimg">Meal Image</label>
                 </div>
                 <div class="col-75">
                     <input type="file" name="pic" accept="image/*" id='mealimg'>
                 </div>
-            </div>-->
+            </div>
             
             <!--Meal's Food -->
             <div class="row">
@@ -109,8 +169,11 @@
                             for(int i=0 ; i<foodList.size() ; i++){
                                 Food food = foodList.get(i);
                         %>
-                                <input type="checkbox" name="<%= "foodArr[" + i + "]"%>" >
-                                <p><%= food.getFoodname()%></p>
+                            <label class="container"><%= food.getFoodname()%>
+                                    <input type="checkbox" name="<%= "foodArr[" + i + "]"%>">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
                         <%}%>
                 </div>
             </div>

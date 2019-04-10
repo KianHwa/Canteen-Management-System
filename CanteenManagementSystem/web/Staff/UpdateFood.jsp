@@ -1,13 +1,20 @@
 <jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
-        
+        <link rel="stylesheet" href="UpdateFood.css"> 
     </head> 
 <body>
+    <%
+        String selectedFoodid = request.getParameter("foodid");
+        String foodname = "";
+        int foodcalories = 0;
+    %>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -43,9 +50,48 @@
                 </ul>
             </div>
         </div>
-        
     </header>
-    
+                
+    <div class="content">
+        <%
+            for(int i=0 ; i<foodList.size() ; i++){
+                Food food = foodList.get(i);
+                if(food.getFoodid().equals(selectedFoodid)){
+                    foodname = food.getFoodname();
+                    foodcalories = food.getFoodcalories();
+                }
+            }
+        %>
+        
+        
+        <div class="editfoodtitle">
+            <h1>Update Food Items</h1>
+        </div>
+      <form action="../UpdateFood" method="POST" class="editfood">
+        <div class="row">
+          <div class="col-25">
+            <label for="foodname">Food Name</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="foodname" name="foodname" placeholder="Food Name.." value="<%= foodname%>"required>
+          </div>
+        </div>
+          
+          <div class="row">
+          <div class="col-25">
+            <label for="calories">Calories</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="foodcalories" name="calories" value="<%= foodcalories%>" placeholder="e.g. 1500">
+          </div>
+        </div>
+          
+        <div class="row">
+          <input type="submit" value="Edit Food" class="editfoodbtn">
+        </div>
+      </form>
+          
+    </div>
     
     <footer>
         <div class="bottom">

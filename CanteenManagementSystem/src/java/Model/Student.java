@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Student.findByStudemail", query = "SELECT s FROM Student s WHERE s.studemail = :studemail")
     , @NamedQuery(name = "Student.findByStudphone", query = "SELECT s FROM Student s WHERE s.studphone = :studphone")
     , @NamedQuery(name = "Student.findByStudpassword", query = "SELECT s FROM Student s WHERE s.studpassword = :studpassword")
-    , @NamedQuery(name = "Student.findByStudic", query = "SELECT s FROM Student s WHERE s.studic = :studic")
-    , @NamedQuery(name = "Student.findByCredpoints", query = "SELECT s FROM Student s WHERE s.credpoints = :credpoints")})
+    , @NamedQuery(name = "Student.findByCredpoints", query = "SELECT s FROM Student s WHERE s.credpoints = :credpoints")
+    , @NamedQuery(name = "Student.findByStudic", query = "SELECT s FROM Student s WHERE s.studic = :studic")})
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -94,15 +94,6 @@ public class Student implements Serializable {
         this.credpoints = credpoints;
         this.studic = studic;
     }
-    
-    public Student(String studid, String studname, String studemail, String studphone, String studpassword, int credpoints) {
-        this.studid = studid;
-        this.studname = studname;
-        this.studemail = studemail;
-        this.studphone = studphone;
-        this.studpassword = studpassword;
-        this.credpoints = credpoints;
-    }
 
     public String getStudid() {
         return studid;
@@ -151,11 +142,11 @@ public class Student implements Serializable {
     public void setCredpoints(int credpoints) {
         this.credpoints = credpoints;
     }
-    
+
     public String getStudic() {
         return studic;
     }
-    
+
     public void setStudic(String studic) {
         this.studic = studic;
     }

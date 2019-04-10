@@ -29,27 +29,118 @@ public class AddMealSet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
+            HttpSession session = request.getSession();
+            Query foodquery = em.createNamedQuery("Food.findAll");
+            List<Food> foodList = foodquery.getResultList();
+            Query mealquery = em.createNamedQuery("Meal.findAll");
+            List<Meal> mealList = mealquery.getResultList();
+            Query mealfoodquery = em.createNamedQuery("MealFood.findAll");
+            List<MealFood> mealFoodList = mealfoodquery.getResultList();
+            
+            
             String mealSetName = request.getParameter("mealname");
             int mealSetPrice = Integer.parseInt(request.getParameter("mealprice"));
+            String imagePath = request.getRealPath("mealimage");
             String category = request.getParameter("meal");
             String mealSetDesc = request.getParameter("mealdesc");
-            String mealID = "MD001";
+            String mealID = "";
+            String mealFoodID = "";
+            int mealFoodIDsize ;
             
-            HttpSession session = request.getSession();
-            List<Food> foodList = (List<Food>) session.getAttribute("foodList");
             
-            List<Food> selectedFood = new ArrayList<Food>();
+            if(mealList.size() == 0){
+                    mealID = "ML" + String.format("%02d",mealList.size() + 1);
+                }
+                else{
+                    mealID = "ML" + String.format("%02d",mealList.size() + 1); //02
+                    boolean duplicateID;
+                    int newID = 1;
+                    
+                    String newFormatMealnum = mealID.substring(2,4);  //02
+                    
+                    do{
+                        duplicateID = false;
+                        for(int i=0 ; i<mealList.size() ; i++){
+                            Meal meeal = mealList.get(i);
+                            String formatMealnum = meeal.getMealid().substring(2,4);  //02
+                            
+                    
+                            
+                            if(newFormatMealnum.equals(formatMealnum)){
+                                duplicateID = true;
+                                newFormatMealnum = String.format("%02d",newID);//01
+                            }
+                        }
+                        ++newID;
+                        if(duplicateID == false){
+                            mealID = "ML" + newFormatMealnum;
+                        }
+                    }while(duplicateID == true);
+                }
+            
+            
+            
+            
+            
+            
+           
+            Meal meal = new Meal();
+            meal.setMealid(mealID);
+            meal.setMealname(mealSetName);
+            meal.setMealprice(mealSetPrice);
+            meal.setMealcategory(category);
+            meal.setMealdesc(mealSetDesc);
+            meal.setMealimage(imagePath);
+            
+            
+            List<MealFood> selectedMealFood = new ArrayList<MealFood>();
+            
             for (int i = 0; i < foodList.size(); ++i) {
-                if (request.getParameter("foodArr[" + i + "]")!=null) {  
-                    selectedFood.add(foodList.get(i));
+                if (request.getParameter("foodArr[" + i + "]")!=null) {
+                    //String mealFoodID = "MLF" + String.format("%02d",mealFoodIDsize);
+                    if(mealList.size() == 0){
+                        mealFoodID = "MLF" + String.format("%02d",mealFoodList.size() + 1);
+                    }
+                    else{
+                        mealFoodID = "MLF" + String.format("%02d",mealFoodList.size() + 1); //02
+                        boolean duplicateID;
+                        int newID = 1;
+
+                        String newFormatMealFoodnum = mealFoodID.substring(2,4);  //02
+
+                        do{
+                            duplicateID = false;
+                            for(int j=0 ; j<mealFoodList.size() ; j++){
+                                MealFood meealFood = mealFoodList.get(j);
+                                String formatMealFoodnum = meealFood.getMealfoodid().substring(2,4);  //02
+
+
+
+                                if(newFormatMealFoodnum.equals(formatMealFoodnum)){
+                                    duplicateID = true;
+                                    newFormatMealFoodnum = String.format("%02d",newID);//01
+                                }
+                            }
+                            ++newID;
+                            if(duplicateID == false){
+                                mealFoodID = "MLF" + newFormatMealFoodnum;
+                            }
+                        }while(duplicateID == true);
+                    }
+                    
+                    MealFood mealfood = new MealFood(mealFoodID,foodList.get(i),meal,1);
+                    selectedMealFood.add(mealfood);
+                    
                 }
             }
             
-            
             utx.begin();
-            Meal meal = new Meal(mealID, mealSetName, mealSetPrice, mealSetDesc, category, selectedFood);
+            meal.setMealFoodList(selectedMealFood);
             em.persist(meal);
+            
+            
             utx.commit();
+            
             response.sendRedirect("Staff/AddMeal.jsp?success=true&meal=" + mealSetName + "");
             
         }

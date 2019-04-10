@@ -9,14 +9,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,8 +48,6 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ORDERID")
     private String orderid;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "ORDERDATE")
     @Temporal(TemporalType.DATE)
     private Date orderdate;
@@ -62,11 +61,11 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "COUPONCODE")
     private String couponcode;
-    @ManyToMany(mappedBy = "order1List")
-    private List<Meal> mealList;
     @JoinColumn(name = "STUDENT_STUDID", referencedColumnName = "STUDID")
     @ManyToOne(optional = false)
     private Student studentStudid;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderid")
+    private List<OrderMeal> orderMealList;
 
     public Order1() {
     }
@@ -75,9 +74,8 @@ public class Order1 implements Serializable {
         this.orderid = orderid;
     }
 
-    public Order1(String orderid, Date orderdate, String orderstatus, String couponcode) {
+    public Order1(String orderid, String orderstatus, String couponcode) {
         this.orderid = orderid;
-        this.orderdate = orderdate;
         this.orderstatus = orderstatus;
         this.couponcode = couponcode;
     }
@@ -114,21 +112,21 @@ public class Order1 implements Serializable {
         this.couponcode = couponcode;
     }
 
-    @XmlTransient
-    public List<Meal> getMealList() {
-        return mealList;
-    }
-
-    public void setMealList(List<Meal> mealList) {
-        this.mealList = mealList;
-    }
-
     public Student getStudentStudid() {
         return studentStudid;
     }
 
     public void setStudentStudid(Student studentStudid) {
         this.studentStudid = studentStudid;
+    }
+
+    @XmlTransient
+    public List<OrderMeal> getOrderMealList() {
+        return orderMealList;
+    }
+
+    public void setOrderMealList(List<OrderMeal> orderMealList) {
+        this.orderMealList = orderMealList;
     }
 
     @Override

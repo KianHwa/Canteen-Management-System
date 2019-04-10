@@ -8,6 +8,7 @@ package Model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -71,10 +72,10 @@ public class Staff implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "STAFFIC")
     private String staffic;
-    @OneToMany(mappedBy = "managerid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "managerid")
     private List<Staff> staffList;
     @JoinColumn(name = "MANAGERID", referencedColumnName = "STAFFID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Staff managerid;
 
     public Staff() {

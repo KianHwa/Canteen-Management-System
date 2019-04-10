@@ -1,4 +1,6 @@
 <jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 
 <html>
     <head>  
@@ -56,13 +58,17 @@
                 <th></th>
                 <th></th>
             </tr>
+            <%for (int i=0 ; i<foodList.size() ; i++){
+                Food food = foodList.get(i);
+            %>
             <tr style="height:50px">
-                <td style="width:10%">1</td>
-                <td style="width:30%">food name..</td>
-                <td style="width:30%">calories..</td>
-                <td style="width:15%"><a href="UpdateMeal.jsp"><button id="updatefoodbtn">Update</button></a></td>
+                <td style="width:10%"><%= i+1%></td>
+                <td style="width:30%"><%= food.getFoodname()%></td>
+                <td style="width:30%"><%= food.getFoodcalories()%></td>
+                <td style="width:15%"><a href="UpdateFood.jsp?foodid=<%= food.getFoodid()%>"><button id="updatefoodbtn">Update</button></a></td>
                 <td style="width:15%"><a href=""><button id="deletefoodbtn">Delete</button></a></td>
             </tr>
+            <%}%>
             
             <tr>
                 

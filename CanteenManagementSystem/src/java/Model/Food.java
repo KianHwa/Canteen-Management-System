@@ -8,14 +8,13 @@ package Model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -52,11 +51,8 @@ public class Food implements Serializable {
     @NotNull
     @Column(name = "FOODCALORIES")
     private int foodcalories;
-    @JoinTable(name = "MEAL_FOOD", joinColumns = {
-        @JoinColumn(name = "FOOD_FOODID", referencedColumnName = "FOODID")}, inverseJoinColumns = {
-        @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")})
-    @ManyToMany
-    private List<Meal> mealList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foodFoodid")
+    private List<MealFood> mealFoodList;
 
     public Food() {
     }
@@ -96,12 +92,12 @@ public class Food implements Serializable {
     }
 
     @XmlTransient
-    public List<Meal> getMealList() {
-        return mealList;
+    public List<MealFood> getMealFoodList() {
+        return mealFoodList;
     }
 
-    public void setMealList(List<Meal> mealList) {
-        this.mealList = mealList;
+    public void setMealFoodList(List<MealFood> mealFoodList) {
+        this.mealFoodList = mealFoodList;
     }
 
     @Override

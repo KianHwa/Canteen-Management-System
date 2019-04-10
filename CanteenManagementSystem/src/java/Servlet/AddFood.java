@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 
@@ -34,10 +35,6 @@ public class AddFood extends HttpServlet {
 
             Query query = em.createNamedQuery("Food.findAll");
             List<Food> foodlist = query.getResultList();
-            
-                /*try (PrintWriter out = response.getWriter()) {
-                                    out.println("<h1>Old: " + formatFoodnum + "New: "  +newFormatFoodnum +  "</h1>"); 
-                                }*/
             
                 if(foodlist.size() == 0){
                     foodID = "FD" + String.format("%02d",foodlist.size() + 1);
@@ -88,6 +85,12 @@ public class AddFood extends HttpServlet {
                     Food food = new Food(foodID, foodName, calories);        
                     em.persist(food);
                     utx.commit();
+                    
+                    HttpSession session = request.getSession();
+                    Query foodquery = em.createNamedQuery("Food.findAll");
+                    List<Food> foodList = foodquery.getResultList();
+                    session.setAttribute("foodList", foodList);
+                    
                     response.sendRedirect("Staff/AddFood.jsp?success=true&food=" + foodName + "");
             }
             
