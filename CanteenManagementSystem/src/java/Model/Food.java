@@ -47,10 +47,8 @@ public class Food implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "FOODNAME")
     private String foodname;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "FOODCALORIES")
-    private int foodcalories;
+    private Integer foodcalories;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "foodFoodid")
     private List<MealFood> mealFoodList;
 
@@ -83,11 +81,11 @@ public class Food implements Serializable {
         this.foodname = foodname;
     }
 
-    public int getFoodcalories() {
+    public Integer getFoodcalories() {
         return foodcalories;
     }
 
-    public void setFoodcalories(int foodcalories) {
+    public void setFoodcalories(Integer foodcalories) {
         this.foodcalories = foodcalories;
     }
 

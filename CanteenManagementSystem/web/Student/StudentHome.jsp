@@ -1,5 +1,6 @@
 <jsp:useBean id="student" scope="session" class="Model.Student" />
 
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />

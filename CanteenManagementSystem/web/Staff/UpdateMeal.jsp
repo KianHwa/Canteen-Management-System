@@ -76,12 +76,6 @@
 <body>
     <%
         String selectedMealid = request.getParameter("mealid");
-        String mealid = "";
-        String mealname = "";
-        int mealprice = 0;
-        String mealdesc = "";
-        String mealcategory = "";
-        String mealimage = "";
     %>
     <header>
         <div class="top" id="navbar">
@@ -123,6 +117,12 @@
     
     <div class="content">
         <%
+            String mealid ="";
+            String mealname ="";
+            String mealdesc = "";
+            String mealcategory ="";
+            int mealprice = 0;
+            
             for(int i=0 ; i<mealList.size() ; i++){
                 Meal meal = mealList.get(i);
                 if(meal.getMealid().equals(selectedMealid)){
@@ -133,7 +133,6 @@
                     mealcategory = meal.getMealcategory();
                 }
             }
-            System.out.println("ahc");
             
         %>
         

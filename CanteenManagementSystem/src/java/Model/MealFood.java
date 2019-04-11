@@ -52,30 +52,16 @@ public class MealFood implements Serializable {
 
     public MealFood() {
     }
-    
-    
-    public MealFood(String mealfoodid, Food foodFoodid, Meal mealMealid, int foodqty){
-        this.mealfoodid = mealfoodid;
-        this.foodFoodid = foodFoodid;
-        this.mealMealid = mealMealid;
-        this.foodqty = foodqty;
-    }
 
     public MealFood(String mealfoodid) {
         this.mealfoodid = mealfoodid;
     }
-    
-    public MealFood(Meal mealMealid) {
-        this.mealMealid = mealMealid;
-    }
-    
-    public MealFood(Food foodFoodid) {
-        this.foodFoodid = foodFoodid;
-    }
 
-    public MealFood(String mealfoodid, int foodqty) {
+    public MealFood(String mealfoodid, Food foodFoodid, Meal mealMealid, int foodqty) {
         this.mealfoodid = mealfoodid;
         this.foodqty = foodqty;
+        this.foodFoodid = foodFoodid;
+        this.mealMealid = mealMealid;
     }
 
     public String getMealfoodid() {

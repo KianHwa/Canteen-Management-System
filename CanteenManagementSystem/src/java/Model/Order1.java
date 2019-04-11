@@ -36,9 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Order1.findAll", query = "SELECT o FROM Order1 o")
     , @NamedQuery(name = "Order1.findByOrderid", query = "SELECT o FROM Order1 o WHERE o.orderid = :orderid")
-    , @NamedQuery(name = "Order1.findByOrderdate", query = "SELECT o FROM Order1 o WHERE o.orderdate = :orderdate")
     , @NamedQuery(name = "Order1.findByOrderstatus", query = "SELECT o FROM Order1 o WHERE o.orderstatus = :orderstatus")
-    , @NamedQuery(name = "Order1.findByCouponcode", query = "SELECT o FROM Order1 o WHERE o.couponcode = :couponcode")})
+    , @NamedQuery(name = "Order1.findByCouponcode", query = "SELECT o FROM Order1 o WHERE o.couponcode = :couponcode")
+    , @NamedQuery(name = "Order1.findByStartorderdate1", query = "SELECT o FROM Order1 o WHERE o.startorderdate1 = :startorderdate1")
+    , @NamedQuery(name = "Order1.findByEndorderdate", query = "SELECT o FROM Order1 o WHERE o.endorderdate = :endorderdate")})
 public class Order1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,9 +49,6 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ORDERID")
     private String orderid;
-    @Column(name = "ORDERDATE")
-    @Temporal(TemporalType.DATE)
-    private Date orderdate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
@@ -61,6 +59,12 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "COUPONCODE")
     private String couponcode;
+    @Column(name = "STARTORDERDATE1")
+    @Temporal(TemporalType.DATE)
+    private Date startorderdate1;
+    @Column(name = "ENDORDERDATE")
+    @Temporal(TemporalType.DATE)
+    private Date endorderdate;
     @JoinColumn(name = "STUDENT_STUDID", referencedColumnName = "STUDID")
     @ManyToOne(optional = false)
     private Student studentStudid;
@@ -88,14 +92,6 @@ public class Order1 implements Serializable {
         this.orderid = orderid;
     }
 
-    public Date getOrderdate() {
-        return orderdate;
-    }
-
-    public void setOrderdate(Date orderdate) {
-        this.orderdate = orderdate;
-    }
-
     public String getOrderstatus() {
         return orderstatus;
     }
@@ -110,6 +106,22 @@ public class Order1 implements Serializable {
 
     public void setCouponcode(String couponcode) {
         this.couponcode = couponcode;
+    }
+
+    public Date getStartorderdate1() {
+        return startorderdate1;
+    }
+
+    public void setStartorderdate1(Date startorderdate1) {
+        this.startorderdate1 = startorderdate1;
+    }
+
+    public Date getEndorderdate() {
+        return endorderdate;
+    }
+
+    public void setEndorderdate(Date endorderdate) {
+        this.endorderdate = endorderdate;
     }
 
     public Student getStudentStudid() {

@@ -72,11 +72,11 @@ public class Staff implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "STAFFIC")
     private String staffic;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "managerid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "staffStaffid")
     private List<Staff> staffList;
-    @JoinColumn(name = "MANAGERID", referencedColumnName = "STAFFID")
+    @JoinColumn(name = "STAFF_STAFFID", referencedColumnName = "STAFFID")
     @ManyToOne(optional = false)
-    private Staff managerid;
+    private Staff managerID;
 
     public Staff() {
     }
@@ -152,11 +152,11 @@ public class Staff implements Serializable {
     }
 
     public Staff getManagerid() {
-        return managerid;
+        return managerID;
     }
 
-    public void setManagerid(Staff managerid) {
-        this.managerid = managerid;
+    public void setManagerid(Staff managerID) {
+        this.managerID = managerID;
     }
 
     @Override

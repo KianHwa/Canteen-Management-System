@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Meal.findByMealname", query = "SELECT m FROM Meal m WHERE m.mealname = :mealname")
     , @NamedQuery(name = "Meal.findByMealprice", query = "SELECT m FROM Meal m WHERE m.mealprice = :mealprice")
     , @NamedQuery(name = "Meal.findByMealimage", query = "SELECT m FROM Meal m WHERE m.mealimage = :mealimage")
-    , @NamedQuery(name = "Meal.findByMealdesc", query = "SELECT m FROM Meal m WHERE m.mealdesc = :mealdesc")})
+    , @NamedQuery(name = "Meal.findByMealdesc", query = "SELECT m FROM Meal m WHERE m.mealdesc = :mealdesc")
+    , @NamedQuery(name = "Meal.findByMealcategory", query = "SELECT m FROM Meal m WHERE m.mealcategory = :mealcategory")})
 public class Meal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,19 +52,17 @@ public class Meal implements Serializable {
     private String mealname;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "MEALCATEGORY")
-    private String mealcategory;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "MEALPRICE")
     private int mealprice;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "MEALIMAGE")
     private String mealimage;
     @Size(max = 200)
     @Column(name = "MEALDESC")
     private String mealdesc;
+    @Size(max = 20)
+    @Column(name = "MEALCATEGORY")
+    private String mealcategory;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
     private List<OrderMeal> orderMealList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
@@ -81,15 +80,6 @@ public class Meal implements Serializable {
         this.mealname = mealname;
         this.mealprice = mealprice;
     }
-    
-    public Meal(String mealid, String mealname, int mealprice, String mealdesc, String mealcategory, String mealimage) {
-        this.mealid = mealid;
-        this.mealname = mealname;
-        this.mealprice = mealprice;
-        this.mealdesc = mealdesc;
-        this.mealcategory = mealcategory;
-        this.mealimage = mealimage;
-    }
 
     public String getMealid() {
         return mealid;
@@ -105,14 +95,6 @@ public class Meal implements Serializable {
 
     public void setMealname(String mealname) {
         this.mealname = mealname;
-    }
-    
-    public String getMealcategory() {
-        return mealcategory;
-    }
-
-    public void setMealcategory(String mealcategory) {
-        this.mealcategory = mealcategory;
     }
 
     public int getMealprice() {
@@ -137,6 +119,14 @@ public class Meal implements Serializable {
 
     public void setMealdesc(String mealdesc) {
         this.mealdesc = mealdesc;
+    }
+
+    public String getMealcategory() {
+        return mealcategory;
+    }
+
+    public void setMealcategory(String mealcategory) {
+        this.mealcategory = mealcategory;
     }
 
     @XmlTransient

@@ -31,7 +31,7 @@ public class UpdateMeal extends HttpServlet {
         try{
             String updatedMealname = request.getParameter("mealname");
             String updatedMealprice = request.getParameter("mealprice");
-            String updatedMealcategory = request.getParameter("category");
+            String updatedMealcategory = request.getParameter("meal");
             String updatedMealdesc = request.getParameter("mealdesc");
             String mealid = request.getParameter("mealid");
             //String mealFoodID = "";

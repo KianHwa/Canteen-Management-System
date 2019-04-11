@@ -1,3 +1,9 @@
+<jsp:useBean id="student" scope="session" class="Model.Student" />
+<%@page import="Model.Food, java.util.*" %>
+<%@page import="Model.Meal, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -5,6 +11,53 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
         <link rel="stylesheet" href="BreakfastLunch.css">  
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        <style>
+            .container {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+          }
+
+          .container .tooltiptext {
+            visibility: hidden;
+            width: 80%;
+            height:200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            bottom:50%;
+          }
+
+          .container:hover .tooltiptext {
+            visibility: visible;
+            background-color:rgba(0,0,0,0.5);
+          }
+          
+          #orderbtn:hover{
+          background-color: white;
+          border: none;
+          color: black;
+          text-align: center;
+          transition: 0.3s;
+        }
+
+          #orderbtn{
+          background-color: black;
+          border: none;
+          color: white;
+          text-align: center;
+          font-size: 12px;
+          transition: 0.3s;
+          padding:10px 10px;
+          width:230px;
+        }
+        </style>
     </head> 
 <body>
     <header>
@@ -76,73 +129,34 @@
         <div class="title">
             <h1>Breakfast</h1>
         </div>
+        <%
+            for(int i=0 ; i<mealList.size() ; i++){
+                Meal meal = mealList.get(i);
+                if(meal.getMealcategory().equals("breakfast")){
+        %>
         <div class="foodList">
-            <a href="">
                 <div class="container">
                     <div class="images">
                         <img src="../Images/545451.jpg"id="image">
                     </div>
                     <div class="foodName">
-                        <h4>Food</h4>
+                        <h4><%= meal.getMealname()%></h4>
                     </div>
                     <div class="foodPrice">
-
+                        <%= meal.getMealprice()%>
                     </div>
+                    <div class="btnclass">
+                        <form action ="OrderMeal?mealid=<%= meal.getMealid()%>" method="POST">
+                            <input type="date" id="startdatebtn">
+                            <input type="date" id="enddatebtn">
+                            <input type="submit" id="orderbtn" value="Order">
+                        </form>
+                    </div>
+                        <span class="tooltiptext"><%= meal.getMealdesc()%></span>
+                    
                 </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="container">
-                    <div class="images">
-                        <img src=""id="image">
-                    </div>
-                    <div class="foodName">
-                        <h4>Food</h4>
-                    </div>
-                    <div class="foodPrice">
-
-                    </div>
-                </div>
-            </a>
         </div>
+        <%}}%>
     </div>
     
     <footer>
