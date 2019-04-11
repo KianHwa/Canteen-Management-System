@@ -21,45 +21,52 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 
-@WebServlet(name = "UpdateFood", urlPatterns = {"/UpdateFood"})
-public class UpdateFood extends HttpServlet {
+@WebServlet(name = "UpdateMeal", urlPatterns = {"/UpdateMeal"})
+public class UpdateMeal extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String updatedFoodname = request.getParameter("foodname");
-            String updatedCalories = request.getParameter("calories");
-            String foodid = request.getParameter("foodid");
+            String updatedMealname = request.getParameter("mealname");
+            String updatedMealprice = request.getParameter("mealprice");
+            String updatedMealcategory = request.getParameter("category");
+            String updatedMealdesc = request.getParameter("mealdesc");
+            String mealid = request.getParameter("mealid");
+            //String mealFoodID = "";
             
-            Query foodquery = em.createNamedQuery("Food.findAll");
-            List<Food> foodList = foodquery.getResultList();
-                        
+            //Query foodquery = em.createNamedQuery("Food.findAll");
+            //List<Food> foodList = foodquery.getResultList();
+            Query mealquery = em.createNamedQuery("Meal.findAll");
+            List<Meal> mealList = mealquery.getResultList();
+            //Query mealfoodquery = em.createNamedQuery("MealFood.findAll");
+            //List<MealFood> mealFoodList = mealfoodquery.getResultList();
+            
+            
             
             utx.begin();
-            Food food = new Food();  
-            food.setFoodid(foodid);
-            food.setFoodname(updatedFoodname);
-            food.setFoodcalories(Integer.parseInt(updatedCalories));
-            em.merge(food);
+            Meal meal = new Meal();  
+            meal.setMealid(mealid);
+            meal.setMealprice(Integer.parseInt(updatedMealprice));
+            meal.setMealcategory(updatedMealcategory);
+            meal.setMealdesc(updatedMealdesc);
+            meal.setMealname(updatedMealname);
+            meal.setMealimage("");
+            em.merge(meal);
             utx.commit();
             
             HttpSession session = request.getSession();
-            foodquery = em.createNamedQuery("Food.findAll");
-            foodList = foodquery.getResultList();
-            session.setAttribute("foodList", foodList);
+            mealquery = em.createNamedQuery("Meal.findAll");
+            mealList = mealquery.getResultList();
+            session.setAttribute("mealList", mealList);
             
-            response.sendRedirect("Staff/FoodList.jsp");
+            response.sendRedirect("Staff/MealSetList.jsp");
             
         }
         catch(Exception ex){
             
         }
-        
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

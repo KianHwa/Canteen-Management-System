@@ -8,12 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="UpdateFood.css"> 
+        <script src="../HeaderFooter/HeaderAndFooter.js"></script>
     </head> 
 <body>
     <%
         String selectedFoodid = request.getParameter("foodid");
         String foodname = "";
         int foodcalories = 0;
+        String foodid = "";
     %>
     <header>
         <div class="top"id="navbar">
@@ -59,6 +61,7 @@
                 if(food.getFoodid().equals(selectedFoodid)){
                     foodname = food.getFoodname();
                     foodcalories = food.getFoodcalories();
+                    foodid = food.getFoodid();
                 }
             }
         %>
@@ -67,7 +70,7 @@
         <div class="editfoodtitle">
             <h1>Update Food Items</h1>
         </div>
-      <form action="../UpdateFood" method="POST" class="editfood">
+      <form action="../UpdateFood?foodid=<%= foodid%>" method="POST" class="editfood">
         <div class="row">
           <div class="col-25">
             <label for="foodname">Food Name</label>

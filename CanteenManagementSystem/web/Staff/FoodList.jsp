@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="FoodList.css">
+        <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         
     </head> 
 <body>
