@@ -36,7 +36,6 @@ public class UpdateFood extends HttpServlet {
             Query foodquery = em.createNamedQuery("Food.findAll");
             List<Food> foodList = foodquery.getResultList();
                         
-            
             utx.begin();
             Food food = new Food();  
             food.setFoodid(foodid);

@@ -45,8 +45,12 @@ public class AddMealSet extends HttpServlet {
             String mealSetDesc = request.getParameter("mealdesc");
             String mealID = "";
             String mealFoodID = "";
-            int mealFoodIDsize ;
             
+            int mealFoodListSize = mealFoodList.size() ;
+            
+            /*try (PrintWriter out = response.getWriter()) {
+            out.println("<h1>Servlet NewServlet at " + mealFoodID + "</h1>");
+            }*/
             
             if(mealList.size() == 0){
                     mealID = "ML" + String.format("%02d",mealList.size() + 1);
@@ -78,47 +82,42 @@ public class AddMealSet extends HttpServlet {
                     }while(duplicateID == true);
                 }
             
-            
-            
-            
-            
-            
-           
             Meal meal = new Meal();
             meal.setMealid(mealID);
             meal.setMealname(mealSetName);
             meal.setMealprice(mealSetPrice);
             meal.setMealcategory(category);
             meal.setMealdesc(mealSetDesc);
-            meal.setMealimage(imagePath);
-            
+            meal.setMealimage("images");
+            //int j=0;
             
             List<MealFood> selectedMealFood = new ArrayList<MealFood>();
             
             for (int i = 0; i < foodList.size(); ++i) {
                 if (request.getParameter("foodArr[" + i + "]")!=null) {
+                    //mealFoodID = "MLF" + j;
                     //String mealFoodID = "MLF" + String.format("%02d",mealFoodIDsize);
-                    if(mealList.size() == 0){
-                        mealFoodID = "MLF" + String.format("%02d",mealFoodList.size() + 1);
+                    if(mealFoodList.size() == 0){
+                        mealFoodID = "MLF" + String.format("%02d",mealFoodListSize + 1);
+                        ++mealFoodListSize;
                     }
                     else{
-                        mealFoodID = "MLF" + String.format("%02d",mealFoodList.size() + 1); //02
+                        mealFoodID = "MLF" + String.format("%02d",mealFoodListSize + 1); 
+                        
                         boolean duplicateID;
                         int newID = 1;
 
-                        String newFormatMealFoodnum = mealFoodID.substring(2,4);  //02
-
+                        String newFormatMealFoodnum = mealFoodID.substring(3,5);  
+                                
                         do{
                             duplicateID = false;
                             for(int j=0 ; j<mealFoodList.size() ; j++){
                                 MealFood meealFood = mealFoodList.get(j);
-                                String formatMealFoodnum = meealFood.getMealfoodid().substring(2,4);  //02
-
-
-
+                                String formatMealFoodnum = meealFood.getMealfoodid().substring(3,5);  
+                                
                                 if(newFormatMealFoodnum.equals(formatMealFoodnum)){
                                     duplicateID = true;
-                                    newFormatMealFoodnum = String.format("%02d",newID);//01
+                                    newFormatMealFoodnum = String.format("%02d",newID);
                                 }
                             }
                             ++newID;
@@ -126,22 +125,24 @@ public class AddMealSet extends HttpServlet {
                                 mealFoodID = "MLF" + newFormatMealFoodnum;
                             }
                         }while(duplicateID == true);
+                        ++mealFoodListSize;
                     }
+                    //j++;
                     
                     MealFood mealfood = new MealFood(mealFoodID,foodList.get(i),meal,1);
                     selectedMealFood.add(mealfood);
-                    
                 }
             }
             
             utx.begin();
             meal.setMealFoodList(selectedMealFood);
             em.persist(meal);
-            
-            
             utx.commit();
             
-            response.sendRedirect("Staff/AddMeal.jsp?success=true&meal=" + mealSetName + "");
+            mealList = mealquery.getResultList();
+            session.setAttribute("mealList", mealList);
+            
+            response.sendRedirect("Staff/MealSetList.jsp?success=true&meal=" + mealSetName + "");
             
         }
         catch(Exception ex){

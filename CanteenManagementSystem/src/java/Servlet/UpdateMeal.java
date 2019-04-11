@@ -52,7 +52,7 @@ public class UpdateMeal extends HttpServlet {
             meal.setMealcategory(updatedMealcategory);
             meal.setMealdesc(updatedMealdesc);
             meal.setMealname(updatedMealname);
-            meal.setMealimage("");
+            meal.setMealimage("aa");
             em.merge(meal);
             utx.commit();
             

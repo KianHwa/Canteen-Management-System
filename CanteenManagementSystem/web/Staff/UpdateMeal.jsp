@@ -81,9 +81,10 @@
         int mealprice = 0;
         String mealdesc = "";
         String mealcategory = "";
+        String mealimage = "";
     %>
     <header>
-        <div class="top"id="navbar">
+        <div class="top" id="navbar">
             <div class="top1">
                 <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
             </div>
@@ -132,6 +133,8 @@
                     mealcategory = meal.getMealcategory();
                 }
             }
+            System.out.println("ahc");
+            
         %>
         
         <div class="editmealtitle">
@@ -139,7 +142,7 @@
         </div>
         
         
-        <form action="../UpdateMeal?mealid=<%= mealid%>" method ="POST" class="editmeal">
+        <form action="../UpdateMeal?mealid=<%= mealid%>&mealprice=<%= mealprice%>" method ="POST" class="editmeal">
             <!-- Meal Set Name-->
             <div class="row">
                 <div class="col-25">
