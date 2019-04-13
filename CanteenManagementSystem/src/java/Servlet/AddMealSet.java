@@ -48,10 +48,6 @@ public class AddMealSet extends HttpServlet {
             
             int mealFoodListSize = mealFoodList.size() ;
             
-            /*try (PrintWriter out = response.getWriter()) {
-            out.println("<h1>Servlet NewServlet at " + mealFoodID + "</h1>");
-            }*/
-            
             if(mealList.size() == 0){
                     mealID = "ML" + String.format("%02d",mealList.size() + 1);
                 }

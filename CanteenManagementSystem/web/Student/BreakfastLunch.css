@@ -2,7 +2,7 @@
     padding:35px;
     margin:15px 15px 15px 0;
     width:50%;
-    border-left:52px solid grey;
+    border-left:5px solid grey;
     background:linear-gradient(to right,#d9d9d9, #f2f2f2, rgba(255,255,255,0.2));
     font-style:italic;
 }
@@ -22,7 +22,6 @@
 .container {
   width: 23%;
   float:left;
-  height:auto;
 }
 
 #image{
@@ -40,7 +39,7 @@
 }
 
 .foodName{
-	height:140px;
+	height:70px;
 	word-wrap: break-word;
 }
 
@@ -77,4 +76,57 @@
 	transition:0.3s;
 }
 
+.container {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+          }
+
+          .container .tooltiptext {
+            visibility: hidden;
+            width: 87%;
+            height:240px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            bottom:56%;
+          }
+
+          .container:hover .tooltiptext {
+            visibility: visible;
+            background-color:rgba(0,0,0,0.5);
+          }
+          
+          #orderbtn:hover{
+          background-color: white;
+          border: none;
+          color: black;
+          text-align: center;
+          transition: 0.3s;
+        }
+
+          #orderbtn{
+          background-color: black;
+          border: none;
+          color: white;
+          text-align: center;
+          font-size: 12px;
+          transition: 0.3s;
+          padding:10px 10px;
+          width:230px;
+        }
+        
+        #startdate, #enddate{
+            width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+        }
 

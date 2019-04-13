@@ -76,7 +76,7 @@ public class Staff implements Serializable {
     private List<Staff> staffList;
     @JoinColumn(name = "STAFF_STAFFID", referencedColumnName = "STAFFID")
     @ManyToOne(optional = false)
-    private Staff managerID;
+    private Staff staffStaffid;
 
     public Staff() {
     }
@@ -151,12 +151,12 @@ public class Staff implements Serializable {
         this.staffList = staffList;
     }
 
-    public Staff getManagerid() {
-        return managerID;
+    public Staff getStaffStaffid() {
+        return staffStaffid;
     }
 
-    public void setManagerid(Staff managerID) {
-        this.managerID = managerID;
+    public void setStaffStaffid(Staff staffStaffid) {
+        this.staffStaffid = staffStaffid;
     }
 
     @Override

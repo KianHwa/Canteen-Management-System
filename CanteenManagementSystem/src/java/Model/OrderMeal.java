@@ -47,9 +47,11 @@ public class OrderMeal implements Serializable {
 
     public OrderMeal() {
     }
-
-    public OrderMeal(String ordermealid) {
+    
+    public OrderMeal(String ordermealid,Meal mealMealid, Order1 orderOrderid) {
         this.ordermealid = ordermealid;
+        this.mealMealid = mealMealid;
+        this.orderOrderid = orderOrderid;
     }
 
     public String getOrdermealid() {

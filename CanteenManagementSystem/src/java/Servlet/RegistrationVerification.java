@@ -103,7 +103,7 @@ public class RegistrationVerification extends HttpServlet {
                 utx.begin();
                 Staff staff = new Staff(staffVerifyID, staffVerifyName, email, phoneNumber, password, staffVerifyIC);
                 Staff manager = new Staff("MNR1", "Cardinal", "cardinal@gmail.com", "012 345 6789", "Cardinal1", "801010 12 5060");
-                staff.setManagerid(manager);
+                staff.setStaffStaffid(manager);
                 em.persist(staff);
                 utx.commit();
                 response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
