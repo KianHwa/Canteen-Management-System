@@ -59,11 +59,6 @@ public class Food implements Serializable {
         this.foodid = foodid;
     }
 
-    public Food(String foodid, String foodname) {
-        this.foodid = foodid;
-        this.foodname = foodname;
-    }
-    
     public Food(String foodid, String foodname, int foodcalories) {
         this.foodid = foodid;
         this.foodname = foodname;

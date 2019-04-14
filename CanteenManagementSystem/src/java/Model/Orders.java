@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
 
 import java.io.Serializable;
@@ -31,15 +27,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author USER
  */
 @Entity
-@Table(name = "Order")
+@Table(name = "ORDERS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Order1.findAll", query = "SELECT o FROM Order1 o")
-    , @NamedQuery(name = "Order1.findByOrderid", query = "SELECT o FROM Order1 o WHERE o.orderid = :orderid")
-    , @NamedQuery(name = "Order1.findByOrderstatus", query = "SELECT o FROM Order1 o WHERE o.orderstatus = :orderstatus")
-    , @NamedQuery(name = "Order1.findByCouponcode", query = "SELECT o FROM Order1 o WHERE o.couponcode = :couponcode")
-    , @NamedQuery(name = "Order1.findByOrderdate", query = "SELECT o FROM Order1 o WHERE o.orderdate = :orderdate")})
-public class Order1 implements Serializable {
+    @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o")
+    , @NamedQuery(name = "Orders.findByOrderid", query = "SELECT o FROM Orders o WHERE o.orderid = :orderid")
+    , @NamedQuery(name = "Orders.findByOrderdate", query = "SELECT o FROM Orders o WHERE o.orderdate = :orderdate")
+    , @NamedQuery(name = "Orders.findByOrderstatus", query = "SELECT o FROM Orders o WHERE o.orderstatus = :orderstatus")
+    , @NamedQuery(name = "Orders.findByCouponcode", query = "SELECT o FROM Orders o WHERE o.couponcode = :couponcode")})
+public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,6 +44,9 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ORDERID")
     private String orderid;
+    @Column(name = "ORDERDATE")
+    @Temporal(TemporalType.DATE)
+    private Date orderdate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
@@ -58,23 +57,20 @@ public class Order1 implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "COUPONCODE")
     private String couponcode;
-    @Column(name = "ORDERDATE")
-    @Temporal(TemporalType.DATE)
-    private Date orderdate;
     @JoinColumn(name = "STUDENT_STUDID", referencedColumnName = "STUDID")
     @ManyToOne(optional = false)
     private Student studentStudid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderid")
     private List<OrderMeal> orderMealList;
 
-    public Order1() {
+    public Orders() {
     }
 
-    public Order1(String orderid) {
+    public Orders(String orderid) {
         this.orderid = orderid;
     }
 
-    public Order1(String orderid, String orderstatus, String couponcode) {
+    public Orders(String orderid, String orderstatus, String couponcode) {
         this.orderid = orderid;
         this.orderstatus = orderstatus;
         this.couponcode = couponcode;
@@ -86,6 +82,14 @@ public class Order1 implements Serializable {
 
     public void setOrderid(String orderid) {
         this.orderid = orderid;
+    }
+
+    public Date getOrderdate() {
+        return orderdate;
+    }
+
+    public void setOrderdate(Date orderdate) {
+        this.orderdate = orderdate;
     }
 
     public String getOrderstatus() {
@@ -103,16 +107,6 @@ public class Order1 implements Serializable {
     public void setCouponcode(String couponcode) {
         this.couponcode = couponcode;
     }
-
-    public Date getOrderdate() {
-        return orderdate;
-    }
-
-    public void setOrderdate(Date orderdate) {
-        this.orderdate = orderdate;
-    }
-
-
 
     public Student getStudentStudid() {
         return studentStudid;
@@ -141,10 +135,10 @@ public class Order1 implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order1)) {
+        if (!(object instanceof Orders)) {
             return false;
         }
-        Order1 other = (Order1) object;
+        Orders other = (Orders) object;
         if ((this.orderid == null && other.orderid != null) || (this.orderid != null && !this.orderid.equals(other.orderid))) {
             return false;
         }
@@ -153,7 +147,7 @@ public class Order1 implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.Order1[ orderid=" + orderid + " ]";
+        return "Model.Orders[ orderid=" + orderid + " ]";
     }
     
 }

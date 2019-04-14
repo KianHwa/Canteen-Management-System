@@ -1,3 +1,12 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<jsp:useBean id="student" scope="session" class="Model.Student" />
+<%@page import="Model.Food, java.util.*" %>
+<%@page import="Model.Meal, java.util.*" %>
+<%@page import="Model.Orders, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Orders> orderList = (List<Orders>) session.getAttribute("orderList");%>
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -19,7 +28,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= student.getStudname()%></p>
                 </div>
             </div>
             
@@ -56,12 +65,13 @@
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
                         </tr>
+                        
                         <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                       </table>
             <input type="submit" value="Print" id="printbtn">
@@ -85,12 +95,20 @@
                           <th>Order Date</th>
                           <th></th>
                         </tr>
+                        <%  
+                            for(int i=0 ; i<orderList.size() ; i++){
+                                Orders orders = orderList.get(i);
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                                String orderdate = df.format(orders.getOrderdate());
+                            if(orders.getStudentStudid().getStudid().equals(student.getStudid())){
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
+                            <td><%= i+1%></td>
+                            <td><%=orders.getOrderMealList().get(0).getMealMealid().getMealname()%></td>
+                            <td><%= orderdate%></td>
                             <td><input type="submit" value="Remove" id="removebtn"></td>
                         </tr>
+                        <%}}%>
                         <tr>
                             <td colspan="4">
                                 <input type="submit" value="Remove all" id="removeallbtn">

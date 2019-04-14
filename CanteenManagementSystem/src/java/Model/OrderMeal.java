@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
 
 import java.io.Serializable;
@@ -43,12 +39,12 @@ public class OrderMeal implements Serializable {
     private Meal mealMealid;
     @JoinColumn(name = "ORDER_ORDERID", referencedColumnName = "ORDERID")
     @ManyToOne(optional = false)
-    private Order1 orderOrderid;
+    private Orders orderOrderid;
 
     public OrderMeal() {
     }
-    
-    public OrderMeal(String ordermealid,Meal mealMealid, Order1 orderOrderid) {
+
+    public OrderMeal(String ordermealid, Meal mealMealid, Orders orderOrderid) {
         this.ordermealid = ordermealid;
         this.mealMealid = mealMealid;
         this.orderOrderid = orderOrderid;
@@ -70,11 +66,11 @@ public class OrderMeal implements Serializable {
         this.mealMealid = mealMealid;
     }
 
-    public Order1 getOrderOrderid() {
+    public Orders getOrderOrderid() {
         return orderOrderid;
     }
 
-    public void setOrderOrderid(Order1 orderOrderid) {
+    public void setOrderOrderid(Orders orderOrderid) {
         this.orderOrderid = orderOrderid;
     }
 

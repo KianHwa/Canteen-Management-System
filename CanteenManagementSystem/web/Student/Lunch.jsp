@@ -83,13 +83,13 @@
     
     <div class="content">
         <div class="title">
-            <h1>Breakfast</h1>
+            <h1>Lunch</h1>
         </div>
         <div class="foodList">
         <%
             for(int i=0 ; i<mealList.size() ; i++){
                 Meal meal = mealList.get(i);
-                if(meal.getMealcategory().equals("breakfast")){
+                if(meal.getMealcategory().equals("lunch")){
         %>
         
                 <div class="container">

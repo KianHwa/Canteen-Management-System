@@ -76,7 +76,7 @@ public class Student implements Serializable {
     @Column(name = "STUDIC")
     private String studic;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentStudid")
-    private List<Order1> order1List;
+    private List<Orders> ordersList;
 
     public Student() {
     }
@@ -152,12 +152,12 @@ public class Student implements Serializable {
     }
 
     @XmlTransient
-    public List<Order1> getOrder1List() {
-        return order1List;
+    public List<Orders> getOrdersList() {
+        return ordersList;
     }
 
-    public void setOrder1List(List<Order1> order1List) {
-        this.order1List = order1List;
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 
     @Override

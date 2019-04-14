@@ -129,7 +129,6 @@ public class AddMealSet extends HttpServlet {
                     selectedMealFood.add(mealfood);
                 }
             }
-            
             utx.begin();
             meal.setMealFoodList(selectedMealFood);
             em.persist(meal);

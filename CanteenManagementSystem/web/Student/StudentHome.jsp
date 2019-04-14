@@ -1,4 +1,10 @@
 <jsp:useBean id="student" scope="session" class="Model.Student" />
+<%@page import="Model.Food, java.util.*" %>
+<%@page import="Model.Meal, java.util.*" %>
+<%@page import="Model.Orders, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Orders> orderList = (List<Orders>) session.getAttribute("orderList");%>
 
 
 <html>
@@ -64,13 +70,15 @@
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
                         </tr>
+                        
                         <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
+                        
                       </table>
             <input type="submit" value="Print" id="printbtn">
         </form>
