@@ -1,0 +1,33 @@
+#foodintake {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0;
+  margin-bottom:300px;
+  margin-top:50px;
+}
+
+#foodintake td, #foodintake th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  
+}
+
+#foodintake tr:nth-child(even){background-color: #f2f2f2;}
+
+#foodintake th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+#foodintake{
+    text-align:center;
+    padding:50px;
+}
+
+.weeklyform{
+    text-align:center;
+    padding:30px;
+}

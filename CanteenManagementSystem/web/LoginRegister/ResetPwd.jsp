@@ -1,24 +1,25 @@
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="text/html" http-equiv="Content-Type" />
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="SignUp.css">
+        <link rel="stylesheet" href="ResetPwd.css">
     </head>
-    
     <body>
-        <div class="resetpass">
+        <div class="resetpassform">
         <form action=""method="">
             <fieldset>
-                <legend>Reset Password</legend>
-                <div><label>Enter your email address and we'll send you the instruction for resetting your password.</label></div>
+                <legend>Titleeeeeeeeee</legend>
                 
-                <div><label>Enter the email that your used to SignUp</label></div>
-                <input type="text" id="email" name="email" placeholder="yourname@example.com">
-                <input type="submit"value="Submit"id="submitbtn">
+                
+                <label for="pwd" name="pwd" >New Password</label>
+                <input type="password" id="pwd" name="password" placeholder="Combinations of letters, numbers, and symbols usage is highly recommended.">
+                
+                <label for="rpwd" name="rpwd">Retype New Password</label>
+                <input type="password" id="rpwd" name="rpassword">
 
+                <input type="submit"value="Submit"id="submitbtn">
             </fieldset>
-            
-            
         </form>
         </div>
     </body>

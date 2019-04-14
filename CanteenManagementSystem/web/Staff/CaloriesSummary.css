@@ -1,0 +1,53 @@
+#calories h1{
+    text-align:center;
+    padding:30px;
+}
+
+
+
+#caloriesreport {
+  border-collapse: collapse;
+  width: 100%;
+  margin:0;
+  margin-bottom:300px;
+  margin-top:50px;
+}
+
+#caloriesreport td, #caloriesreport th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  
+}
+
+#caloriesreport tr:nth-child(even){background-color: #f2f2f2;}
+
+#caloriesreport th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+#caloriesreport{
+    text-align:center;
+    padding:50px;
+}
+
+.content input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 4px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+
+.content input[type=month]{
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 17px;
+}
+

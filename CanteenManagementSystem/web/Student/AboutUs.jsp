@@ -1,12 +1,21 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">      
-        <link rel="stylesheet" href="ThankYou.css">  
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css"> 
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-    </head> 
-<body>
+    </head>
+    <style>
+        div.aboutus {
+            line-height: 1.8;
+              font: italic bold 18px/30px Georgia serif;
+
+        }
+    </style>
+    
+    <body>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -73,17 +82,21 @@
           </div>
     
     <div class="content">
-        <div class="thankyou">
-            <h1 style="text-align: center">Thank You !</h1>
-            <p style="text-align: center; font-size: 20">You had successfully paid your meal order !</p>
-            <br/><br/><br/>
-            <p style="text-align: center; font-size: 20">Please print your digital meal coupon <br/> from the 'Coupon' section 
-            to redeem your meal on redeeming day</p>
+        <div class="aboutus">
             <br/><br/>
-            <h2 style="text-align: center">Have A Nice Day</h2>
+            <h1 style="text-align: center">About Us</h1>
+            <br/>
+            <p style="text-align: center; font-size: 20">The OVERCOOK Corporation was founded in the early 1990, with only a 
+                building located in Sabah.<br/>The corporation began its cooperation with the Kian Kok Middle School canteen
+                management since the beginning of 2019, with the intention to improve the middle school canteen business flows 
+                in a computerized environment. With the cooperation made, it is hope to provide the student with its best food 
+                purchasing service ever. OVERCOOK Corporation Canteen Management System also aims to provide additional functions
+                such as menu modification function in conjuction to its development to further support the canteen management.
+            </p>
+            <br/><br/>
         </div>
     </div>
-    <a href="StudentHome.jsp"><button class="homebtn">Back To Home</button></a>
+    
     <footer>
         <div class="bottom">
             
@@ -91,4 +104,11 @@
     </footer>
     
 </body>
+    
+    <footer>
+        <div class="bottom">
+            <p style="text-align: center; font-size: 20"><a href="AboutUs.jsp">About Us</a></p>
+        </div>
+    </footer>
+    
 </html>
