@@ -25,36 +25,28 @@ import javax.transaction.UserTransaction;
 import java.util.Date;
 
 
-@WebServlet(name = "ConfirmOrder", urlPatterns = {"/ConfirmOrder"})
-public class ConfirmOrder extends HttpServlet {
+@WebServlet(name = "ClaimOrder", urlPatterns = {"/ClaimOrder"})
+public class ClaimOrder extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String studentID = request.getParameter("studid");
-            int total = Integer.parseInt(request.getParameter("total"));
+            String couponCode = request.getParameter("couponcode");
             
             Query orderquery = em.createNamedQuery("Orders.findAll");
             List<Orders> orderList = orderquery.getResultList();
-            Student student = em.find(Student.class, studentID);
             
-            
-            utx.begin();
             for(int i=0 ; i<orderList.size() ; i++){
                 Orders orders = orderList.get(i);
-                if(orders.getStudentStudid().getStudid().equals(studentID) && orders.getOrderstatus().equals("Ordered")){
-                    orders.setOrderstatus("Paid");
-                    em.merge(orders);
-                }
+                //if(orders.getCouponcode())
             }
-            student.removeCreditPoints(total);
-            response.sendRedirect("Student/StudentHome.jsp");
             
+            utx.begin();
             
-            em.merge(student);
             utx.commit();
+            
             
         }
         catch(Exception ex){

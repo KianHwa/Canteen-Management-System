@@ -43,15 +43,16 @@
         <div class="couponclaimtitle">
             <h1>Coupon Status</h1>
         </div>
-            <form action="" method="">
-                <input type="text" placeholder="Enter coupon code ..." id="claimcouponbox">
+            <form action="../ClaimOrder" method="POST">
+                <input type="text" placeholder="Enter coupon code ..." id="claimcouponbox" name="couponcode" required>
                 <input type="submit" value="Claim" id="claimcouponbtn">
                     <table id="claimcoupon">
                         <tr>
                           <th>No</th>
+                          <th>Coupon Code</th>
                           <th>Order Date</th>
                           <th>Meal Set</th>
-                          <th>Price</th>
+                          <th>Price (RM)</th>
                           <th>Status</th>
                         </tr>
                         <%  
@@ -65,6 +66,7 @@
                         %>
                         <tr>
                             <td><%= count%></td>
+                            <td><%= orders.getCouponcode()%></td>
                             <td><%= orderdate%></td>
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealname()%></td>
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealprice()%></td>

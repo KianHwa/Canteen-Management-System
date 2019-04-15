@@ -97,12 +97,14 @@
                         <%  
                             int count=1;
                             int total = 0;
+                            String studid = "" ; 
                             for(int i=0 ; i<orderList.size() ; i++){
                                 Orders orders = orderList.get(i);
                                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                                 String orderdate = df.format(orders.getOrderdate());
                             if(orders.getStudentStudid().getStudid().equals(student.getStudid()) && orders.getOrderstatus().equals("Ordered")){
                                 total+=(orders.getOrderMealList().get(0).getMealMealid().getMealprice())*10;
+                                studid = orders.getStudentStudid().getStudid();
                         %>
                         <tr>
                             <td><%= count%></td>
@@ -119,7 +121,7 @@
                         <tr>
                             <td colspan="5">
                                 <a href="OrderList.jsp"><button id="backbtn">Back</button></a>
-                                <form action="../ConfirmOrder" method="POST" id="placeorderform"><input type="submit" value="Purchase" id="purchasebtn"></form>
+                                <form action="../ConfirmOrder?studid=<%= studid%>&total=<%= total%>" method="POST" id="placeorderform"><input type="submit" value="Purchase" id="purchasebtn"></form>
                             </td>
                         </tr>
                       </table>

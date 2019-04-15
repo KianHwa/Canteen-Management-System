@@ -154,6 +154,10 @@ public class Student implements Serializable {
     public void addCreditPoints(int amount){
         credpoints = credpoints + amount;
     }
+    
+    public void removeCreditPoints(int amount){
+        credpoints = credpoints - amount;
+    }
 
     @XmlTransient
     public List<Orders> getOrdersList() {
