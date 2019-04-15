@@ -41,14 +41,13 @@
 }
 
 #removebtn{
-    background-color: black;
+  background-color: black;
   border: none;
   color: white;
   text-align: center;
   font-size: 13px;
   transition: 0.3s;
   padding:5px 5px;
-  margin-left:40%;
   width:80px;
 }
 
@@ -60,8 +59,8 @@
   transition: 0.3s;
 }
 
-#removeallbtn, #placeorderbtn{
-    background-color: black;
+#placeorderbtn{
+  background-color: black;
   border: none;
   color: white;
   text-align: center;
@@ -69,13 +68,10 @@
   transition: 0.3s;
   padding:10px 15px;
   width:150px;
+  margin-left:40%;
 }
 
-#removeallbtn{
-    margin-left:25%;
-}
-
-#placeorderbtn{
-    margin-left:25%;
+.placeorderform{
+    width:100%;
 }
 

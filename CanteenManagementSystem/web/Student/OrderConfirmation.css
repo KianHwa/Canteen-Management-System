@@ -27,10 +27,16 @@
 
 #backbtn{
     margin-left:27%;
+    float:left;
 }
 
 #purchasebtn{
-    margin-left:27%;
+    margin-left:40%;
+}
+
+#placeorderform{
+    width:50%;
+    float:left;
 }
 
 

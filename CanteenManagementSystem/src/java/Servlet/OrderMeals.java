@@ -54,8 +54,7 @@ public class OrderMeals extends HttpServlet {
             out.println("<h1>Servlet NewServlet at " + days + "</h1>");
             }*/
                 
-            List<OrderMeal> selectedOrderMeal = new ArrayList<OrderMeal>();    
-            
+            List<OrderMeal> selectedOrderMeal = new ArrayList<OrderMeal>();  
                 utx.begin();
             for(int i=0; i<=days ; i++){
                 Query orderquery = em.createNamedQuery("Orders.findAll");
@@ -65,27 +64,60 @@ public class OrderMeals extends HttpServlet {
                 
                 int ordersize = orderList.size();
                 int ordermealsize = orderMealList.size();
+                int couponsize = orderList.size();
+                
+                String orderID = "";
+                String couponCode = "";
+                String orderMealID = "";
+                
+                c.setTime(startDate);
+                c.add(Calendar.DATE,i);
+                startDate = c.getTime();
                 
                 for(int j=0 ; j<orderList.size() ; j++){
                     Orders orders = orderList.get(j);
                     if(orders.getOrderdate().compareTo(startDate) == 0 && orders.getStudentStudid().getStudid().equals(studid) && 
                         orders.getOrderMealList().get(0).getMealMealid().getMealcategory().equals(mealcategory)){
                         sameDate = true;
-                        try (PrintWriter out = response.getWriter()) {
-            out.println("<h1>Servlet NewServlet at " + orders.getStudentStudid().getStudid()
-                    + studid + orders.getOrderMealList().get(0).getMealMealid().getMealcategory() + mealcategory + orders.getOrderdate() + startDate + "</h1>");
-        }
                         response.sendRedirect("Student/StudentHome.jsp?status=fail");
                     }
                 }
                 
-                c.setTime(startDate);
-                c.add(Calendar.DATE,i);
-                startDate = c.getTime();
                 
-                String orderID = "OD" + String.format("%02d",ordersize + 1);
-                String orderMealID = "OM" + String.format("%02d",ordermealsize + 1);
-                String couponCode = "CP" + String.format("%02d",ordersize + 1);
+                if(orderList.size() == 0){
+                    orderID = "OD" + String.format("%02d",ordersize + 1);
+                    couponCode = "CP" + String.format("%02d",ordersize + 1);
+                    orderMealID = "OM" + String.format("%02d",ordermealsize + 1);
+                }
+                else{
+                    orderID = "OD" + String.format("%02d",ordersize + 1);
+                    couponCode = "CP" + String.format("%02d",ordersize + 1);
+                    boolean duplicateID;
+                    int newID = 1;
+                    
+                    String newFormatOrdernum = orderID.substring(2,4);  //02
+                    
+                    do{
+                        duplicateID = false;
+                        for(int j=0 ; j<orderList.size() ; j++){
+                            Orders orderlist = orderList.get(j);
+                            String formatOrdernum = orderlist.getOrderid().substring(2,4);  //02
+                            
+                    
+                            
+                            if(newFormatOrdernum.equals(formatOrdernum)){
+                                duplicateID = true;
+                                newFormatOrdernum = String.format("%02d",newID);//01
+                            }
+                        }
+                        ++newID;
+                        if(duplicateID == false){
+                            orderID = "OD" + newFormatOrdernum;
+                            couponCode = "CP" + newFormatOrdernum;
+                            orderMealID = "OM" + newFormatOrdernum;
+                        }
+                    }while(duplicateID == true);
+                }
                 
                 c.setTime(startDate);
                 Orders orders = new Orders();

@@ -1,3 +1,5 @@
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -17,7 +19,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             
@@ -37,13 +39,13 @@
         <div class="topuptitle">
             <h1>Student Credit Points Top Up</h1>
         </div>
-        <form class="topupform" action="" method="">
+        <form class="topupform" action="../AddCredits?status=STD1001" method="POST">
             <div class="row">
                 <div class="col-25">
                     <label for="studentid">Student ID</label>
                 </div>
                 <div class="col-75">
-                   <input type="text" placeholder="Enter student ID .." id="studentid" required>
+                   <input type="text" name="studid" placeholder="Enter student ID .." id="studentid" required>
                 </div>
             </div>
             
@@ -66,8 +68,6 @@
             <div class="row">
                 <input type="submit" value="Top Up" class="topupbtn">
             </div>
-            
-            
         </form> 
     </div>
     

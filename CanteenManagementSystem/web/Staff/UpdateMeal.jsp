@@ -192,7 +192,6 @@
                 </div>
                 <div class="col-75">
                     <%
-                            int[] foodArr = new int[foodList.size()];
                             for(int i=0 ; i<foodList.size() ; i++){
                                 Food food = foodList.get(i);
                         %>

@@ -15,7 +15,11 @@
         <link rel="stylesheet" href="StudentHome.css">
         <link rel="stylesheet" href="OrderList.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <style>
+            <%@ include file="OrderList.css"%>
+            <%@ include file="StudentHome.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+        </style>
     </head>     
 <body>
     <header>
@@ -87,7 +91,7 @@
         <div class="orderlisttitle">
             <h1>Current orders</h1>
         </div>
-        <form action="" method="">
+        
                     <table id="orders">
                         <tr>
                           <th>No</th>
@@ -96,27 +100,32 @@
                           <th></th>
                         </tr>
                         <%  
+                            int count=1;
                             for(int i=0 ; i<orderList.size() ; i++){
+                                
                                 Orders orders = orderList.get(i);
                                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                                 String orderdate = df.format(orders.getOrderdate());
-                            if(orders.getStudentStudid().getStudid().equals(student.getStudid())){
+                            if(orders.getStudentStudid().getStudid().equals(student.getStudid()) && orders.getOrderstatus().equals("Ordered")){
                         %>
                         <tr>
-                            <td><%= i+1%></td>
+                            <td><%= count%></td>
                             <td><%=orders.getOrderMealList().get(0).getMealMealid().getMealname()%></td>
                             <td><%= orderdate%></td>
-                            <td><input type="submit" value="Remove" id="removebtn"></td>
+                            
+                            <td>
+                                <form action="../RemoveOrder?orderid=<%= orders.getOrderid()%>" method="POST"><input type="submit" value="Remove" id="removebtn"></form>
+                            </td>
+                            
                         </tr>
-                        <%}}%>
+                        <%count++;}}%>
                         <tr>
                             <td colspan="4">
-                                <input type="submit" value="Remove all" id="removeallbtn">
-                                <input type="submit" value="Place Order" id="placeorderbtn">
+                                <a href="OrderConfirmation.jsp"><button id="placeorderbtn">Place Order</button></a>
                             </td>
                         </tr>
                       </table>
-                    </form>
+                    
     </div>  
     <script src="../HeaderFooter/OrderModal.js"></script>
     <footer>

@@ -1,3 +1,10 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<jsp:useBean id="student" scope="session" class="Model.Student" />
+<%@page import="Model.Meal, java.util.*" %>
+<%@page import="Model.Orders, java.util.*" %>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Orders> orderList = (List<Orders>) session.getAttribute("orderList");%>
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -5,7 +12,10 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
         <link rel="stylesheet" href="OrderConfirmation.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <style>
+            <%@ include file="OrderConfirmation.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+        </style>
     </head>     
 <body>
     <header>
@@ -73,7 +83,7 @@
           </div>
 
     <div class="content">   
-        <form action="" method="">
+        
                     <table id="orders">
                         <tr>
                             <td colspan="5" id="orderconfirmationtitle"><h1>Order Confirmation</h1></td>
@@ -81,25 +91,40 @@
                         <tr>
                           <th>No</th>
                           <th>Meal Set</th>
-                          <th>From</th>
-                          <th>To</th>
+                          <th>Order Date</th>
                           <th>Credit Points</th>
                         </tr>
+                        <%  
+                            int count=1;
+                            int total = 0;
+                            for(int i=0 ; i<orderList.size() ; i++){
+                                Orders orders = orderList.get(i);
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                                String orderdate = df.format(orders.getOrderdate());
+                            if(orders.getStudentStudid().getStudid().equals(student.getStudid()) && orders.getOrderstatus().equals("Ordered")){
+                                total+=(orders.getOrderMealList().get(0).getMealMealid().getMealprice())*10;
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>0</td>
+                            <td><%= count%></td>
+                            <td><%=orders.getOrderMealList().get(0).getMealMealid().getMealname()%></td>
+                            <td><%= orderdate%></td>
+                            <td><%= (orders.getOrderMealList().get(0).getMealMealid().getMealprice())*10%></td>
+                        </tr>
+                        
+                        <%count++;}}%>
+                        <tr>
+                            <td colspan="3" style="text-align:right;font-weight:bold;font-size: 20px;padding-right:50px;">Total</td>
+                            <td><%= total%></td>    
                         </tr>
                         <tr>
                             <td colspan="5">
-                                <input type="submit" value="Back" id="backbtn">
-                                <input type="submit" value="Purchase" id="purchasebtn">
+                                <a href="OrderList.jsp"><button id="backbtn">Back</button></a>
+                                <form action="../ConfirmOrder" method="POST" id="placeorderform"><input type="submit" value="Purchase" id="purchasebtn"></form>
                             </td>
                         </tr>
                       </table>
-        </form>
+        
+        
     </div>  
     <script src="../HeaderFooter/OrderModal.js"></script>
     

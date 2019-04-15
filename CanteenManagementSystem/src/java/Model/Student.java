@@ -150,6 +150,10 @@ public class Student implements Serializable {
     public void setStudic(String studic) {
         this.studic = studic;
     }
+    
+    public void addCreditPoints(int amount){
+        credpoints = credpoints + amount;
+    }
 
     @XmlTransient
     public List<Orders> getOrdersList() {
