@@ -12,6 +12,7 @@
     transition:0.3s;
 }
 
+
 .lunch{
     background:url(../Images/670532.jpg);
     background-size:cover;
@@ -20,7 +21,7 @@
     width:100%;
     height:600px;
 }
-
+/*
 .breakfastBtn, .lunchBtn{
   background-color: #ffffff;
   border: none;
@@ -32,6 +33,20 @@
   width:150px;
   margin-bottom:20px;
   margin:25% 45% 25% 45%;
+}
+*/
+
+.breakfastBtn, .lunchBtn{
+    padding: 20px 150px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
 .breakfastBtn:hover, .lunchBtn:hover{
@@ -74,4 +89,3 @@
 .placeorderform{
     width:100%;
 }
-

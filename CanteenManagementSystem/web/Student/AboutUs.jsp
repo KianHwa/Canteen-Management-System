@@ -26,7 +26,7 @@
                     
                 </div>
                 <div class="hello">
-                    <p>Hello World</p>
+                    <p>Student's Name</p>
                 </div>
             </div>
             
