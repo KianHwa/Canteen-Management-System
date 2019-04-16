@@ -35,7 +35,7 @@
 }
 
 .breakfastBtn:hover, .lunchBtn:hover{
-    transition: 0.3s;
+    transition: 0.31s;
     background-color:black;
     color:white;
 }

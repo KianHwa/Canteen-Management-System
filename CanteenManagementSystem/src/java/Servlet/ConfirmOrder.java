@@ -48,12 +48,23 @@ public class ConfirmOrder extends HttpServlet {
                     em.merge(orders);
                 }
             }
-            student.removeCreditPoints(total);
-            response.sendRedirect("Student/StudentHome.jsp");
+            
+            if(student.getCredpoints() > total){
+                student.removeCreditPoints(total);
+                em.merge(student);
+                utx.commit();
+                
+                Student std = em.find(Student.class ,studentID);
+                HttpSession session = request.getSession();
+                session.setAttribute("student",std);
+                
+                response.sendRedirect("HeaderFooter/loading.jsp?status=purchasing");
+            }
+            else{
+                response.sendRedirect("Student/StudentHome.jsp?status=lesscredpoints");
+            }
             
             
-            em.merge(student);
-            utx.commit();
             
         }
         catch(Exception ex){

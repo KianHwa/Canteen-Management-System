@@ -34,7 +34,7 @@
         <div id="myModal" class="modal">
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <p style="text-align:center">Credit Points not enuf</p>
+                  <p style="text-align:center">Credit Points not enough</p>
                 </div>
             </div>
             <script src="../HeaderFooter/PopOut.js"></script>
@@ -45,9 +45,10 @@
                 <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
+                <a href="ProfileSetting.jsp">
                 <div class="profilePic">
-                    
                 </div>
+                </a>
                 <div class="hello">
                     <p><%= student.getStudname()%></p>
                 </div>

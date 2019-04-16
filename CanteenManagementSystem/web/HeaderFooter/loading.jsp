@@ -90,7 +90,26 @@
                     setTimeout(function(){window.location.href="../LoginRegister/Main.jsp";},3500);
             });
             </script>
+        <%}else if(status.equals("purchasing")){%>
+            <div class="se-pre-con"><h1>Your order is being processed ..</h1></div>
+
+            <script>
+                $(window).load(function() {
+                    $(".se-pre-con").delay(2000).fadeOut("slow");
+                    setTimeout(function(){window.location.href="../Student/StudentHome.jsp";},3500);
+            });
+            </script>
+        <%}else if(status.equals("reloading")){%>
+            <div class="se-pre-con"><h1>Reloading ..</h1></div>
+
+            <script>
+                $(window).load(function() {
+                    $(".se-pre-con").delay(2000).fadeOut("slow");
+                    setTimeout(function(){window.location.href="../Staff/TopUp.jsp";},3500);
+            });
+            </script>
         <%}%>
+        
         <div id="successdiv"><h1 id="success"></h1></div>
     </body>
 </html>

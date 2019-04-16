@@ -7,8 +7,26 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="TopUp.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        <style>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+        </style>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+        if(status!=null){
+            if(status.equals("studnotfound")){
+        
+    %>
+    <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Student ID not found, <br/> use "STD" for student ID</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    
+    <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">

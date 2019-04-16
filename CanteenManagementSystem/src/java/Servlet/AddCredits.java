@@ -33,17 +33,21 @@ public class AddCredits extends HttpServlet {
             String studid = request.getParameter("studid");
             String amount = request.getParameter("topup");
             
+            
             HttpSession session  = request.getSession();
             Student stud = em.find(Student.class, studid);
-            
-            stud.setStudid(studid);
-            stud.addCreditPoints(Integer.parseInt(amount) * 10);
-            
-            utx.begin();
-            em.merge(stud);
-            utx.commit();
+            if(stud!=null){
+                stud.setStudid(studid);
+                stud.addCreditPoints(Integer.parseInt(amount) * 10);
+                utx.begin();
+                em.merge(stud);
+                utx.commit();
                     
-            response.sendRedirect("Staff/TopUp.jsp");
+                response.sendRedirect("HeaderFooter/loading.jsp?status=reloading");
+            }
+            else{
+                response.sendRedirect("Staff/TopUp.jsp?status=studnotfound");
+            }
             
         }
         catch(ConstraintViolationException ex){
