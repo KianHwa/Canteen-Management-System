@@ -11,6 +11,10 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="StaffHome.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        <style>
+            <%@ include file="StaffHome.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+        </style>
     </head> 
 <body>
     <header>
@@ -22,9 +26,10 @@
                 <a href="ProfileSetting.jsp">
                 <div class="profilePic">
                 </div>
+                    <div></div>
                 </a>
                 
-                <div class="hello">
+                <div class="staffhello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
             </div>

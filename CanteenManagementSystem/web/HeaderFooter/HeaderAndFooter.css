@@ -98,11 +98,24 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
     margin-top:7.5px;
 }
 
+.staffhello{
+    float:right;
+    color:white;
+    height:20px;
+    width:60%;
+    margin-top:25px;
+}
+
+
 .hello p, .balance p{
     text-align:right;
     padding:10px;
 }
 
+.staffhello p{
+    text-align:right;
+    padding:10px;
+}
 
 /*Drop down */
 .dropdown {
@@ -163,7 +176,7 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
 }
 
 /*Meal Coupon Pop Out*/
-.modal {
+.modals {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -178,7 +191,7 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
 }
 
 /* Modal Content */
-.modal-content {
+.modal-contents {
   position: relative;
   background-color: #fefefe;
   margin: auto;

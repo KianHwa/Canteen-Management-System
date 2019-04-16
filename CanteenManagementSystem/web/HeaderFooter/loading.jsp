@@ -83,7 +83,7 @@
             </script>
         <%}else if(status.equals("loggingout")){%>
             <div class="se-pre-con"><h1>Logging Out</h1></div>
-
+            
             <script>
                 $(window).load(function() {
                     $(".se-pre-con").delay(2000).fadeOut("slow");

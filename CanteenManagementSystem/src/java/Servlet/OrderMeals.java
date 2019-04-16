@@ -15,6 +15,8 @@ import Model.*;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -47,13 +49,18 @@ public class OrderMeals extends HttpServlet {
             
             Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse(orderStartDate);  
             Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(orderEndDate);
-
+            
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDateTime now = LocalDateTime.now();  
+            
+            Date todaysDate = new SimpleDateFormat("yyyy-MM-dd").parse(dtf.format(now));
+            int daysBeforeOrders = (int)(startDate.getTime() - todaysDate.getTime())/(1000*60*60*24);
+            
             int days = (int)(endDate.getTime() - startDate.getTime())/(1000*60*60*24);
             boolean sameDate = false;
-            /*try (PrintWriter out = response.getWriter()) {
-            out.println("<h1>Servlet NewServlet at " + days + "</h1>");
-            }*/
                 
+            
+            if(daysBeforeOrders >2){
             List<OrderMeal> selectedOrderMeal = new ArrayList<OrderMeal>();  
                 utx.begin();
             for(int i=0; i<=days ; i++){
@@ -82,7 +89,11 @@ public class OrderMeals extends HttpServlet {
                         orderquery = em.createNamedQuery("Orders.findAll");
                         orderList = orderquery.getResultList();
                         session.setAttribute("orderList", orderList);
-                        response.sendRedirect("Student/StudentHome.jsp?status=fail");
+                        if(orders.getOrderMealList().get(0).getMealMealid().getMealcategory().equals("breakfast")){
+                            response.sendRedirect("Student/Breakfast.jsp?status=fail&date=" + orders.getOrderdate());
+                        }
+                        else
+                            response.sendRedirect("Student/Lunch.jsp?status=fail");
                     }
                 }
                 
@@ -148,10 +159,17 @@ public class OrderMeals extends HttpServlet {
                 List<Orders> orderList = orderquery.getResultList();
                 session.setAttribute("orderList", orderList);
                 
-               
-                
-                response.sendRedirect("Student/StudentHome.jsp");
-            
+                if(mealcategory.equals("breakfast"))
+                    response.sendRedirect("Student/Breakfast.jsp?status=ordered");
+                else
+                    response.sendRedirect("Student/Lunch.jsp?status=ordered");
+            }
+            else{
+                if(mealcategory.equals("breakfast"))
+                    response.sendRedirect("Student/Breakfast.jsp?status=late");
+                else
+                    response.sendRedirect("Student/Lunch.jsp?status=late");
+            }
         }
         catch(Exception ex){
             

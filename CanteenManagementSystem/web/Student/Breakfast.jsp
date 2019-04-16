@@ -1,8 +1,11 @@
+<%@page import="Model.Orders"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <jsp:useBean id="student" scope="session" class="Model.Student" />
 <%@page import="Model.Food, java.util.*" %>
 <%@page import="Model.Meal, java.util.*" %>
 <% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Orders> orderList = (List<Orders>) session.getAttribute("orderList");%>
 
 <html>
     <head>  
@@ -12,10 +15,43 @@
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="BreakfastLunch.css"%>
-            
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
         </style>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+        String dates = request.getParameter("date");
+        
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        if(status!=null){
+            if(status.equals("fail")){
+    %>
+    <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">You already ordered a meal on <%= dates%></p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}else if(status.equals("late")){%>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Sorry, you can only pre order 2 days in advance</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}else if(status.equals("ordered")){%>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Successfully added your order</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -47,8 +83,8 @@
         </div>
     </header>
     
-    <div id="myModal" class="modal">
-            <div class="modal-content">
+    <div id="myModal" class="modals">
+            <div class="modal-contents">
                 <div class="modal-header">
                     <span class="close">&times;</span>
                     <h1>Meal Coupon</h1>
@@ -59,27 +95,39 @@
                         <tr>
                           <th>No</th>
                           <th>Date</th>
-                          <th>Meal Description</th>
+                          <th>Meal Set Name</th>
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
                         </tr>
+                        <%
+                            int count=0;
+                            SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
+                            for(int i=0 ; i<orderList.size() ; i++){
+                                Orders orders = orderList.get(i);
+                                if(orders.getOrderstatus().equals("Paid")){
+                                    count++;
+                                    String date = dff.format(orders.getOrderdate());
+                                    
+                        %>
                         <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
+                            <td><%= count%></td>
+                            <td><%= date%></td>
+                            <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealcategory()%></td>
+                            <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealid()%></td>
+                            <td><%= orders.getCouponcode()%></td>
                         </tr>
+                        <%}}%>
+                        
                       </table>
             <input type="submit" value="Print" id="printbtn">
         </form>
                 </div>
                 <div class="modal-footer">
-                    <h3>Modal Footer</h3>
+                    <h3></h3>
                 </div>
             </div>
           </div>
-    
+    <script src="../HeaderFooter/OrderModal.js"></script>
     <div class="content">
         <div class="title">
             <h1>Breakfast</h1>
