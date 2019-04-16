@@ -42,7 +42,7 @@ public class EditManagerProfile extends HttpServlet {
             
             Staff staff = em.find(Staff.class,staffid);
             
-            if(!newpwd.equals("")){
+            
                 if(staff.getStaffpassword().equals(oldpwd)){
                     staff.setStaffemail(email);
                     staff.setStaffphone(phone);
@@ -50,24 +50,36 @@ public class EditManagerProfile extends HttpServlet {
                     staff.setStaffname(name);
 
                     utx.begin();
-                    em.merge(staff);
-                    utx.commit();
-
-                    HttpSession session = request.getSession();
-                    Query staffquery = em.createNamedQuery("Staff.findAll");
-                    List<Staff> staffList = staffquery.getResultList();
-                    session.setAttribute("staffList", staffList);
-
+                em.merge(staff);
+                utx.commit();
+                
+                HttpSession session = request.getSession();
+                Staff stf = em.find(Staff.class ,staffid);
+                session.setAttribute("staff",stf);
+                    
                     response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=success");
-
                 }
-            }
-            else{
-                response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=error");
-            }
-            
-            
-            
+                else if(newpwd.equals("")){
+                    staff.setStaffname(name);
+                    staff.setStaffemail(email);
+                    staff.setStaffphone(phone);
+                    
+                     utx.begin();
+                em.merge(staff);
+                utx.commit();
+                
+                HttpSession session = request.getSession();
+                Staff stf = em.find(Staff.class ,staffid);
+                session.setAttribute("staff",stf);
+                    
+                    response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=success");
+                }
+                else{
+                    response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=error");
+                }
+                
+               
+                
         }
         catch(Exception ex){
             

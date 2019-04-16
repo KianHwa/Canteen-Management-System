@@ -37,14 +37,13 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
+                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
-                <a href="ProfileSetting.jsp">
+                <a href="ManagerProfileSetting.jsp">
                 <div class="profilePic">
                 </div>
                 </a>
-                
                 <div class="hello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
@@ -52,14 +51,35 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><a href="TopUp.jsp">Top Up</a></li>
-                    <li><a href="Ingredients.jsp">Ingredients</a></li>
-                    <li><a href="MealSet.jsp">Meal Set List</a></li>
-                    <li><a href="StaffHome.jsp">Home</a></li>
+                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <div class="dropdown">
+                        <button class="report"><a href="">Report</a></button>
+                        <div class="dropdownContent">
+                            <a href="TransactionReport.jsp">Daily Meal Sales Report</a>
+                            <a href="SummaryReport.jsp">Annual Sales Report</a>
+                            <a href="CaloriesSummary.jsp">Student's Calories Intake Report</a>
+
+                            <a href="ExceptionReport.jsp">Meal Cancellation Report</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="managefood"><a href="">Manage Food</a></button>
+                        <div class="dropdownContent">
+                            <a href="FoodList.jsp">Update Food Items</a>
+                            <a href="AddFood.jsp">Add Food Items</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="managemeal"><a href="">Manage Meal</a></button>
+                        <div class="dropdownContent">
+                            <a href="MealSetList.jsp">Update Meals Set</a>
+                            <a href="AddMeal.jsp">Add Meal Set</a>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
+        
     </header>
     
     <div class="content">

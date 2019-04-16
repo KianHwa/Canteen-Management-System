@@ -88,15 +88,18 @@ li a:hover:not(.active), .creditPoints:hover:not(.active),
     margin:14px 20px;
 }
 
-.hello{
+.hello, .balance{
     float:right;
-    height:50px;
     color:white;
+    height:20px;
+    width:60%;
+    margin-bottom:7.5px;
+    margin-top:7.5px;
 }
 
-.hello p{
-    padding-top:35px;
+.hello p, .balance p{
     text-align:right;
+    padding:10px;
 }
 
 

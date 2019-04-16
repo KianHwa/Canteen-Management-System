@@ -34,18 +34,16 @@
                 <div class="hello">
                     <p><%= student.getStudname()%></p>
                 </div>
+                <div class="balance">
+                    <p style="color:yellow;">Credit Points : <%= student.getCredpoints()%></p>
+                </div>
             </div>
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
-                    <div class="dropdown">
-                        <button class="creditPoints"><a href="">Credit Points</a></button>
-                        <div class="dropdownContent">
-                            <a href="">Balance:</a>
-                        </div>
-                    </div>  
+                    
                     <li><a href="OrderList.jsp">Order</a></li>
                     <li><a href="StudentHome.jsp">Home</a></li>
                     
