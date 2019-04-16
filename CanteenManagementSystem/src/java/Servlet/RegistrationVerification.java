@@ -70,12 +70,17 @@ public class RegistrationVerification extends HttpServlet {
                         response.sendRedirect("LoginRegister/SignUp.jsp?status=studexisted&studid=" + stud.getStudid() + "");
                     }
                 }
+                if(!studVerifyID.equals("")){
                             //If verified, store register information into Canteen's Student database
                             utx.begin();
                             Student student = new Student(studVerifyID, studVerifyName, email, phoneNumber, password, creditPoints, studVerifyIC);
                             em.persist(student);
                             utx.commit();
                             response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
+                }
+                else{
+                    response.sendRedirect("LoginRegister/SignUp.jsp?status=error");
+                }
             }
             else if(ID.indexOf("STF") >=0){
                 //Verify Staff ID from database
@@ -100,13 +105,18 @@ public class RegistrationVerification extends HttpServlet {
                     }
                 }
                 
-                utx.begin();
-                Staff staff = new Staff(staffVerifyID, staffVerifyName, email, phoneNumber, password, staffVerifyIC);
-                Staff manager = new Staff("MNR1", "Cardinal", "cardinal@gmail.com", "012 345 6789", "Cardinal1", "801010 12 5060");
-                staff.setStaffStaffid(manager);
-                em.persist(staff);
-                utx.commit();
-                response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
+                if(!staffVerifyID.equals("")){
+                    utx.begin();
+                    Staff staff = new Staff(staffVerifyID, staffVerifyName, email, phoneNumber, password, staffVerifyIC);
+                    Staff manager = new Staff("MNR1", "Cardinal", "cardinal@gmail.com", "012 345 6789", "Cardinal1", "801010 12 5060");
+                    staff.setStaffStaffid(manager);
+                    em.persist(staff);
+                    utx.commit();
+                    response.sendRedirect("HeaderFooter/loading.jsp?status=registering");
+                }
+                else{
+                    response.sendRedirect("LoginRegister/SignUp.jsp?status=error");
+                }
             }
             else{
                 response.sendRedirect("LoginRegister/SignUp.jsp?status=error"); //student not in school database

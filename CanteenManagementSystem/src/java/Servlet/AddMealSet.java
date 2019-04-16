@@ -137,7 +137,7 @@ public class AddMealSet extends HttpServlet {
             mealList = mealquery.getResultList();
             session.setAttribute("mealList", mealList);
             
-            response.sendRedirect("Staff/MealSetList.jsp?success=true&meal=" + mealSetName + "");
+            response.sendRedirect("Staff/AddMeal.jsp?success=true&meal=" + mealSetName + "");
             
         }
         catch(Exception ex){

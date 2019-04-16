@@ -1,3 +1,14 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
+<%@page import="Model.Food, java.util.*" %>
+<%@page import="Model.Meal, java.util.*" %>
+<%@page import="Model.Orders, java.util.*" %>
+<%@page import="Model.MealFood, java.util.*" %>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Orders> orderList = (List<Orders>) session.getAttribute("orderList");%>
+<% List<MealFood> mealFoodList = (List<MealFood>) session.getAttribute("mealFoodList");%>
+
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -37,32 +48,52 @@
         <div class="ingredientsummary">
             <h1>Ingredients</h1>
         </div>
-        <input type="date" id="date">
+        
+        <form action="../CheckIngredients" method="POST">
+            <input type="date" id="date"  name="checkingingredients">
             <input type="submit" value="Check" id="checkbtn">
+        </form>
             
             <table id="ingredients">
+                
+                
                 <tr>
                     <th>No</th>
                     <th>Ingredients</th>
                     <th>Quantity</th>
                 </tr>
+                <%
+                            String checkdate = request.getParameter("checkmealdate");
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                            int no = 1;
+                            
+                            for(int j=0 ; j<foodList.size() ; j++){
+                                int count=0;
+                                Food food = foodList.get(j);
+                                    for(int i=0 ;  i<orderList.size() ; i++){ 
+                                        Orders orders = orderList.get(i);
+                                        
+                                        if(orders.getOrderstatus().equals("Paid")){
+                                            
+                                                if(food.getFoodid().equals(orders.getOrderMealList().get(0).getMealMealid().getMealFoodList().get(0).getFoodFoodid().getFoodid())){
+                                                    if(checkdate!=null){
+                                                        if(checkdate.equals(df.format(orders.getOrderdate())))
+                                                            count++;
+                                                    }
+                                                }
+                                            
+                                            
+                                        }
+                                    }     
+                %>
                 <tr>
-                    <td>1</td>
-                    <td>Carrots</td>
-                    <td>25</td>
+                    <td><%= no%></td>
+                    <td><%= food.getFoodname()%></td>
+                    <td><%= count%></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Eggs</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Rice (per packet)</td>
-                    <td>10</td>
-                </tr>
+                <%count++;no++;}%>
             </table>
-        </form>
+        
     </div>
     
     <footer>

@@ -10,67 +10,27 @@
         <link rel="stylesheet" href="AddMeal.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
-            /* The container */
-            .container {
-              display: block;
-              position: relative;
-              padding: 5px 35px 10px 35px;
-              cursor: pointer;
-              font-size: 15px;
-              user-select: none;
-              width:50%;
-              float:left;
-            }
-
-            .container input {
-              position: absolute;
-              opacity: 0;
-              cursor: pointer;
-              height: 0;
-              width: 0;
-            }
-
-            .checkmark {
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 25px;
-              width: 25px;
-              background-color: #eee;
-              border:1px solid gray;
-              
-            }
-            
-            .container:hover input ~ .checkmark {
-              background-color: #ccc;
-            }
-            
-            .container input:checked ~ .checkmark {
-              background-color: black;
-            }
-            
-            .checkmark:after {
-              content: "";
-              position: absolute;
-              display: none;
-            }
-
-            .container input:checked ~ .checkmark:after {
-              display: block;
-            }
-
-            .container .checkmark:after {
-              left: 7px;
-              top: 4px;
-              width: 5px;
-              height: 10px;
-              border: solid white;
-              border-width: 0 3px 3px 0;
-              transform: rotate(45deg);
-            }
+            <%@ include file="AddMeal.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
     </head> 
 <body>
+    <%
+        String success = request.getParameter("success");
+        String mealname = request.getParameter("meal");
+    %>
+    
+    <%if(success!=null){
+           if(success.equals("true")){%>
+           <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Food "<%= mealname%>" successfully added</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}}%>
+       
     <header>
         <div class="top"id="navbar">
             <div class="top1">

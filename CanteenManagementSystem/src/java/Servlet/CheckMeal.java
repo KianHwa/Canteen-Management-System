@@ -25,34 +25,17 @@ import javax.transaction.UserTransaction;
 import java.util.Date;
 
 
-@WebServlet(name = "ClaimOrder", urlPatterns = {"/ClaimOrder"})
-public class ClaimOrder extends HttpServlet {
+@WebServlet(name = "CheckMeal", urlPatterns = {"/CheckMeal"})
+public class CheckMeal extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String couponCode = request.getParameter("couponcode");
+            String orderDate = request.getParameter("checkmeal");
             
-            Query orderquery = em.createNamedQuery("Orders.findAll");
-            List<Orders> orderList = orderquery.getResultList();
-            
-            utx.begin();
-            for(int i=0 ; i<orderList.size() ; i++){
-                Orders orders = orderList.get(i);
-                if(orders.getCouponcode().equals(couponCode)){
-                    orders.setOrderstatus("Claimed");
-                    em.merge(orders);
-                }
-            }
-            utx.commit();
-            
-            HttpSession session = request.getSession();
-            orderquery = em.createNamedQuery("Orders.findAll");
-            orderList = orderquery.getResultList();
-            session.setAttribute("orderList", orderList);
-            response.sendRedirect("Staff/StaffHome.jsp");
+            response.sendRedirect("Staff/MealSet.jsp?checkmealdate=" + orderDate);
             
         }
         catch(Exception ex){

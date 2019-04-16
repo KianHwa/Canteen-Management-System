@@ -25,34 +25,44 @@ import javax.transaction.UserTransaction;
 import java.util.Date;
 
 
-@WebServlet(name = "ClaimOrder", urlPatterns = {"/ClaimOrder"})
-public class ClaimOrder extends HttpServlet {
+@WebServlet(name = "EditStudentProfile", urlPatterns = {"/EditStudentProfile"})
+public class EditStudentProfile extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String couponCode = request.getParameter("couponcode");
+            String studid = request.getParameter("studid");
+            String email = request.getParameter("email");
+            String oldpwd = request.getParameter("oldpwd");
+            String newpwd = request.getParameter("newpwd");
+            String phone = request.getParameter("phone");
             
-            Query orderquery = em.createNamedQuery("Orders.findAll");
-            List<Orders> orderList = orderquery.getResultList();
+            Student student = em.find(Student.class,studid);
             
-            utx.begin();
-            for(int i=0 ; i<orderList.size() ; i++){
-                Orders orders = orderList.get(i);
-                if(orders.getCouponcode().equals(couponCode)){
-                    orders.setOrderstatus("Claimed");
-                    em.merge(orders);
-                }
+            if(student.getStudpassword().equals(oldpwd)){
+                student.setStudemail(email);
+                student.setStudphone(phone);
+                student.setStudpassword(newpwd);
+                
+                utx.begin();
+                em.merge(student);
+                utx.commit();
+                
+                HttpSession session = request.getSession();
+                Query studentquery = em.createNamedQuery("Student.findAll");
+                List<Student> studentList = studentquery.getResultList();
+                session.setAttribute("studentList", studentList);
+                
+                response.sendRedirect("Student/ProfileSetting.jsp?status=success");
+                
             }
-            utx.commit();
+            else{
+                response.sendRedirect("Student/ProfileSetting.jsp?status=error");
+            }
             
-            HttpSession session = request.getSession();
-            orderquery = em.createNamedQuery("Orders.findAll");
-            orderList = orderquery.getResultList();
-            session.setAttribute("orderList", orderList);
-            response.sendRedirect("Staff/StaffHome.jsp");
+            
             
         }
         catch(Exception ex){

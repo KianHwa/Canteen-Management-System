@@ -29,9 +29,10 @@
                 <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
-                <div class="profilePic">
-                    
-                </div>
+                <a href="ProfileSetting.jsp">
+                    <div class="profilePic">
+                    </div>
+                </a>
                 <div class="hello">
                     <p><%= student.getStudname() %></p>
                 </div>

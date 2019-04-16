@@ -1,4 +1,4 @@
-<jsp:useBean id="student" scope="session" class="Model.Student" />
+<jsp:useBean id="staff" scope="session" class="Model.Staff" />
 
 <html>
     <head>  
@@ -37,31 +37,26 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
                 <a href="ProfileSetting.jsp">
                 <div class="profilePic">
                 </div>
                 </a>
+                
                 <div class="hello">
-                    <p><%= student.getStudname()%></p>
+                    <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             
             <div class="navBar">
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><button id="couponbtn">Coupon</button></li>
-                    <div class="dropdown">
-                        <button class="creditPoints"><a href="">Credit Points</a></button>
-                        <div class="dropdownContent">
-                            <a href="">Balance:</a>
-                        </div>
-                    </div>  
-                    <li><a href="OrderList.jsp">Order</a></li>
-                    <li><a href="StudentHome.jsp">Home</a></li>
-                    
+                    <li><a href="TopUp.jsp">Top Up</a></li>
+                    <li><a href="Ingredients.jsp">Ingredients</a></li>
+                    <li><a href="MealSet.jsp">Meal Set List</a></li>
+                    <li><a href="StaffHome.jsp">Home</a></li>
                 </ul>
             </div>
         </div>
@@ -70,29 +65,29 @@
     <div class="content">
         <div class="profiletitle">
             <h1>Your Profile</h1>
-            <h3>Hi, <%= student.getStudname()%></h3>
+            <h3>Hi, <%= staff.getStaffname()%></h3>
         </div>
         <div class="uppernote">
-            <p style="text-align: right; font-size: 20; text-align:center">Students are only allowed to change their email address, 
+            <p style="text-align: right; font-size: 20; text-align:center">Staffs are only allowed to change their email address, 
                 phone number, and login password. To change other options, students are required to 
                 seek for school admin help and permission.
             </p>
         </div>
         
         <div class="profile">
-            <form action="../EditStudentProfile?studid=<%= student.getStudid()%>" method="POST" id="editprofileform">
+            <form action="../EditStaffProfile?studid=<%= staff.getStaffid()%>" method="POST" id="editprofileform">
                 <fieldset> <br/>
                     <label for="name">Username</label>
-                    <input type="text" name="name" id="name" value="<%= student.getStudname()%>" readonly><br>
+                    <input type="text" name="name" id="name" value="<%= staff.getStaffname()%>" readonly><br>
                     
                     <label for="id">ID</label>
-                    <input type="text" name="id"  id="id" value="<%= student.getStudid()%>"  readonly><br>
+                    <input type="text" name="id"  id="id" value="<%= staff.getStaffid()%>"  readonly><br>
                     
                     <label for="icno">Identity Card No:</label>
-                    <input type="text" name="icno" id="icno" value="<%= student.getStudic()%>" readonly><br>
+                    <input type="text" name="icno" id="icno" value="<%= staff.getStaffic()%>" readonly><br>
                     
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email"  value="<%= student.getStudemail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br/>
+                    <input type="text" name="email" id="email"  value="<%= staff.getStaffemail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br/>
                     
                     <label for="oldpwd">Old Password</label>
                     <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
@@ -104,7 +99,7 @@
                     <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br/>
 
                     <label for="hpno">Phone Number</label>
-                    <input type="text" id="hpno" name="phone" value="<%= student.getStudphone()%>" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"  title="Ten digits code">
+                    <input type="text" id="hpno" name="phone" value="<%= staff.getStaffphone()%>" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"  title="Ten digits code">
                 </fieldset> 
             </form>
             
@@ -128,10 +123,7 @@
           confirm_password.onkeyup = validatePassword;
             </script>  
         
-        <div class="btngroup">
-            <a href=""><button id="historybtn">History</button></a>
-            <a href=""><button id="calintakes">Calories Intake</button></a>
-        </div>
+        
     </div>
     
     

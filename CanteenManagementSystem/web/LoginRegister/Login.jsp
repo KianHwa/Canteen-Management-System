@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="Login.css">
         <style>
             <%@ include file="Login.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
     </head>
     <body>
@@ -14,7 +15,13 @@
             if(status!=null){
                 if(status.equals("loginfailed")){
         %>
-        <script>alert("User ID or password may be incorrect, please login again. \nSTD for student, STF for staff.");</script>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">User ID or password may be incorrect, please login again. "<br/>STD for student, STF for staff.</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
         <%}}%>
         <div class="loginform">
         <form action="../LoginVerification" method="POST" id="loginform">

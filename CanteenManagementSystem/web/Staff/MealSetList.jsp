@@ -11,7 +11,10 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="MealSetList.css">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <style>
+            <%@ include file="MealSetList.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+        </style>
     </head> 
 <body>
     <header>
@@ -30,8 +33,17 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
-                    <li><a href="">Reports</a></li>
+                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <div class="dropdown">
+                        <button class="report"><a href="">Report</a></button>
+                        <div class="dropdownContent">
+                            <a href="TransactionReport.jsp">Daily Meal Sales Report</a>
+                            <a href="SummaryReport.jsp">Annual Sales Report</a>
+                            <a href="CaloriesSummary.jsp">Student's Calories Intake Report</a>
+
+                            <a href="ExceptionReport.jsp">Meal Cancellation Report</a>
+                        </div>
+                    </div>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>
                         <div class="dropdownContent">

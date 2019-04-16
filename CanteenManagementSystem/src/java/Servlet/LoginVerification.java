@@ -71,6 +71,7 @@ public class LoginVerification extends HttpServlet {
                         Query foodquery = em.createNamedQuery("Food.findAll");
                         Query mealquery = em.createNamedQuery("Meal.findAll");
                         Query orderquery = em.createNamedQuery("Orders.findAll");
+                        Query mealfoodquery = em.createNamedQuery("MealFood.findAll");
                         
                         List<Meal> mealList = mealquery.getResultList();
                         session.setAttribute("mealList", mealList);
@@ -78,6 +79,8 @@ public class LoginVerification extends HttpServlet {
                         session.setAttribute("foodList", foodList);
                         List<Orders> orderList = orderquery.getResultList();
                         session.setAttribute("orderList", orderList);
+                        List<MealFood> mealFoodList = mealfoodquery.getResultList();
+                        session.setAttribute("mealFoodList", mealFoodList);
                         
                         response.sendRedirect("HeaderFooter/loading.jsp?status=staffloggingin");
                     }      

@@ -3,6 +3,11 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="SignUp.css">
+        <style>
+            <%@ include file="SignUp.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+            
+        </style>
     </head>
     <body>
         <%
@@ -13,20 +18,31 @@
             if(status!=null){
                 if(status.equals("error")){                 
         %>
-        <script>
-            alert("Invalid Student ID, Please retry again.");
-        </script>
-        <%} else if(status.equals("staffexisted")){%>
-        <script>
-            var staffid = "'<%=existedStaffID %>'";
-            alert("Staff ID " + staffid + " already registered, Please retry again.");
-        </script>
-        <%} else if(status.equals("studexisted")){%>
-        <script>
-            var studid = "'<%=existedStudID %>'";
-            alert("Student ID " + studid + " already registered, Please retry again.");
-        </script>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Invalid Student/Staff ID, Please retry again.</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+            
         
+        <%} else if(status.equals("staffexisted")){%>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Staff ID "  <%= existedStaffID %> " already registered, Please retry again.</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+        <%} else if(status.equals("studexisted")){%>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Student ID "  <%= existedStudID%>  " already registered, Please retry again.</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
         <%}}%>
         
         <div class="signupform">

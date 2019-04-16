@@ -40,7 +40,6 @@ public class ConfirmOrder extends HttpServlet {
             List<Orders> orderList = orderquery.getResultList();
             Student student = em.find(Student.class, studentID);
             
-            
             utx.begin();
             for(int i=0 ; i<orderList.size() ; i++){
                 Orders orders = orderList.get(i);

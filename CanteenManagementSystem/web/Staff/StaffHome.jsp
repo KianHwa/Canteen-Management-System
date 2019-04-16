@@ -19,9 +19,11 @@
                 <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
+                <a href="ProfileSetting.jsp">
                 <div class="profilePic">
-                    
                 </div>
+                </a>
+                
                 <div class="hello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
@@ -31,7 +33,7 @@
                 <ul>
                     <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
                     <li><a href="TopUp.jsp">Top Up</a></li>
-                    <li><a href="">Ingredients</a></li>
+                    <li><a href="Ingredients.jsp">Ingredients</a></li>
                     <li><a href="MealSet.jsp">Meal Set List</a></li>
                     <li><a href="StaffHome.jsp">Home</a></li>
                 </ul>

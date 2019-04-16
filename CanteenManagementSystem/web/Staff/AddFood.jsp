@@ -6,7 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="AddFood.css">
+        <link rel="stylesheet" href="../HeaderFooter/PopOut.css.css">
+        <style>
+            <%@ include file="AddFood.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+        </style>
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        
     </head> 
 <body>
     <%
@@ -54,19 +60,25 @@
     <div class="content">
        <%if(success!=null){
            if(success.equals("true")){%>
-            <script>
-                var foodname = "'<%= foodName%>'";
-                alert("Food " + foodname + " successfully added");
-            </script>
+           <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Food "<%= foodName%>" successfully added</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
        <%}}%>
        
        <%if(existedFood!=null){
            if(existedFood.equals("true")){
        %>
-            <script>    
-                var foodname = "'<%= foodName%>'";
-                alert("\'" + foodname  + "\'already existed");
-            </script>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Food "<%= foodName%>" already existed</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
        <%}}%>
         
         <div class="addfoodtitle">
