@@ -25,14 +25,15 @@ import javax.transaction.UserTransaction;
 import java.util.Date;
 
 
-@WebServlet(name = "EditStaffProfile", urlPatterns = {"/EditStaffProfile"})
-public class EditStaffProfile extends HttpServlet {
+@WebServlet(name = "EditManagerProfile", urlPatterns = {"/EditManagerProfile"})
+public class EditManagerProfile extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
+            String name = request.getParameter("name");
             String staffid = request.getParameter("staffid");
             String email = request.getParameter("email");
             String oldpwd = request.getParameter("oldpwd");
@@ -41,25 +42,28 @@ public class EditStaffProfile extends HttpServlet {
             
             Staff staff = em.find(Staff.class,staffid);
             
-            if(staff.getStaffpassword().equals(oldpwd)){
-                staff.setStaffemail(email);
-                staff.setStaffphone(phone);
-                staff.setStaffpassword(newpwd);
-                
-                utx.begin();
-                em.merge(staff);
-                utx.commit();
-                
-                HttpSession session = request.getSession();
-                Query staffquery = em.createNamedQuery("Staff.findAll");
-                List<Staff> staffList = staffquery.getResultList();
-                session.setAttribute("staffList", staffList);
-                
-                response.sendRedirect("Staff/ProfileSetting.jsp?status=success");
-                
+            if(!newpwd.equals("")){
+                if(staff.getStaffpassword().equals(oldpwd)){
+                    staff.setStaffemail(email);
+                    staff.setStaffphone(phone);
+                    staff.setStaffpassword(newpwd);
+                    staff.setStaffname(name);
+
+                    utx.begin();
+                    em.merge(staff);
+                    utx.commit();
+
+                    HttpSession session = request.getSession();
+                    Query staffquery = em.createNamedQuery("Staff.findAll");
+                    List<Staff> staffList = staffquery.getResultList();
+                    session.setAttribute("staffList", staffList);
+
+                    response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=success");
+
+                }
             }
             else{
-                response.sendRedirect("Staff/ProfileSetting.jsp?status=error");
+                response.sendRedirect("Staff/ManagerProfileSetting.jsp?status=error");
             }
             
             

@@ -21,8 +21,24 @@
 		$('body').fadeIn(1500);
 	});
         </script>
+        <style>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+        </style>
     </head>     
 <body style="display:none">
+    <%
+        int creditPoints = student.getCredpoints();
+        if(creditPoints < 50){
+    %>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Credit Points not enuf</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">

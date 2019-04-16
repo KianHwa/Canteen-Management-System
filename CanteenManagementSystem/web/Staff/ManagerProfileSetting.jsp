@@ -75,10 +75,10 @@
         </div>
         
         <div class="profile">
-            <form action="../EditStaffProfile?staffid=<%= staff.getStaffid()%>" method="POST" id="editprofileform">
+            <form action="../EditManagerProfile?staffid=<%= staff.getStaffid()%>" method="POST" id="editprofileform">
                 <fieldset> <br/>
                     <label for="name">Username</label>
-                    <input type="text" name="name" id="name" value="<%= staff.getStaffname()%>" readonly><br>
+                    <input type="text" name="name" id="name" value="<%= staff.getStaffname()%>"><br>
                     
                     <label for="id">ID</label>
                     <input type="text" name="id"  id="id" value="<%= staff.getStaffid()%>"  readonly><br>
@@ -90,13 +90,13 @@
                     <input type="text" name="email" id="email"  value="<%= staff.getStaffemail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br/>
                     
                     <label for="oldpwd">Old Password</label>
-                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
                     
                     <label for="newpwd">New Password</label>
-                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
 
                     <label for="rpwd">Reenter Password</label>
-                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br/>
+                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ><br/>
 
                     <label for="hpno">Phone Number</label>
                     <input type="text" id="hpno" name="phone" value="<%= staff.getStaffphone()%>" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"  title="Ten digits code">

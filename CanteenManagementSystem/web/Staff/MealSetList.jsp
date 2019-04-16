@@ -23,9 +23,10 @@
                 <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
             <div class="top2">
+                <a href="ManagerProfileSetting.jsp">
                 <div class="profilePic">
-                    
                 </div>
+                </a>
                 <div class="hello">
                     <p><%= staff.getStaffname()%></p>
                 </div>

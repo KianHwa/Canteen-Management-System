@@ -18,7 +18,7 @@
         <div id="myModal" class="modal">
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <p style="text-align:center">User ID or password may be incorrect, please login again. "<br/>STD for student, STF for staff.</p>
+                  <p style="text-align:center">User ID or password may be incorrect, please login again. <br/>STD for student, STF for staff.</p>
                 </div>
             </div>
             <script src="../HeaderFooter/PopOut.js"></script>
