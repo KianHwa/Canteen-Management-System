@@ -43,16 +43,19 @@
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: black;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 0.0001px #999;
+  opacity:0.7;
+  margin-left:35%;
+  margin-top:20%;
 }
 
 .breakfastBtn:hover, .lunchBtn:hover{
     transition: 0.31s;
-    background-color:black;
-    color:white;
+    background-color:white;
+    color:black;
 }
 
 #removebtn{

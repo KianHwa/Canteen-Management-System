@@ -154,9 +154,9 @@
                     <div class="btnclass">
                         <form action ="../OrderMeal?mealid=<%= meal.getMealid()%>&studid=<%= student.getStudid()%>&mealcat=<%= meal.getMealcategory()%>" method="POST">
                             <label for="startdatebtn">Start date:</label>
-                            <input type="date" id="startdate" name="startdate">
+                            <input type="date" id="startdate" name="startdate" required>
                             <label for="enddatebtn">End date:</label>
-                            <input type="date" id="enddate" name="enddate">
+                            <input type="date" id="enddate" name="enddate" required>
                             <input type="submit" id="orderbtn" value="Order">
                         </form>
                     </div>

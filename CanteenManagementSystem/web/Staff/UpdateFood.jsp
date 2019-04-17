@@ -10,8 +10,9 @@
         <link rel="stylesheet" href="UpdateFood.css"> 
         <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        <title>Update Food</title>
     </head> 
-    <title>Update Food</title>
+    
 <body>
     <%
         String selectedFoodid = request.getParameter("foodid");
@@ -28,7 +29,7 @@
                 <div class="profilePic">
                     
                 </div>
-                <div class="hello">
+                <div class="staffhello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
             </div>

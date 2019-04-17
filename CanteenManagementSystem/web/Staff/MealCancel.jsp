@@ -15,7 +15,7 @@
                 <div class="profilePic">
                     
                 </div>
-                <div class="hello">
+                <div class="staffhello">
                     <p>Cardinal</p>
                 </div>
             </div>

@@ -90,7 +90,7 @@
                 <div class="profilePic">
                     
                 </div>
-                <div class="hello">
+                <div class="staffhello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
             </div>

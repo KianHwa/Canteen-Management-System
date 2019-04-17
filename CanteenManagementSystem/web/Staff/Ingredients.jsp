@@ -29,7 +29,7 @@
                 <div class="profilePic">
                     
                 </div>
-                <div class="hello">
+                <div class="staffhello">
                     <p>Staff Name</p>
                 </div>
             </div>

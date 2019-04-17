@@ -47,7 +47,7 @@
                 </div>
                 </a>
                 
-                <div class="hello">
+                <div class="staffhello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
