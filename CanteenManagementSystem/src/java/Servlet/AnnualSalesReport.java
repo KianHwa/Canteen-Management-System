@@ -13,56 +13,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import Model.*;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import java.util.Date;
 
 
-@WebServlet(name = "UpdateMeal", urlPatterns = {"/UpdateMeal"})
-public class UpdateMeal extends HttpServlet {
+@WebServlet(name = "AnnualSalesReport", urlPatterns = {"/AnnualSalesReport"})
+public class AnnualSalesReport extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
+    
+    private String host = "jdbc:derby://localhost:1527/CanteenDB";
+    private String user = "nbuser";
+    private String pass = "nbuser";
+
+    private Connection conn;
+    private PreparedStatement stmt;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String updatedMealname = request.getParameter("mealname");
-            String updatedMealprice = request.getParameter("mealprice");
-            String updatedMealcategory = request.getParameter("meal");
-            String updatedMealdesc = request.getParameter("mealdesc");
-            String mealid = request.getParameter("mealid");
-            String pic = request.getParameter("pic");
-            //String mealFoodID = "";
-            
-            //Query foodquery = em.createNamedQuery("Food.findAll");
-            //List<Food> foodList = foodquery.getResultList();
-            Query mealquery = em.createNamedQuery("Meal.findAll");
-            List<Meal> mealList = mealquery.getResultList();
-            //Query mealfoodquery = em.createNamedQuery("MealFood.findAll");
-            //List<MealFood> mealFoodList = mealfoodquery.getResultList();
-            
+            String year = request.getParameter("year");
                     
-            utx.begin();
-            Meal meal = new Meal();  
-            meal.setMealid(mealid);
-            meal.setMealprice(Integer.parseInt(updatedMealprice));
-            meal.setMealcategory(updatedMealcategory);
-            meal.setMealdesc(updatedMealdesc);
-            meal.setMealname(updatedMealname);
-            meal.setMealimage(pic);
-            em.merge(meal);
-            utx.commit();
-            
-            HttpSession session = request.getSession();
-            mealquery = em.createNamedQuery("Meal.findAll");
-            mealList = mealquery.getResultList();
-            session.setAttribute("mealList", mealList);
-            
-            response.sendRedirect("Staff/MealSetList.jsp?status=updatemealsuccess&meal=" + meal.getMealname());
-            
+                    
+                    
         }
         catch(Exception ex){
             

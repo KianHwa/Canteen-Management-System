@@ -18,16 +18,16 @@
     </head> 
 <body>
     <%
-        String success = request.getParameter("success");
+        String status = request.getParameter("success");
         String mealname = request.getParameter("meal");
     %>
     
-    <%if(success!=null){
-           if(success.equals("true")){%>
+    <%if(status!=null){
+           if(status.equals("true")){%>
            <div id="myModal" class="modal">
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <p style="text-align:center">Food "<%= mealname%>" successfully added</p>
+                  <p style="text-align:center">Meal "<%= mealname%>" successfully added</p>
                 </div>
             </div>
             <script src="../HeaderFooter/PopOut.js"></script>

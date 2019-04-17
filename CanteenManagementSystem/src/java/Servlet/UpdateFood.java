@@ -49,7 +49,7 @@ public class UpdateFood extends HttpServlet {
             foodList = foodquery.getResultList();
             session.setAttribute("foodList", foodList);
             
-            response.sendRedirect("Staff/FoodList.jsp");
+            response.sendRedirect("Staff/FoodList.jsp?status=updatefoodsuccess");
             
         }
         catch(Exception ex){

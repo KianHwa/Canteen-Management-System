@@ -13,10 +13,25 @@
         <style>
             <%@ include file="FoodList.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
         <title>Food</title>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+    %>
+    
+    <%if(status!=null){
+           if(status.equals("updatefoodsuccess")){%>
+           <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Food updated successfully</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">

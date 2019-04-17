@@ -77,10 +77,6 @@
         </style>
     </head> 
 <body>
-    <%
-        String selectedMealid = request.getParameter("mealid");
-    %>
-    
     <header>
         <div class="top" id="navbar">
             <div class="top1">
@@ -121,10 +117,12 @@
     
     <div class="content">
         <%
+            String selectedMealid = request.getParameter("mealid");
             String mealid ="";
             String mealname ="";
             String mealdesc = "";
             String mealcategory ="";
+            String mealimage = "";
             int mealprice = 0;
             
             for(int i=0 ; i<mealList.size() ; i++){
@@ -135,6 +133,7 @@
                     mealprice = meal.getMealprice();
                     mealdesc = meal.getMealdesc();
                     mealcategory = meal.getMealcategory();
+                    mealimage = meal.getMealimage();
                 }
             }
             
@@ -145,7 +144,7 @@
         </div>
         
         
-        <form action="../UpdateMeal?mealid=<%= mealid%>&mealprice=<%= mealprice%>" method ="POST" class="editmeal">
+        <form action="../UpdateMeal?mealid=<%= mealid%>" method ="POST" class="editmeal">
             <!-- Meal Set Name-->
             <div class="row">
                 <div class="col-25">
@@ -185,7 +184,7 @@
                     <label for="mealimg">Meal Image</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" name="pic" id='mealimg'>
+                    <input type="text" name="pic" id='mealimg' value="<%= mealimage%>">
                 </div>
             </div>
             

@@ -15,10 +15,26 @@
         <style>
             <%@ include file="MealSetList.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
         <title>Meals</title>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+        String mealname = request.getParameter("meal");
+    %>
+    
+    <%if(status!=null){
+           if(status.equals("updatemealsuccess")){%>
+           <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Meal "<%= mealname%>" successfully updated</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -41,7 +57,7 @@
                         <button class="report"><a href="">Report</a></button>
                         <div class="dropdownContent">
                             <a href="TransactionReport.jsp">Daily Meal Sales Report</a>
-                            <a href="SummaryReport.jsp">Annual Sales Report</a>
+                            <a href="AnnualSalesReport.jsp">Annual Sales Report</a>
                             <a href="CaloriesSummary.jsp">Student's Calories Intake Report</a>
 
                             <a href="ExceptionReport.jsp">Meal Cancellation Report</a>

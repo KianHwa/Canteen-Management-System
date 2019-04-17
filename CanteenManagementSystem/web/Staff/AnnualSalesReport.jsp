@@ -1,27 +1,23 @@
 <jsp:useBean id="staff" scope="session" class="Model.Staff" />
-<%@page import="Model.Food, java.util.*" %>
-<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 
 <html>
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
-        <link rel="stylesheet" href="UpdateFood.css"> 
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
+        <link rel="stylesheet" href="AddFood.css">
+        <link rel="stylesheet" href="../HeaderFooter/PopOut.css.css">
         <link rel="icon" href="../Images/chefhead.png">
+        <style>
+            <%@ include file="AddFood.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
+            <%@ include file="Report.css"%>
+        </style>
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        <title>Update Food</title>
+        <title>Annual Sales Report</title>
     </head> 
-    
 <body>
-    <%
-        String selectedFoodid = request.getParameter("foodid");
-        String foodname = "";
-        int foodcalories = 0;
-        String foodid = "";
-    %>
     
-   
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -37,7 +33,7 @@
             </div>
             
             <div class="navBar">
-               <ul>
+                <ul>
                     <li><a href="../LogOut">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
@@ -57,50 +53,33 @@
                 </ul>
             </div>
         </div>
+        
     </header>
-                
-    <div class="content">
-        <%
-            for(int i=0 ; i<foodList.size() ; i++){
-                Food food = foodList.get(i);
-                if(food.getFoodid().equals(selectedFoodid)){
-                    foodname = food.getFoodname();
-                    foodcalories = food.getFoodcalories();
-                    foodid = food.getFoodid();
-                }
-            }
-        %>
-        
-        
-        <div class="editfoodtitle">
-            <h1>Update Food Items</h1>
-        </div>
-      <form action="../UpdateFood?foodid=<%= foodid%>" method="POST" class="editfood">
-        <div class="row">
-          <div class="col-25">
-            <label for="foodname">Food Name</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="foodname" name="foodname" placeholder="Food Name.." value="<%= foodname%>"required>
-          </div>
-        </div>
-          
-          <div class="row">
-          <div class="col-25">
-            <label for="calories">Calories</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="foodcalories" name="calories" value="<%= foodcalories%>" placeholder="e.g. 1500">
-          </div>
-        </div>
-          
-        <div class="row">
-          <input type="submit" value="Edit Food" class="editfoodbtn">
-        </div>
-      </form>
-          
-    </div>
     
+    <div class="content">
+    <div class="reporttitle">
+            <h1>Annual Sales Report</h1>
+        </div>
+      <form action="../AnnualSalesReport" method="POST" class="annualsalesreport" target="_blank">
+        <div class="row">
+          <div class="col-25">
+            <label for="reportdate">Report's Year</label>
+          </div>
+          <div class="col-75">
+              <select name="year">
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+              </select>
+          </div>
+        </div>
+          
+        <div class="row">
+          <input type="submit" value="Check" class="checkreportbtn">
+        </div>
+      </form>            
+    </div>         
+                
+                
     <footer>
         <div class="bottom">
         
