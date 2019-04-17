@@ -96,7 +96,7 @@
             <script>
                 $(window).load(function() {
                     $(".se-pre-con").delay(2000).fadeOut("slow");
-                    setTimeout(function(){window.location.href="../Student/StudentHome.jsp";},3500);
+                    setTimeout(function(){window.location.href="../Student/ThankYou.jsp";},3500);
             });
             </script>
         <%}else if(status.equals("reloading")){%>

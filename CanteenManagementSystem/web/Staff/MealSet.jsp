@@ -11,7 +11,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="MealSet.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+         <style>
+            <%@ include file="MealSet.css"%>
+        </style>
+        <title>Check Meals</title>
     </head> 
 <body>
     <header>
@@ -30,7 +35,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="TopUp.jsp">Top Up</a></li>
                     <li><a href="Ingredients.jsp">Ingredients</a></li>
                     <li><a href="MealSet.jsp">Meal Set List</a></li>
@@ -47,6 +52,13 @@
             <form action="../CheckMeal" method="POST">
                 <input type="date" id="mealsetlistdate" name="checkmeal">
                 <input type="submit" value="Check" id="mealsetlistbtn">
+                <% String date = request.getParameter("checkmealdate");
+                    if(date!=null){
+                
+                %>
+                <h2 align="right"><%= date%></h2>
+                <%}%>
+                
                     <table id="mealsetlist">
                         <tr>
                           <th>Meal Sets</th>

@@ -7,12 +7,13 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="AddFood.css">
         <link rel="stylesheet" href="../HeaderFooter/PopOut.css.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <style>
             <%@ include file="AddFood.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <title>Add Food</title>
     </head> 
 <body>
     <%
@@ -36,7 +37,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>

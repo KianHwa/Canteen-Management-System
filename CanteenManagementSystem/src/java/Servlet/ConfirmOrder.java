@@ -58,6 +58,11 @@ public class ConfirmOrder extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("student",std);
                 
+                orderquery = em.createNamedQuery("Orders.findAll");
+                orderList = orderquery.getResultList();
+                session.setAttribute("orderList",orderList);
+                
+                
                 response.sendRedirect("HeaderFooter/loading.jsp?status=purchasing");
             }
             else{

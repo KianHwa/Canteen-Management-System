@@ -10,9 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="UpdateMeal.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <title>Update Meal</title>
         <style>
+            <%@ include file="UpdateMeal.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
             /* The container */
             .container {
               display: block;
@@ -77,6 +80,7 @@
     <%
         String selectedMealid = request.getParameter("mealid");
     %>
+    
     <header>
         <div class="top" id="navbar">
             <div class="top1">
@@ -93,7 +97,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>
@@ -181,7 +185,7 @@
                     <label for="mealimg">Meal Image</label>
                 </div>
                 <div class="col-75">
-                    <input type="file" name="pic" accept="image/*" id='mealimg'>
+                    <input type="text" name="pic" id='mealimg'>
                 </div>
             </div>
             
@@ -196,7 +200,7 @@
                                 Food food = foodList.get(i);
                         %>
                             <label class="container"><%= food.getFoodname()%>
-                                    <input type="checkbox" name="<%= "foodArr[" + i + "]"%>">
+                                    <input type="checkbox" name="<%= "foodArr[" + i + "]"%>" disabled>
                                     <span class="checkmark"></span>
                                 </label>
                                 
@@ -210,7 +214,7 @@
                     <label for="mealdesc">Meal Description</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="subject" name="mealdesc" placeholder="Write the meal's description .." style="height:200px"></textarea>
+                    <textarea id="subject" name="mealdesc" placeholder="Write the meal's description .." style="height:200px"><%= mealdesc%></textarea>
                 </div>
             </div>
             

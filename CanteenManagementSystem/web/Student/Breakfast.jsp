@@ -11,13 +11,15 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css"> 
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="BreakfastLunch.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
         </style>
+        <title>Breakfast</title>
     </head> 
 <body>
     <%
@@ -72,7 +74,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     
                     <li><a href="OrderList.jsp">Order</a></li>
@@ -100,6 +102,7 @@
                           <th>Coupon Code</th>
                         </tr>
                         <%
+                            
                             int count=0;
                             SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
                             for(int i=0 ; i<orderList.size() ; i++){
@@ -141,13 +144,13 @@
         
                 <div class="container">
                     <div class="images">
-                        <img src="../Images/545451.jpg"id="image">
+                        <img src="<%= meal.getMealimage()%>" id="image">
                     </div>
                     <div class="foodName">
-                        <h4><%= meal.getMealname()%></h4>
+                        <h2><%= meal.getMealname()%></h2>
                     </div>
                     <div class="foodPrice">
-                        <%= meal.getMealprice()%>
+                        <h3>RM <%= meal.getMealprice()%></h3>
                     </div>
                     <div class="btnclass">
                         <form action ="../OrderMeal?mealid=<%= meal.getMealid()%>&studid=<%= student.getStudid()%>&mealcat=<%= meal.getMealcategory()%>" method="POST">

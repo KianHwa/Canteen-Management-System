@@ -40,3 +40,8 @@
   width:100px;
   margin-left:20%;
 }
+
+.foodlisttitle, .nofood{
+    text-align: center;
+    padding:50px;
+}

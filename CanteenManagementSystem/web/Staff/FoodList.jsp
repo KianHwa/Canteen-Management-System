@@ -8,8 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="FoodList.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
-        
+        <style>
+            <%@ include file="FoodList.css"%>
+            <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+        </style>
+        <title>Food</title>
     </head> 
 <body>
     <header>
@@ -28,7 +33,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>
@@ -51,6 +56,12 @@
     </header>
     
     <div class="content">
+        <div class="foodlisttitle">
+            <h1>Food Lists</h1>
+        </div>
+        <%
+            if(foodList.size() !=0){
+        %>
         <table id="foodlist" style="height:150px">
             <tr style="height:50px">
                 <th>No</th>
@@ -69,11 +80,11 @@
                 <td style="width:15%"><a href="UpdateFood.jsp?foodid=<%= food.getFoodid()%>"><button id="updatefoodbtn">Update</button></a></td>
                 <td style="width:15%"><a href=""><button id="deletefoodbtn">Delete</button></a></td>
             </tr>
+            <%}}else{%>
+                <div class="nofood">
+            <h2>Currently there's no food</h2>
+        </div>
             <%}%>
-            
-            <tr>
-                
-            </tr> 
         </table>
     </div>
     <footer>

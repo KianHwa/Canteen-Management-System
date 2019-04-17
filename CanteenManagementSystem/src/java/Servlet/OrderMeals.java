@@ -86,9 +86,7 @@ public class OrderMeals extends HttpServlet {
                     if(orders.getOrderdate().compareTo(startDate) == 0 && orders.getStudentStudid().getStudid().equals(studid) && 
                         orders.getOrderMealList().get(0).getMealMealid().getMealcategory().equals(mealcategory)){
                         sameDate = true;
-                        orderquery = em.createNamedQuery("Orders.findAll");
-                        orderList = orderquery.getResultList();
-                        session.setAttribute("orderList", orderList);
+                        
                         if(orders.getOrderMealList().get(0).getMealMealid().getMealcategory().equals("breakfast")){
                             response.sendRedirect("Student/Breakfast.jsp?status=fail&date=" + orders.getOrderdate());
                         }
@@ -148,6 +146,7 @@ public class OrderMeals extends HttpServlet {
                 
                 orders.setOrderMealList(selectedOrderMeal);
                 
+                if(sameDate == false)
                 em.persist(orders);
             }
             

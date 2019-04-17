@@ -34,6 +34,7 @@ public class UpdateMeal extends HttpServlet {
             String updatedMealcategory = request.getParameter("meal");
             String updatedMealdesc = request.getParameter("mealdesc");
             String mealid = request.getParameter("mealid");
+            String pic = request.getParameter("pic");
             //String mealFoodID = "";
             
             //Query foodquery = em.createNamedQuery("Food.findAll");
@@ -52,7 +53,7 @@ public class UpdateMeal extends HttpServlet {
             meal.setMealcategory(updatedMealcategory);
             meal.setMealdesc(updatedMealdesc);
             meal.setMealname(updatedMealname);
-            meal.setMealimage("aa");
+            meal.setMealimage(pic);
             em.merge(meal);
             utx.commit();
             

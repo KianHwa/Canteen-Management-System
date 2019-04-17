@@ -14,12 +14,14 @@
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
         <link rel="stylesheet" href="StudentHome.css">
         <link rel="stylesheet" href="OrderList.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="OrderList.css"%>
             <%@ include file="StudentHome.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
         </style>
+        <title>Your Orders</title>
     </head>     
 <body>
     <header>

@@ -8,11 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="AddMeal.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="AddMeal.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Add Meal</title>
     </head> 
 <body>
     <%
@@ -47,7 +49,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="">Reports</a></li>
                     <div class="dropdown">
                         <button class="managefood"><a href="">Manage Food</a></button>

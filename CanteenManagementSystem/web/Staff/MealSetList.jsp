@@ -10,11 +10,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="MealSetList.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="MealSetList.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
         </style>
+        <title>Meals</title>
     </head> 
 <body>
     <header>
@@ -27,14 +29,14 @@
                 <div class="profilePic">
                 </div>
                 </a>
-                <div class="hello">
+                <div class="staffhello">
                     <p><%= staff.getStaffname()%></p>
                 </div>
             </div>
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <div class="dropdown">
                         <button class="report"><a href="">Report</a></button>
                         <div class="dropdownContent">
@@ -66,19 +68,29 @@
     </header>
     
     <div class="content">
+        <div class="meallisttitle">
+            <h1>Meal Set Lists</h1>
+        </div>
+        <%
+            if(mealList.size() == 0){
+        %>
+        <div class="nomeal">
+            <h2>Currently there's no meal</h2>
+        </div>
+        <%}%>
         <table id="mealsetlist" style="height:250px">
             <%for (int i=0 ; i< mealList.size() ; i++){
                 Meal meal = mealList.get(i);
             %>
                         <tr>
-                            <td rowspan="4" style="width:30%; height:250px"><img src="../Images/545451.jpg" style="width:100%"></td>
+                            <td rowspan="4" style="width:30%; height:250px"><img src="<%= meal.getMealimage()%>" style="width:100%"></td>
                             <td colspan="2"><%= meal.getMealname()%></td>
                         </tr>
                         <tr>
                             <td colspan="2"><%= meal.getMealdesc()%></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><%= meal.getMealprice()%></td>
+                            <td colspan="2">RM <%= meal.getMealprice()%></td>
                         </tr>
                         <tr>
                             <td><a href="UpdateMeal.jsp?mealid=<%= meal.getMealid()%>"><button id="updatemealbtn">Update</button></a></td>

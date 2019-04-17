@@ -22,7 +22,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     
                     <div class="dropdown">
                         <button class="report"><a href="">Report</a></button>

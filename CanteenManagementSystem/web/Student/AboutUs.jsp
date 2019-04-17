@@ -32,7 +32,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     <div class="dropdown">
                         <button class="creditPoints"><a href="">Credit Points</a></button>

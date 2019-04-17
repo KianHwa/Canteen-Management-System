@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
         <link rel="stylesheet" href="StudentHome.css"> 
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
@@ -25,6 +26,7 @@
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Home</title>
     </head>     
 <body style="display:none">
     <%
@@ -59,7 +61,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     
                     <li><a href="OrderList.jsp">Order</a></li>
@@ -124,7 +126,4 @@
 </html>
 
 
-           <div class="lunch">
-                <a href="Lunch.jsp"><button class="lunchBtn">Lunch</button></a>
-           </div>
-</div> 
+           

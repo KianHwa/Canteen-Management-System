@@ -1,3 +1,5 @@
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <jsp:useBean id="student" scope="session" class="Model.Student" />
 <%@page import="Model.Food, java.util.*" %>
@@ -13,12 +15,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="WeeklyIntake.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         
         <style>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Weekly Food Intake</title>
     </head> 
     <body>
         <header>
@@ -41,7 +45,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     
                     <li><a href="OrderList.jsp">Order</a></li>
@@ -109,22 +113,13 @@
                           <th>Meal Set</th>
                           
                         </tr>
-                        <%
-                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                            
-                        for(int i=0 ; i<orderList.size() ; i++){
-                            Orders orders = orderList.get(i);
-                            if(orders.getOrderstatus().equals("Paid") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
-                                String date = df.format(orders.getOrderdate());
-                                
-                                
-                        %> 
+                        
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        <%}}%>
+                        
                         <tr>
                             <td><p style="text-align:right;font-weight:bold">Total : </p></td>
                             <td></td>

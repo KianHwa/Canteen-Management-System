@@ -14,11 +14,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
         <link rel="stylesheet" href="TranscHistory.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Transaction History</title>
     </head>
     <body>
         <header>
@@ -41,7 +43,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     
                     <li><a href="OrderList.jsp">Order</a></li>

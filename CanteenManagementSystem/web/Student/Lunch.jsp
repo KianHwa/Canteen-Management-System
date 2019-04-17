@@ -11,14 +11,48 @@
     <head>  
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">   
+        <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="BreakfastLunch.css"%>
-            
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Lunch</title>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+        String dates = request.getParameter("date");
+        
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        if(status!=null){
+            if(status.equals("fail")){
+    %>
+    <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">You already ordered a meal on <%= dates%></p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}else if(status.equals("late")){%>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Sorry, you can only pre order 2 days in advance</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}else if(status.equals("ordered")){%>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Successfully added your order</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -39,7 +73,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../HeaderFooter/loading.jsp?status=loggingout">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><button id="couponbtn">Coupon</button></li>
                     
                     <li><a href="OrderList.jsp">Order</a></li>
@@ -109,13 +143,13 @@
         
                 <div class="container">
                     <div class="images">
-                        <img src="../Images/545451.jpg"id="image">
+                        <img src="<%= meal.getMealimage()%>" id="image">
                     </div>
                     <div class="foodName">
-                        <h4><%= meal.getMealname()%></h4>
+                        <h2><%= meal.getMealname()%></h2>
                     </div>
                     <div class="foodPrice">
-                        <%= meal.getMealprice()%>
+                        <h3>RM <%= meal.getMealprice()%></h3>
                     </div>
                     <div class="btnclass">
                         <form action ="../OrderMeal?mealid=<%= meal.getMealid()%>&studid=<%= student.getStudid()%>&mealcat=<%= meal.getMealcategory()%>" method="POST">

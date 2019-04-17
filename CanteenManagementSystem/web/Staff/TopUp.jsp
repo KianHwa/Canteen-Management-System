@@ -6,10 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="TopUp.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Top Up</title>
     </head> 
 <body>
     <%
@@ -43,7 +45,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="TopUp.jsp">Top Up</a></li>
                     <li><a href="">Ingredients</a></li>
                     <li><a href="MealSet.jsp">Meal Set List</a></li>

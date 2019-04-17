@@ -94,7 +94,7 @@ input[type=text]:hover, input[type=password]:hover{
 }
 
 .forgotPwd{
-    margin-left:150%;
+    margin-left:65%;
     text-decoration:none;
     color:white;
     font-style:italic;

@@ -10,11 +10,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css">    
         <link rel="stylesheet" href="StaffHome.css">
+        <link rel="icon" href="../Images/chefhead.png">
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
         <style>
             <%@ include file="StaffHome.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
         </style>
+        <title>Home</title>
     </head> 
 <body>
     <header>
@@ -36,7 +38,7 @@
             
             <div class="navBar">
                 <ul>
-                    <li><a href="../LoginRegister/Main.jsp">Log out</a></li>
+                    <li><a href="../LogOut">Log out</a></li>
                     <li><a href="TopUp.jsp">Top Up</a></li>
                     <li><a href="Ingredients.jsp">Ingredients</a></li>
                     <li><a href="MealSet.jsp">Meal Set List</a></li>
