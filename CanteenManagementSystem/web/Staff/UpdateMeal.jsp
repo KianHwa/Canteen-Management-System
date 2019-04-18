@@ -123,6 +123,7 @@
             String mealdesc = "";
             String mealcategory ="";
             String mealimage = "";
+            String mealstatus = "";
             int mealprice = 0;
             
             for(int i=0 ; i<mealList.size() ; i++){
@@ -134,6 +135,7 @@
                     mealdesc = meal.getMealdesc();
                     mealcategory = meal.getMealcategory();
                     mealimage = meal.getMealimage();
+                    mealstatus = meal.getMealstatus(); 
                 }
             }
             
@@ -144,8 +146,8 @@
         </div>
         
         
-        <form action="../UpdateMeal?mealid=<%= mealid%>" method ="POST" class="editmeal">
-            <!-- Meal Set Name-->
+        <form action="../UpdateMeal?mealid=<%= mealid%>&mealstatus=<%= mealstatus%>" method ="POST" class="editmeal">
+            <!-- Meal Set Name--> 
             <div class="row">
                 <div class="col-25">
                     <label for="mealname">Meal Set Name</label>

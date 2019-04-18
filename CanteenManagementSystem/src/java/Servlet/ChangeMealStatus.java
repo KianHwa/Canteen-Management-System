@@ -13,52 +13,47 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import Model.*;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import java.util.Date;
 
 
-@WebServlet(name = "UpdateMeal", urlPatterns = {"/UpdateMeal"})
-public class UpdateMeal extends HttpServlet {
+@WebServlet(name = "ChangeMealStatus", urlPatterns = {"/ChangeMealStatus"})
+public class ChangeMealStatus extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            String updatedMealname = request.getParameter("mealname");
-            String updatedMealprice = request.getParameter("mealprice");
-            String updatedMealcategory = request.getParameter("meal");
-            String updatedMealdesc = request.getParameter("mealdesc");
-            String mealid = request.getParameter("mealid");
-            String pic = request.getParameter("pic");
             String mealStatus = request.getParameter("mealstatus");
+            String mealid = request.getParameter("mealid");
             
-            Query mealquery = em.createNamedQuery("Meal.findAll");
-            List<Meal> mealList = mealquery.getResultList();
+            Meal meal = em.find(Meal.class,mealid);
+            if(mealStatus.equals("Active"))
+                meal.setMealstatus("Inactive");
+            else if(mealStatus.equals("Inactive"))
+                meal.setMealstatus("Active");
             
-                    
             utx.begin();
-            Meal meal = new Meal();  
-            meal.setMealid(mealid);
-            meal.setMealprice(Integer.parseInt(updatedMealprice));
-            meal.setMealcategory(updatedMealcategory);
-            meal.setMealdesc(updatedMealdesc);
-            meal.setMealname(updatedMealname);
-            meal.setMealstatus(mealStatus);
-            meal.setMealimage(pic);
             em.merge(meal);
             utx.commit();
             
             HttpSession session = request.getSession();
-            mealquery = em.createNamedQuery("Meal.findAll");
-            mealList = mealquery.getResultList();
+            Query mealquery= em.createNamedQuery("Meal.findAll");
+            List<Meal> mealList = mealquery.getResultList();
             session.setAttribute("mealList", mealList);
             
-            response.sendRedirect("Staff/MealSetList.jsp?status=updatemealsuccess&meal=" + meal.getMealname());
+            
+            response.sendRedirect("Staff/MealSetList.jsp");
+            
             
         }
         catch(Exception ex){

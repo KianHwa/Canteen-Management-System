@@ -15,10 +15,41 @@
         <style>
             <%@ include file="StaffHome.css"%>
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
         <title>Home</title>
     </head> 
 <body>
+    <%
+        String status = request.getParameter("status");
+        String mealname = request.getParameter("mealname");
+        
+        if(status!=null){
+           if(status.equals("claimsuccessful")){%>
+           <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Meal "<%=mealname%>" successfully claimed</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}else if(status.equals("claimed")){%>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Coupon has been claimed</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}else if(status.equals("notexist")){%>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Coupon not found</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+       <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">

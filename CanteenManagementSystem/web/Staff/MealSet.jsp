@@ -15,16 +15,18 @@
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
          <style>
             <%@ include file="MealSet.css"%>
+            <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
         <title>Check Meals</title>
     </head> 
 <body>
+    
     <header>
-        <div class="top"id="navbar">
+        <div class="top" id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <img src="../Images/OVERCOOKLOGO.png" style="height:120px;padding:14px 40px">
             </div>
-            <div class="top2">
+            <div class="top2">      
                 <div class="profilePic">
                     
                 </div>

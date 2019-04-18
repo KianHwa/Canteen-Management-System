@@ -51,6 +51,7 @@ public class LoginVerification extends HttpServlet {
                         List<Orders> orderList = orderquery.getResultList();
                         session.setAttribute("orderList", orderList);
                         
+                        
                         response.sendRedirect("HeaderFooter/loading.jsp?status=studentloggingin");
                     }  
                     

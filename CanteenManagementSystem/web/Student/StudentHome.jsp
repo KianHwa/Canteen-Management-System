@@ -81,7 +81,7 @@
                     <h1>Meal Coupon</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="">
+                    <form action="PrintCoupon.jsp" method="POST" target="_blank">
                     <table id="meals">
                         <tr>
                           <th>No</th>
@@ -96,9 +96,10 @@
                             SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
                             for(int i=0 ; i<orderList.size() ; i++){
                                 Orders orders = orderList.get(i);
-                                if(orders.getOrderstatus().equals("Paid")){
+                                if(orders.getOrderstatus().equals("Paid") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
                                     count++;
                                     String date = dff.format(orders.getOrderdate());
+                                    
                                     
                         %>
                         <tr>

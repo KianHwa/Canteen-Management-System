@@ -138,7 +138,7 @@
         <%
             for(int i=0 ; i<mealList.size() ; i++){
                 Meal meal = mealList.get(i);
-                if(meal.getMealcategory().equals("lunch")){
+                if(meal.getMealcategory().equals("lunch") && meal.getMealstatus().equals("Active")){
         %>
         
                 <div class="container">

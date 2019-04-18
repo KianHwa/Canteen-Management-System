@@ -37,22 +37,44 @@ public class ClaimOrder extends HttpServlet {
             
             Query orderquery = em.createNamedQuery("Orders.findAll");
             List<Orders> orderList = orderquery.getResultList();
+            boolean claimCoupon = false;
+            boolean couponClaimed = false;
+            boolean couponNotFound = false;
             
-            utx.begin();
+            String mealname = "" ;
+            
             for(int i=0 ; i<orderList.size() ; i++){
                 Orders orders = orderList.get(i);
-                if(orders.getCouponcode().equals(couponCode)){
+                if(orders.getCouponcode().equals(couponCode) && orders.getOrderstatus().equals("Paid")){
                     orders.setOrderstatus("Claimed");
+                    utx.begin();
                     em.merge(orders);
+                    utx.commit();
+                    mealname = orders.getOrderMealList().get(0).getMealMealid().getMealname();
+                    claimCoupon = true;
+                }
+                else if(orders.getCouponcode().equals(couponCode) && orders.getOrderstatus().equals("Claimed")){
+                    couponClaimed = true;
+                }
+                else{
+                    couponNotFound = true;
                 }
             }
-            utx.commit();
+            
+            if(claimCoupon == false){
+                if(couponClaimed == true)
+                    response.sendRedirect("Staff/StaffHome.jsp?status=claimed");
+                if(couponNotFound = true)
+                    response.sendRedirect("Staff/StaffHome.jsp?status=notexist");
+            }
+            
+            
             
             HttpSession session = request.getSession();
             orderquery = em.createNamedQuery("Orders.findAll");
             orderList = orderquery.getResultList();
             session.setAttribute("orderList", orderList);
-            response.sendRedirect("Staff/StaffHome.jsp");
+            response.sendRedirect("Staff/StaffHome.jsp?status=claimsuccessful&mealname=" + mealname);
             
         }
         catch(Exception ex){

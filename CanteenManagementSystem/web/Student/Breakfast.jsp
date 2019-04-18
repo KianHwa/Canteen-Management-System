@@ -55,7 +55,7 @@
             <script src="../HeaderFooter/PopOut.js"></script>
     <%}}%>
     <header>
-        <div class="top"id="navbar">
+        <div class="top" id="navbar">
             <div class="top1">
                 <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
             </div>
@@ -92,7 +92,7 @@
                     <h1>Meal Coupon</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="">
+                    <form action="" method="" target="_blank">
                     <table id="meals">
                         <tr>
                           <th>No</th>
@@ -139,7 +139,7 @@
         <%
             for(int i=0 ; i<mealList.size() ; i++){
                 Meal meal = mealList.get(i);
-                if(meal.getMealcategory().equals("breakfast")){
+                if(meal.getMealcategory().equals("breakfast") && meal.getMealstatus().equals("Active")){
         %>
         
                 <div class="container">

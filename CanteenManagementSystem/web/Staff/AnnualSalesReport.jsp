@@ -60,7 +60,7 @@
     <div class="reporttitle">
             <h1>Annual Sales Report</h1>
         </div>
-      <form action="../AnnualSalesReport" method="POST" class="annualsalesreport" target="_blank">
+      <form action="../QueryTestingg" method="POST" class="annualsalesreport" target="_blank">
         <div class="row">
           <div class="col-25">
             <label for="reportdate">Report's Year</label>

@@ -85,6 +85,7 @@ public class AddMealSet extends HttpServlet {
             meal.setMealcategory(category);
             meal.setMealdesc(mealSetDesc);
             meal.setMealimage("images");
+            meal.setMealstatus("Active");
             //int j=0;
             
             List<MealFood> selectedMealFood = new ArrayList<MealFood>();
