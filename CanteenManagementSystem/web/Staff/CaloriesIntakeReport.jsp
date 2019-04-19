@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Annual Sales Report</title>
+        <title>Calories Intake Report</title>
         <style>
             <%@ include file="Report.css"%>
         </style>
@@ -19,19 +19,21 @@
         <%
             String year = request.getParameter("year");
             String todaysdate = request.getParameter("generatedate");
+            String studentName = request.getParameter("studname");
         %> 
         <table id="reports">
             <tr>
                 <td colspan="3">
                     <img src="Images/OVERCOOKLOGO.png">
-                    <h1 style="align:center;padding:50px;text-align:center">Annual Sales Report of <%= year%></h1>
+                    <h1 style="align:center;padding:50px;text-align:center">Total Calories Intake of Student of <%= year%></h1>
                     <h4 style="text-align:center;text-align:left;padding-left:20px;">Generated on : <%= todaysdate%></h4>
+                    <h4 style="text-align:center;text-align:left;padding-left:20px;">Student: <%= studentName%></h4>
                 </td>
             </tr>
             <tr>
-                <th style="text-align:center">Month</th>
-                <th style="text-align:center">Total Quantity Meal Sales (sets)</th>
-                <th style="text-align:center">Total Sales (RM)</th>
+                <th style="text-align:center">Meal Set</th>
+                <th style="text-align:center">Order ID</th>
+                <th style="text-align:center">Calories (cal)</th>
             </tr>
         ${output}
             <tr>

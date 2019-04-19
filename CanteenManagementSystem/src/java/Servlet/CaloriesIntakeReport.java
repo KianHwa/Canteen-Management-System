@@ -28,8 +28,8 @@ import java.util.Date;
 import util.Util;
 
 
-@WebServlet(name = "AnnualSalesReport", urlPatterns = {"/AnnualSalesReport"})
-public class AnnualSalesReport extends HttpServlet {
+@WebServlet(name = "CaloriesIntakeReport", urlPatterns = {"/CaloriesIntakeReport"})
+public class CaloriesIntakeReport extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
@@ -44,7 +44,9 @@ public class AnnualSalesReport extends HttpServlet {
     throws ServletException, IOException {
         try{
             String year = request.getParameter("year");
-             String outputYearly = "";
+            String studentID = request.getParameter("studid");
+            
+            Student student = em.find(Student.class,studentID);
              
             //Calendar
             Calendar firstday = Calendar.getInstance();
@@ -63,52 +65,35 @@ public class AnnualSalesReport extends HttpServlet {
                 LocalDateTime now = LocalDateTime.now();  
             
                 Date todaysDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dtf.format(now));
-               
-                
-                for(int i=0 ; i<12 ; i++){
-                stmt = conn.prepareStatement("select count(o.orderid), sum(m.mealprice) from Orders o, order_meal om, meal m where o.orderID = om.order_orderID and om.meal_mealid = m.mealID and MONTH(o.orderDate) = ? and YEAR(o.orderDate) = ? and (o.orderStatus = 'Claimed' or o.orderStatus = 'Paid')");
-                stmt.setInt(1,i+1);
-                stmt.setString(2,year);
-                ResultSet rs = stmt.executeQuery();
-                
-                ArrayList<String> month = new ArrayList<String>();
-                month.add("January");
-                month.add("February");
-                month.add("March");
-                month.add("April");
-                month.add("May");
-                month.add("June");
-                month.add("July");
-                month.add("August");
-                month.add("September");
-                month.add("October");
-                month.add("November");
-                month.add("December");
 
-                while (rs.next()) {
-                    outputYearly += "<tr>"
-                            + "<td>" + month.get(i) + "</td>"
-                            + "<td>" + rs.getInt(1) + "</td>"
-                            + "<td>" + rs.getInt(2) + "</td>"
-                            + "</tr>";
-                }
-                }
                 
-                stmt = conn.prepareStatement("select count(m.mealid), sum(m.mealprice) from Orders o, order_meal om, meal m where o.orderID = om.order_orderID and om.meal_mealid = m.mealID and (o.orderStatus = 'Claimed' or o.orderStatus = 'Paid') and o.orderdate between ? and ?");
+                stmt = conn.prepareStatement("select m.mealname, o.ORDERID, sum(f.FOODCALORIES) " +
+                                             "from Orders o, Student s, Order_Meal om, Meal m, Meal_Food mf, Food f " +
+                                             "where s.STUDID = o.STUDENT_STUDID and " +
+                                             "o.ORDERID = om.ORDER_ORDERID and " +
+                                             "om.MEAL_MEALID = m.MEALID and " +
+                                             "m.MEALID = mf.MEAL_MEALID and " +
+                                             "mf.FOOD_FOODID = f.FOODID and " +
+                                             "s.STUDID ='STD1001' and " +
+                                             "(o.ORDERSTATUS ='Paid' or " +
+                                             "o.ORDERSTATUS ='Claimed') and o.orderdate between ? and ? and s.studid = ? " +
+                                             "group by m.mealname, o.orderID, f.FOODCALORIES");
+                String outputCalories = "";
                 stmt.setDate(1, Util.getSQLDate(Util.calToDate(firstday)));
-                stmt.setDate(2, Util.getSQLDate(Util.calToDate(lastday)));   
+                stmt.setDate(2, Util.getSQLDate(Util.calToDate(lastday))); 
+                stmt.setString(3,studentID);
                 ResultSet rs1 = stmt.executeQuery();
                 
                 while(rs1.next()){
-                    outputYearly += "<tr>"
-                            + "<td>" + "Total" + "</td>"
-                            + "<td style=\"font-weight:bold\">" + rs1.getInt(1) + "</td>"
-                            + "<td style=\"font-weight:bold\">" + rs1.getInt(2) + "</td>"
+                    outputCalories += "<tr>"
+                            + "<td>" + rs1.getString(1) + "</td>"
+                            + "<td>" + rs1.getString(2) + "</td>"
+                            + "<td>" + rs1.getString(3) + "</td>"
                             + "</tr>";
                 }
                 
-                request.setAttribute("output",outputYearly);
-                request.getRequestDispatcher("Staff/AnnualSalesReport.jsp?year=" + year + "&generatedate=" + todaysDate).forward(request, response);        
+                request.setAttribute("output",outputCalories);
+                request.getRequestDispatcher("Staff/CaloriesIntakeReport.jsp?year=" + year + "&generatedate=" + todaysDate + "&studname=" + student.getStudname()).forward(request, response);        
                     
         }
         catch(Exception ex){

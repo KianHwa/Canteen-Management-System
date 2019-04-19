@@ -40,7 +40,7 @@ public class AddMealSet extends HttpServlet {
             
             String mealSetName = request.getParameter("mealname");
             int mealSetPrice = Integer.parseInt(request.getParameter("mealprice"));
-            String imagePath = request.getRealPath("mealimage");
+            String image = request.getParameter("pic");
             String category = request.getParameter("meal");
             String mealSetDesc = request.getParameter("mealdesc");
             String mealID = "";
@@ -84,7 +84,7 @@ public class AddMealSet extends HttpServlet {
             meal.setMealprice(mealSetPrice);
             meal.setMealcategory(category);
             meal.setMealdesc(mealSetDesc);
-            meal.setMealimage("images");
+            meal.setMealimage(image);
             meal.setMealstatus("Active");
             //int j=0;
             
@@ -92,8 +92,6 @@ public class AddMealSet extends HttpServlet {
             
             for (int i = 0; i < foodList.size(); ++i) {
                 if (request.getParameter("foodArr[" + i + "]")!=null) {
-                    //mealFoodID = "MLF" + j;
-                    //String mealFoodID = "MLF" + String.format("%02d",mealFoodIDsize);
                     if(mealFoodList.size() == 0){
                         mealFoodID = "MLF" + String.format("%02d",mealFoodListSize + 1);
                         ++mealFoodListSize;

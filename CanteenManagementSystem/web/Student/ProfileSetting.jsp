@@ -81,7 +81,7 @@
                     <h1>Meal Coupon</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="">
+                    
                     <table id="meals">
                         <tr>
                           <th>No</th>
@@ -89,15 +89,18 @@
                           <th>Meal Set Name</th>
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
+                          <th></th>
                         </tr>
                         <%
+                            
                             int count=0;
-                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                            SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
                             for(int i=0 ; i<orderList.size() ; i++){
                                 Orders orders = orderList.get(i);
-                                if(orders.getOrderstatus().equals("Paid")){
+                                if(orders.getOrderstatus().equals("Paid") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
                                     count++;
-                                    String date = df.format(orders.getOrderdate());
+                                    String date = dff.format(orders.getOrderdate());
+                                    
                                     
                         %>
                         <tr>
@@ -106,12 +109,13 @@
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealcategory()%></td>
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealid()%></td>
                             <td><%= orders.getCouponcode()%></td>
+                            <td><form action="../CancelOrder?orderid=<%= orders.getOrderid()%>&mealprice=<%= orders.getOrderMealList().get(0).getMealMealid().getMealprice()%>&studid=<%= student.getStudid()%>" method="POST"><input type="submit" id="cancelbtn" value="Cancel"></form></td>
                         </tr>
                         <%}}%>
                         
                       </table>
-            <input type="submit" value="Print" id="printbtn">
-        </form>
+                      <form action="PrintCoupon.jsp" method="POST" target="_blank"><input type="submit" value="Print" id="printbtn"></form>
+                      
                 </div>
                 <div class="modal-footer">
                     <h3></h3>
@@ -148,13 +152,13 @@
                     <input type="text" name="email" id="email"  value="<%= student.getStudemail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br/>
                     
                     <label for="oldpwd">Old Password</label>
-                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
                     
                     <label for="newpwd">New Password</label>
-                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
 
                     <label for="rpwd">Reenter Password</label>
-                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br/>
+                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ><br/>
 
                     <label for="hpno">Phone Number</label>
                     <input type="text" id="hpno" name="phone" value="<%= student.getStudphone()%>" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"  title="Ten digits code">

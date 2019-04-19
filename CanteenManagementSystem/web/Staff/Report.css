@@ -65,3 +65,37 @@ label {
 .checkreport{
     padding-bottom:100px;
 }
+
+/*Order List Table*/
+#reports {
+  border-collapse: collapse;
+  width: 80%;
+  margin:0;
+  margin-top:50px;
+  margin-left:10%;
+  margin-bottom:50px;
+}
+
+#reports td, #reports th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align:center;
+}
+
+
+#reports th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+.reportlogo{
+    background:url(../Images/logo.png);
+    height:100px;
+    width:100px;
+}
+
+
+

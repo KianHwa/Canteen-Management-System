@@ -33,6 +33,7 @@
     </head>     
 <body style="display:none">
     <%
+        String status = request.getParameter("status"); 
         int creditPoints = student.getCredpoints();
         if(creditPoints < 50){
     %>
@@ -44,6 +45,22 @@
             </div>
             <script src="../HeaderFooter/PopOut.js"></script>
     <%}%>
+    
+    <%
+        String mealname = request.getParameter("mealname");
+        String refund = request.getParameter("refund");
+        
+        if(status!=null){
+            if(status.equals("ordercanceled")){
+    %>
+        <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p style="text-align:center">Your order <%= mealname%><br/> has been canceled <br/> RM <%= refund%> has been refunded</p>
+                </div>
+            </div>
+            <script src="../HeaderFooter/PopOut.js"></script>
+    <%}}%>
     <header>
         <div class="top"id="navbar">
             <div class="top1">
@@ -81,7 +98,7 @@
                     <h1>Meal Coupon</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="PrintCoupon.jsp" method="POST" target="_blank">
+                    
                     <table id="meals">
                         <tr>
                           <th>No</th>
@@ -89,6 +106,7 @@
                           <th>Meal Set Name</th>
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
+                          <th></th>
                         </tr>
                         <%
                             
@@ -108,12 +126,13 @@
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealcategory()%></td>
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealid()%></td>
                             <td><%= orders.getCouponcode()%></td>
+                            <td><form action="../CancelOrder?orderid=<%= orders.getOrderid()%>&mealprice=<%= orders.getOrderMealList().get(0).getMealMealid().getMealprice()%>&studid=<%= student.getStudid()%>" method="POST"><input type="submit" id="cancelbtn" value="Cancel"></form></td>
                         </tr>
                         <%}}%>
                         
                       </table>
-            <input type="submit" value="Print" id="printbtn">
-        </form>
+                      <form action="PrintCoupon.jsp" method="POST" target="_blank"><input type="submit" value="Print" id="printbtn"></form>
+                      
                 </div>
                 <div class="modal-footer">
                     <h3></h3>

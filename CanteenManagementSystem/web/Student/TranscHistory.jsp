@@ -60,7 +60,7 @@
                     <h1>Meal Coupon</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="">
+                    
                     <table id="meals">
                         <tr>
                           <th>No</th>
@@ -68,15 +68,18 @@
                           <th>Meal Set Name</th>
                           <th>Meal ID</th>
                           <th>Coupon Code</th>
+                          <th></th>
                         </tr>
                         <%
+                            
                             int count=0;
                             SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
                             for(int i=0 ; i<orderList.size() ; i++){
                                 Orders orders = orderList.get(i);
-                                if(orders.getOrderstatus().equals("Paid")){
+                                if(orders.getOrderstatus().equals("Paid") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
                                     count++;
                                     String date = dff.format(orders.getOrderdate());
+                                    
                                     
                         %>
                         <tr>
@@ -85,18 +88,20 @@
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealcategory()%></td>
                             <td><%= orders.getOrderMealList().get(0).getMealMealid().getMealid()%></td>
                             <td><%= orders.getCouponcode()%></td>
+                            <td><form action="../CancelOrder?orderid=<%= orders.getOrderid()%>&mealprice=<%= orders.getOrderMealList().get(0).getMealMealid().getMealprice()%>&studid=<%= student.getStudid()%>" method="POST"><input type="submit" id="cancelbtn" value="Cancel"></form></td>
                         </tr>
                         <%}}%>
+                        
                       </table>
-            <input type="submit" value="Print" id="printbtn">
-        </form>
+                      <form action="PrintCoupon.jsp" method="POST" target="_blank"><input type="submit" value="Print" id="printbtn"></form>
+                      
                 </div>
                 <div class="modal-footer">
                     <h3></h3>
                 </div>
             </div>
           </div>
-        <script src="../HeaderFooter/OrderModal.js"></script>
+    <script src="../HeaderFooter/OrderModal.js"></script>
                       
     <div class="content">
         <div class="transchistory">
@@ -119,7 +124,7 @@
                             
                         for(int i=0 ; i<orderList.size() ; i++){
                             Orders orders = orderList.get(i);
-                            if(orders.getOrderstatus().equals("Paid") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
+                            if(orders.getOrderstatus().equals("Paid") || orders.getOrderstatus().equals("Claimed") && orders.getStudentStudid().getStudid().equals(student.getStudid())){
                                 counts++;
                                 String date = df.format(orders.getOrderdate());
                                 pricetotal+=orders.getOrderMealList().get(0).getMealMealid().getMealprice();

@@ -13,9 +13,7 @@
             <link rel="icon" href="../Images/chefhead.png">
             <script src="../HeaderFooter/HeaderAndFooter.js"></script>
             <style>
-                <%@ include file="MealSetList.css"%>
-                <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
-                <%@ include file="../HeaderFooter/PopOut.css"%>
+                <%@ include file="Report.css"%>
             </style>
             <title>Meals</title>
         </head> 
@@ -84,50 +82,27 @@
 
         </header>
 
+                      
         <div class="content">
-            <div class="meallisttitle">
-                <h1>Meal Set Lists</h1>
-            </div>
-            <%
-                if(mealList.size() == 0){
-            %>
-            <div class="nomeal">
-                <h2>Currently there's no meal</h2>
-            </div>
-            <%}%>
-                <%
-                    for (int i=0 ; i< mealList.size() ; i++){
-                    Meal meal = mealList.get(i);
-                    String mealStatus = meal.getMealstatus();
-                %>
-
-                <%if(mealStatus.equals("Active")){%>
-                    <table id="mealsetlist" style="height:250px">
-                <%}else if(mealStatus.equals("Inactive")){%>
-                    <table id="mealsetlist" style="height:250px;border:2px solid red;">
-                <%}%>
-                            <tr>
-                                <td rowspan="4" style="width:30%; height:250px"><img src="<%= meal.getMealimage()%>" style="width:100%"></td>
-                                <td colspan="2"><%= meal.getMealname()%></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><%= meal.getMealdesc()%></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">RM <%= meal.getMealprice()%></td>
-                            </tr>
-                            <tr>
-                                <td><a href="UpdateMeal.jsp?mealid=<%= meal.getMealid()%>"><button id="updatemealbtn">Update</button></a></td>
-                                <%if(mealStatus.equals("Active")){%>
-                                    <td><a href="../ChangeMealStatus?mealstatus=Active&mealid=<%= meal.getMealid()%>"><button id="deletemealbtn">Active</button></a></td>
-                                <%}else if(mealStatus.equals("Inactive")){%>
-                                <td><a href="../ChangeMealStatus?mealstatus=Inactive&mealid=<%= meal.getMealid()%>"><button id="deletemealbtn">Inactive</button></a></td>
-                                <%}%>
-                            </tr> 
-
-                          </table>
-                          <%}%>
+        <div class="reporttitle">
+            <h1>Daily Sales Report</h1>
         </div>
+      <form action="../DailySalesReport" method="POST" class="reports" id="reports" target="_blank">
+        <div class="row">
+          <div class="col-25">
+            <label for="foodname">Report's Date</label>
+          </div>
+          <div class="col-75">
+              <input type="date" name="reportdate" id="reportdate">
+          </div>
+        </div>
+          
+        <div class="row">
+          <input type="submit" value="Generate" class="checkreportbtn">
+        </div>
+      </form>
+                    </div>
+                    
         <footer>
             <div class="bottom">
 

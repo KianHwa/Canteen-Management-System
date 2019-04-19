@@ -13,29 +13,11 @@
             <link rel="icon" href="../Images/chefhead.png">
             <script src="../HeaderFooter/HeaderAndFooter.js"></script>
             <style>
-                <%@ include file="MealSetList.css"%>
-                <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
-                <%@ include file="../HeaderFooter/PopOut.css"%>
+                <%@ include file="Report.css"%>
             </style>
             <title>Meals</title>
         </head> 
     <body>
-        <%
-            String status = request.getParameter("status");
-            String mealname = request.getParameter("meal");
-        %>
-
-        <%if(status!=null){
-            if(mealname!=null || !mealname.equals("")){
-               if(status.equals("updatemealsuccess")){%>
-               <div id="myModal" class="modal">
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <p style="text-align:center">Meal "<%= mealname%>" successfully updated</p>
-                    </div>
-                </div>
-                <script src="../HeaderFooter/PopOut.js"></script>
-           <%}}}%>
         <header>
             <div class="top"id="navbar">
                 <div class="top1">
@@ -84,50 +66,30 @@
 
         </header>
 
+                      
         <div class="content">
-            <div class="meallisttitle">
-                <h1>Meal Set Lists</h1>
-            </div>
-            <%
-                if(mealList.size() == 0){
-            %>
-            <div class="nomeal">
-                <h2>Currently there's no meal</h2>
-            </div>
-            <%}%>
-                <%
-                    for (int i=0 ; i< mealList.size() ; i++){
-                    Meal meal = mealList.get(i);
-                    String mealStatus = meal.getMealstatus();
-                %>
-
-                <%if(mealStatus.equals("Active")){%>
-                    <table id="mealsetlist" style="height:250px">
-                <%}else if(mealStatus.equals("Inactive")){%>
-                    <table id="mealsetlist" style="height:250px;border:2px solid red;">
-                <%}%>
-                            <tr>
-                                <td rowspan="4" style="width:30%; height:250px"><img src="<%= meal.getMealimage()%>" style="width:100%"></td>
-                                <td colspan="2"><%= meal.getMealname()%></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><%= meal.getMealdesc()%></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">RM <%= meal.getMealprice()%></td>
-                            </tr>
-                            <tr>
-                                <td><a href="UpdateMeal.jsp?mealid=<%= meal.getMealid()%>"><button id="updatemealbtn">Update</button></a></td>
-                                <%if(mealStatus.equals("Active")){%>
-                                    <td><a href="../ChangeMealStatus?mealstatus=Active&mealid=<%= meal.getMealid()%>"><button id="deletemealbtn">Active</button></a></td>
-                                <%}else if(mealStatus.equals("Inactive")){%>
-                                <td><a href="../ChangeMealStatus?mealstatus=Inactive&mealid=<%= meal.getMealid()%>"><button id="deletemealbtn">Inactive</button></a></td>
-                                <%}%>
-                            </tr> 
-
-                          </table>
-                          <%}%>
+        <div class="reporttitle">
+            <h1>Meal Cancellation Report</h1>
         </div>
+      <form action="../CancelOrderReport" method="POST" class="reports" id="reports" target="_blank">
+        <div class="row">
+          <div class="col-25">
+            <label for="year">Report's Year</label>
+          </div>
+          <div class="col-75">
+              <select name="year" id="year">
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+              </select>
+          </div>
+        </div>
+          
+        <div class="row">
+          <input type="submit" value="Generate" class="checkreportbtn">
+        </div>
+      </form>
+      </div>
+                    
         <footer>
             <div class="bottom">
 

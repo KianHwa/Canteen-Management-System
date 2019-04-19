@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Annual Sales Report</title>
+        <title>Daily Sales Report</title>
         <style>
             <%@ include file="Report.css"%>
         </style>
@@ -17,25 +17,26 @@
     <body>
         
         <%
-            String year = request.getParameter("year");
             String todaysdate = request.getParameter("generatedate");
         %> 
         <table id="reports">
             <tr>
-                <td colspan="3">
+                <td colspan="5">
                     <img src="Images/OVERCOOKLOGO.png">
-                    <h1 style="align:center;padding:50px;text-align:center">Annual Sales Report of <%= year%></h1>
+                    <h1 style="align:center;padding:50px;text-align:center">Daily Meal Sales Report </h1>
                     <h4 style="text-align:center;text-align:left;padding-left:20px;">Generated on : <%= todaysdate%></h4>
                 </td>
             </tr>
             <tr>
-                <th style="text-align:center">Month</th>
-                <th style="text-align:center">Total Quantity Meal Sales (sets)</th>
-                <th style="text-align:center">Total Sales (RM)</th>
+                <th style="text-align:center">Order ID</th>
+                <th style="text-align:center">Student ID</th>
+                <th style="text-align:center">Student Name</th>
+                <th style="text-align:center">Meal Category</th>
+                <th style="text-align:center">Meal Price (RM)</th>
             </tr>
         ${output}
             <tr>
-                <td colspan="3" style="background:#f2f2f2;margin-top:100px;text-align:left;">
+                <td colspan="5" style="background:#f2f2f2;margin-top:100px;text-align:left;">
                     <br/><br/><br/><br/>    Verified By:<br/><br/>
                     
                     _______________________

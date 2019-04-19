@@ -12,8 +12,9 @@
             <%@ include file="../HeaderFooter/HeaderAndFooter.css"%>
             <%@ include file="../HeaderFooter/PopOut.css"%>
         </style>
+        <title>Your Profile</title>
     </head> 
-    <title>Your Profile</title>
+    
 <body>
     <%
         String status = request.getParameter("status");
@@ -92,13 +93,13 @@
                     <input type="text" name="email" id="email"  value="<%= staff.getStaffemail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br/>
                     
                     <label for="oldpwd">Old Password</label>
-                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="oldpwd" id="oldpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
                     
                     <label for="newpwd">New Password</label>
-                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <input type="password" name="newpwd" id="newpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
 
                     <label for="rpwd">Reenter Password</label>
-                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br/>
+                    <input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ><br/>
 
                     <label for="hpno">Phone Number</label>
                     <input type="text" id="hpno" name="phone" value="<%= staff.getStaffphone()%>" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"  title="Ten digits code">
