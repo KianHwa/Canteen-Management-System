@@ -49,7 +49,7 @@ public class EditManagerProfile extends HttpServlet {
                     staff.setStaffpassword(newpwd);
                     staff.setStaffname(name);
 
-                    utx.begin();
+                utx.begin();
                 em.merge(staff);
                 utx.commit();
                 
@@ -64,9 +64,9 @@ public class EditManagerProfile extends HttpServlet {
                     staff.setStaffemail(email);
                     staff.setStaffphone(phone);
                     
-                     utx.begin();
-                em.merge(staff);
-                utx.commit();
+                    utx.begin();
+                    em.merge(staff);
+                    utx.commit();
                 
                 HttpSession session = request.getSession();
                 Staff stf = em.find(Staff.class ,staffid);

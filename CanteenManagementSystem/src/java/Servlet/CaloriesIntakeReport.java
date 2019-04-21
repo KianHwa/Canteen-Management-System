@@ -47,7 +47,9 @@ public class CaloriesIntakeReport extends HttpServlet {
             String studentID = request.getParameter("studid");
             
             Student student = em.find(Student.class,studentID);
-             
+            
+            
+            if(student!=null){ 
             //Calendar
             Calendar firstday = Calendar.getInstance();
             Calendar lastday = Calendar.getInstance();
@@ -85,6 +87,7 @@ public class CaloriesIntakeReport extends HttpServlet {
                 ResultSet rs1 = stmt.executeQuery();
                 
                 while(rs1.next()){
+                    
                     outputCalories += "<tr>"
                             + "<td>" + rs1.getString(1) + "</td>"
                             + "<td>" + rs1.getString(2) + "</td>"
@@ -93,7 +96,11 @@ public class CaloriesIntakeReport extends HttpServlet {
                 }
                 
                 request.setAttribute("output",outputCalories);
-                request.getRequestDispatcher("Staff/CaloriesIntakeReport.jsp?year=" + year + "&generatedate=" + todaysDate + "&studname=" + student.getStudname()).forward(request, response);        
+                request.getRequestDispatcher("Staff/CaloriesIntakeReport.jsp?year=" + year + "&generatedate=" + todaysDate + "&studname=" + student.getStudname() + "&found=true").forward(request, response);   
+            }
+            else{
+                response.sendRedirect("Staff/CaloriesIntakeReport.jsp?found=error");
+            }
                     
         }
         catch(Exception ex){

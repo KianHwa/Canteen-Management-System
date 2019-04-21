@@ -20,9 +20,9 @@
     <body>
         <header>
             <div class="top"id="navbar">
-                <div class="top1">
-                    <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
-                </div>
+               <div class="top1">
+                <a href="MealSetList.jsp"><img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px"></a>
+            </div>
                 <div class="top2">
                     <a href="ManagerProfileSetting.jsp">
                     <div class="profilePic">

@@ -22,8 +22,8 @@
         <header>
             <div class="top"id="navbar">
                 <div class="top1">
-                    <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
-                </div>
+                <a href="MealSetList.jsp"><img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px"></a>
+            </div>
                 <div class="top2">
                     <a href="ManagerProfileSetting.jsp">
                     <div class="profilePic">
@@ -44,7 +44,7 @@
                                 <a href="AnnualReportMenu.jsp">Annual Sales Report</a>
                                 <a href="CaloriesSummary.jsp">Student's Calories Intake Report</a>
 
-                                <a href="ExceptionReport.jsp">Meal Cancellation Report</a>
+                                <a href="CancelOrderReportMenu.jsp">Meal Cancellation Report</a>
                             </div>
                         </div>
                         <div class="dropdown">

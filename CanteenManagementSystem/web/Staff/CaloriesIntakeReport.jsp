@@ -15,7 +15,14 @@
         </style>
     </head>
     <body>
-        
+        <%
+        String found = request.getParameter("found");
+        %>
+    
+    <%if(found!=null){
+           if(found.equals("error")){%>
+            <h1 style="text-align:center;padding:50px;">Student Not Found</h1>
+       <%}else if(found.equals("true")){%>
         <%
             String year = request.getParameter("year");
             String todaysdate = request.getParameter("generatedate");
@@ -45,8 +52,7 @@
                 </td>
             </tr>
             
-        </table>
-        
-
+        </table>        
+<%}}%>
     </body>
 </html>

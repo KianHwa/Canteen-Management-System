@@ -51,13 +51,26 @@ public class EditStudentProfile extends HttpServlet {
                 utx.commit();
                 
                 HttpSession session = request.getSession();
-                Query studentquery = em.createNamedQuery("Student.findAll");
-                List<Student> studentList = studentquery.getResultList();
-                session.setAttribute("studentList", studentList);
+                Student std = em.find(Student.class ,studid);
+                session.setAttribute("staff",std);
                 
                 response.sendRedirect("Student/ProfileSetting.jsp?status=success");
                 
             }
+            else if(newpwd.equals("")){
+                    student.setStudemail(email);
+                    student.setStudphone(phone);
+                    
+                    utx.begin();
+                    em.merge(student);
+                    utx.commit();
+                
+                HttpSession session = request.getSession();
+                Student std = em.find(Student.class ,studid);
+                session.setAttribute("staff",std);
+                    
+                    response.sendRedirect("Student/ProfileSetting.jsp?status=success");
+                }
             else{
                 response.sendRedirect("Student/ProfileSetting.jsp?status=error");
             }

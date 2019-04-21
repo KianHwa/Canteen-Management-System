@@ -23,12 +23,13 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <a href="StaffHome.jsp"><img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px"></a>
             </div>
             <div class="top2">
+                <a href="ProfileSetting.jsp">
                 <div class="profilePic">
-                    
                 </div>
+                </a>
                 <div class="staffhello">
                     <p>Staff Name</p>
                 </div>
@@ -70,19 +71,22 @@
                             int no = 1;
                             
                             for(int j=0 ; j<foodList.size() ; j++){
+                                int foodcount = 0;
                                 int count=0;
                                 Food food = foodList.get(j);
                                     for(int i=0 ;  i<orderList.size() ; i++){ 
                                         Orders orders = orderList.get(i);
                                         
                                         if(orders.getOrderstatus().equals("Paid")){
-                                            
-                                                if(food.getFoodid().equals(orders.getOrderMealList().get(0).getMealMealid().getMealFoodList().get(0).getFoodFoodid().getFoodid())){
+                                            foodcount = orders.getOrderMealList().get(0).getMealMealid().getMealFoodList().size();
+                                            for(int k=0 ; k<foodcount ; k++){
+                                                if(food.getFoodid().equals(orders.getOrderMealList().get(0).getMealMealid().getMealFoodList().get(k).getFoodFoodid().getFoodid())){
                                                     if(checkdate!=null){
                                                         if(checkdate.equals(df.format(orders.getOrderdate())))
                                                             count++;
                                                     }
                                                 }
+                                            }
                                             
                                             
                                         }

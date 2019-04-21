@@ -58,6 +58,20 @@ public class EditStaffProfile extends HttpServlet {
                 response.sendRedirect("Staff/ProfileSetting.jsp?status=success");
                 
             }
+            else if(newpwd.equals("")){
+                    staff.setStaffemail(email);
+                    staff.setStaffphone(phone);
+                    
+                    utx.begin();
+                    em.merge(staff);
+                    utx.commit();
+                
+                HttpSession session = request.getSession();
+                Staff stf = em.find(Staff.class ,staffid);
+                session.setAttribute("staff",stf);
+                    
+                    response.sendRedirect("Staff/ProfileSetting.jsp?status=success");
+                }
             else{
                 response.sendRedirect("Staff/ProfileSetting.jsp?status=error");
             }
