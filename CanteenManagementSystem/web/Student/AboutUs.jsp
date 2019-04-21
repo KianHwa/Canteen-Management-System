@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="../HeaderFooter/HeaderAndFooter.css"> 
         <script src="../HeaderFooter/HeaderAndFooter.js"></script>
+        
     </head>
     <style>
         div.aboutus {
@@ -13,6 +14,7 @@
               font: italic bold 18px/30px Georgia serif;
 
         }
+        
     </style>
     
     <body>
@@ -48,38 +50,7 @@
         </div>
     </header>
     
-    <div id="myModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <h1>Meal Coupon</h1>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                    <table id="meals">
-                        <tr>
-                          <th>No</th>
-                          <th>Date</th>
-                          <th>Meal Description</th>
-                          <th>Meal ID</th>
-                          <th>Coupon Code</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                            <td>Testing</td>
-                        </tr>
-                      </table>
-            <input type="submit" value="Print" id="printbtn">
-        </form>
-                </div>
-                <div class="modal-footer">
-                    <h3>Modal Footer</h3>
-                </div>
-            </div>
-          </div>
+    
     
     <div class="content">
         <div class="aboutus">

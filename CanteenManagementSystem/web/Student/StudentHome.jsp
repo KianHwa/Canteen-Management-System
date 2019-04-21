@@ -40,7 +40,7 @@
         <div id="myModal" class="modal">
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <p style="text-align:center"><strong>Attention!</strong>Your current credit points is now below 50 pts.</p>
+                  <p style="text-align:center"><strong>Attention!</strong>Your current credit points is below 50 pts.</p>
                 </div>
             </div>
             <script src="../HeaderFooter/PopOut.js"></script>
@@ -64,7 +64,7 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <a href="StudentHome.jsp"><img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px"></a>
             </div>
             <div class="top2">
                 <a href="ProfileSetting.jsp">
@@ -143,7 +143,7 @@
     
                 <div class="content">   
                     <div class="breakfast">
-                        <a href="Breakfast.jsp" ><button class="breakfastBtn">Breakfast</button></a>
+                        <a href="Breakfast.jsp" ><button class="breakfastBtn">BREAKFAST</button></a>
                     </div>
                     <div class="lunch">
                         <a href="Lunch.jsp"><button class="lunchBtn">LUNCH</button></a>

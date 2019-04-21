@@ -27,7 +27,7 @@
     <header>
         <div class="top"id="navbar">
             <div class="top1">
-                <img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px">
+                <a href="StudentHome.jsp"><img src="../Images/OVERCOOKLOGO.png"style="height:120px;padding:14px 40px"></a>
             </div>
             <div class="top2">
                 <a href="ProfileSetting.jsp">
@@ -148,7 +148,7 @@
     <script src="../HeaderFooter/OrderModal.js"></script>
     <footer>
         <div class="bottom">
-            
+            <p style="text-align: center; font-size: 20"><a href="AboutUs.jsp">About Us</a></p>
         </div>
     </footer>
     
