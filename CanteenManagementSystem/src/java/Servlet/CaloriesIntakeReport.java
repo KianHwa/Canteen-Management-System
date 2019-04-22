@@ -76,7 +76,10 @@ public class CaloriesIntakeReport extends HttpServlet {
                                              "om.MEAL_MEALID = m.MEALID and " +
                                              "m.MEALID = mf.MEAL_MEALID and " +
                                              "mf.FOOD_FOODID = f.FOODID and " +
-                                             "s.STUDID ='STD1001' and " +
+                                           "o.ORDERID = om.ORDER_ORDERID and " +
+                                             "om.MEAL_MEALID = m.MEALID and " +
+                                             "m.MEALID = mf.MEAL_MEALID and " +
+                                      "s.STUDID ='STD1001' and " +
                                              "(o.ORDERSTATUS ='Paid' or " +
                                              "o.ORDERSTATUS ='Claimed') and o.orderdate between ? and ? and s.studid = ? " +
                                              "group by m.mealname, o.orderID, f.FOODCALORIES");

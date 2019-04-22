@@ -81,7 +81,6 @@
                                     count++;
                                     String date = dff.format(orders.getOrderdate());
                                     
-                                    
                         %>
                         <tr>
                             <td><%= count%></td>
